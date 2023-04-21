@@ -42,6 +42,8 @@ Web app developed by:
 
 CSS framework by [Tailwindcss](https://tailwindcss.com/)
 
+[Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp) by W3 Schools
+
 ## License
 
 Image assets under [Creative Commons (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/), non-commercial use.

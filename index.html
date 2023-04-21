@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- tailwind repo -->
+    <link href="/dist/output.css" rel="stylesheet">
+
+    <!-- local CSS -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <title>Whiskers of Zen - Landing Page</title>
+</head>
+
+ 
+
+<body class="bg-slate-400">
+
+    <main>
+        <h1>Whiskers of Zen</h1>
+        <p>Which furry friends would you like to meet today?</p>
+
+    <!-- TODO: add functionality to select the chosen species for image generation (can be both) -->
+    <!-- :checked when selected-->
+    
+    <section>
+
+    <div class="flex">
+
+        <div class="dogs">
+            <h3>Dogs</h3>
+            <label class="switch dogs">
+            <input type="checkbox">
+            <span class="slider"></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="flex">
+
+        <div class="cats"></div>
+            <h3>Cats</h3>
+            <label class="switch cats">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+
+    </div>
+
+        <!-- dropdown box for number of images to generate -->
+        <!-- TODO: skeleton build for now, feel free to change / use alternate methods-->
+        <label for="image-number">Choose the number of cute pictures to generate:</label>
+        <select name="image-number" id="image-number">
+            <option value="five">5</option>
+            <option value="ten">10</option>
+            <option value="fifteen">15</option>
+            <option value="twenty">20</option>
+            <option value="twenty-five">25</option>
+            <option value="thirty">30</option>
+        </select>
+        <br></br>
+        <!-- submit button -->
+        <input type="submit" value="Generate!">
+
+    </section>
+
+    </main>
+
+    <!-- background images -->
+    <img src="./assets/img/cat.png" alt="A cute kitten">
+    <img src="./assets/img/dog.png" alt="A cute golden retriever">
+
+</body>
+</html>
