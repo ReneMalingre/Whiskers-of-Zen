@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- tailwind repo -->
-    <link href="/dist/output.css" rel="stylesheet">
+    <!-- tailwind CSS -->
+    <link rel="stylesheet" href="./assets/css/styles.css" >
 
-    <!-- local CSS -->
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+ 
     <title>Whiskers of Zen - Landing Page</title>
 </head>
 
  
 
-<body class="bg-slate-400">
+<body class="bg-blue-500">
 
     <main>
         <h1>Whiskers of Zen</h1>
@@ -27,7 +27,7 @@
     
     <section>
 
-    <div class="flex">
+    <div class="flex p-6">
 
         <div class="dogs">
             <h3>Dogs</h3>
@@ -69,9 +69,12 @@
 
     </main>
 
-    <!-- background images -->
+    <!-- background images (z-indexed to go to the background) -->
+
+    <div class="-z-10">
     <img src="./assets/img/cat.png" alt="A cute kitten">
     <img src="./assets/img/dog.png" alt="A cute golden retriever">
+    </div>
 
 </body>
 </html>

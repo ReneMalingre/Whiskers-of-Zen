@@ -1,0 +1,4 @@
+/* add tailwind to CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
