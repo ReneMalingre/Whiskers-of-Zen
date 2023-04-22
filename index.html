@@ -4,26 +4,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whiskers of Zen</title>
-    <meta name="Improve your well being by looking at cute cats and dogs" content="">
-    <meta name="keywords" content="cats, dogs, cute, zen, well being">
-    <link rel="stylesheet" href="./assets/css/style.css">
+
+
+    <!-- tailwind CSS -->
+    <link rel="stylesheet" href="./assets/css/output.css" >
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+ 
+    <title>Whiskers of Zen - Landing Page</title>
 </head>
-<body>
-    <!-- create a button to demo the images -->
-    <button id="demo-button">Click me</button>
-    <!-- create a div to hold the images -->
-    <div id="dog-images">
-        <div id="dog-image1" ></div>
-        <div id="dog-image2" ></div>
+
+ 
+
+<body class="bg-blue-500">
+
+    <main>
+        <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
+        <p>Which furry friends would you like to meet today?</p>
+
+    <!-- TODO: add functionality to select the chosen species for image generation (can be both) -->
+    <!-- :checked when selected-->
+    
+    <section>
+
+    <div class="flex p-6">
+
+        <div class="dogs">
+            <h3>Dogs</h3>
+            <label class="switch dogs">
+            <input type="checkbox">
+            <span class="slider"></span>
+            </label>
+        </div>
+
     </div>
-    <!-- create a div to hold the images -->
-    <div id="cat-images">
-        <div id="cat-image1" ></div>
-        <div id="cat-image2" ></div>
+
+    <div class="flex">
+
+        <div class="cats"></div>
+            <h3>Cats</h3>
+            <label class="switch cats">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+
     </div>
-    <!-- create a script tag to hold the javascript -->
-    <script src="./assets/js/classes.js"></script>
-    <script src="./assets/js/script.js"></script>
+
+        <!-- dropdown box for number of images to generate -->
+        <!-- TODO: skeleton build for now, feel free to change / use alternate methods-->
+        <label for="image-number">Choose the number of cute pictures to generate:</label>
+        <select name="image-number" id="image-number">
+            <option value="five">5</option>
+            <option value="ten">10</option>
+            <option value="fifteen">15</option>
+            <option value="twenty">20</option>
+            <option value="twenty-five">25</option>
+            <option value="thirty">30</option>
+        </select>
+        <br></br>
+        <!-- submit button -->
+        <input type="submit" value="Generate!">
+
+    </section>
+
+    </main>
+
+    <!-- background images (z-indexed to go to the background) -->
+
+    <div class="-z-10">
+    <img src="./assets/img/cat.png" alt="A cute kitten">
+    <img src="./assets/img/dog.png" alt="A cute golden retriever">
+    </div>
 </body>
 </html>
