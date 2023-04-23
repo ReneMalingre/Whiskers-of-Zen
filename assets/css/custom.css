@@ -18,6 +18,23 @@ select {
   text-align: center;
 }
 
+.strong{
+  font-weight: bold;
+}
+
+/* results cards */
+.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.favourite {
+  margin-bottom: 15px;
+  float: right;
+}
+
+
 /* Sidebar */
 
 aside {
@@ -29,6 +46,27 @@ aside {
   left: 0;
 }
 
+/* text item formatting */
+
+.align-left {
+  float: left;
+}
+
+
+
+.align-right {
+  float: right;
+}
+
+/* for testing only */
+
+.test {
+  width: 300px;
+}
+
+.slider {
+  position: relative;
+}
 
 
 /* Toggle switch by W3 Schools */
