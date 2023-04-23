@@ -42,6 +42,7 @@ Web app developed by:
 
 CSS framework by [pico.css](https://picocss.com/)
 
+[CSS Sidebar](https://www.w3schools.com/w3css/w3css_sidebar.asp) by W3 Schools
 [Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp) by W3 Schools
 
 ## License

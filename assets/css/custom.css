@@ -18,6 +18,17 @@ select {
   text-align: center;
 }
 
+/* Sidebar */
+
+aside {
+  background-color: white;
+}
+
+.main {
+  position: fixed;
+  left: 0;
+}
+
 
 
 /* Toggle switch by W3 Schools */
