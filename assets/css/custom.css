@@ -1,4 +1,23 @@
-/* additional CSS styling sheet (separate to tailwind) */
+/* additional CSS styling sheet (separate to framework) */
+
+body {
+  background: linear-gradient(0, #efd5ff 0%, #515ada 100%);
+  text-align: center;
+}
+
+.img-scale {
+  border-radius: 50%;
+  border: 10px solid #aeb3eb;
+  width: 80%;
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+select {
+  max-width: 50%;
+  text-align: center;
+}
+
 
 
 /* Toggle switch by W3 Schools */

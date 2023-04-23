@@ -40,7 +40,7 @@ Web app developed by:
 - Rene Malingre
 - Sebastian 
 
-CSS framework by [Tailwindcss](https://tailwindcss.com/)
+CSS framework by [pico.css](https://picocss.com/)
 
 [Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp) by W3 Schools
 
