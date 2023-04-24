@@ -1,4 +1,84 @@
-/* additional CSS styling sheet (separate to tailwind) */
+/* additional CSS styling sheet (separate to framework) */
+
+body {
+  background: linear-gradient(0, #efd5ff 0%, #515ada 100%);
+  text-align: center;
+}
+
+.img-scale {
+  border-radius: 50%;
+  border: 10px solid #aeb3eb;
+  width: 80%;
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+select {
+  max-width: 50%;
+  text-align: center;
+}
+
+.strong{
+  font-weight: bold;
+}
+
+/* results cards */
+.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.favourite {
+  margin-bottom: 15px;
+  float: right;
+}
+
+/* animations */
+
+.secondary {
+  transition: 300ms;
+}
+
+a:hover {
+  transform: scale(1.2);
+  transition: 100ms linear;
+  transition-duration: 100ms;
+}
+
+
+/* Sidebar */
+
+aside {
+  background-color: white;
+}
+
+.main {
+  position: fixed;
+  left: 0;
+}
+
+/* text item formatting */
+
+.align-left {
+  float: left;
+}
+
+
+
+.align-right {
+  float: right;
+}
+
+/* for testing only */
+
+.test {
+  width: 300px;
+}
+
+.slider {
+  position: relative;
+}
 
 
 /* Toggle switch by W3 Schools */

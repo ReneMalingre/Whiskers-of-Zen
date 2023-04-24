@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <!-- tailwind CSS -->
-    <link rel="stylesheet" href="./assets/css/output.css" >
+    <!-- pico CSS -->
+    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css">
+    <html data-theme="light"></html>
 
     <!-- custom CSS -->
     <link rel="stylesheet" href="./assets/css/custom.css" />
@@ -17,64 +17,98 @@
 
  
 
-<body class="bg-blue-500">
+<body>
 
-    <main>
-        <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
-        <p>Which furry friends would you like to meet today?</p>
+    <main class="container">
+
+        <hgroup>
+            <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
+            <h4>A Dog & Cat Web Image Generator</h4>
+            <h6>Which furry friends would you like to meet today?</h6>
+        </hgroup>
 
     <!-- TODO: add functionality to select the chosen species for image generation (can be both) -->
     <!-- :checked when selected-->
     
     <section>
 
-    <div class="flex p-6">
+        <!-- grid for dog / cat -->
+        <div class="grid">
 
-        <div class="dogs">
-            <h3>Dogs</h3>
-            <label class="switch dogs">
-            <input type="checkbox">
-            <span class="slider"></span>
-            </label>
+            <!-- DOGS -->
+            <div>
+            <article>
+                <header>
+                    <h3>Dogs</h3>
+                </header>
+                <div class="dogs">
+                    <label class="switch dog-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                    </label>
+                </div>
+                <img class="img-scale" src="./assets/img/dog-sml.png" alt="A cute golden retriever">
+            </article>
+            </div>
+
+            <!-- CATS -->
+
+            <div>
+            <article>
+                <header>
+                    <h3>Cats</h3>
+                </header>
+                <div class="cats">
+                    <label class="switch cat-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                    </label>
+                </div>
+                <img class="img-scale" src="./assets/img/cat-sml.png" alt="A cute kitten">
+            </article>
+            </div>
+        
         </div>
 
-    </div>
-
-    <div class="flex">
-
-        <div class="cats"></div>
-            <h3>Cats</h3>
-            <label class="switch cats">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-
-    </div>
 
         <!-- dropdown box for number of images to generate -->
         <!-- TODO: skeleton build for now, feel free to change / use alternate methods-->
-        <label for="image-number">Choose the number of cute pictures to generate:</label>
-        <select name="image-number" id="image-number">
-            <option value="five">5</option>
-            <option value="ten">10</option>
-            <option value="fifteen">15</option>
-            <option value="twenty">20</option>
-            <option value="twenty-five">25</option>
-            <option value="thirty">30</option>
-        </select>
-        <br></br>
+
+        <article>
+
+            <header>
+                <h5>Choose the number of cute pictures to generate:</h5>
+            </header>
+            <label for="image-number"></label>
+            <select name="image-number" id="image-number">
+                <option value="five">5</option>
+                <option value="ten">10</option>
+                <option value="fifteen">15</option>
+                <option value="twenty">20</option>
+                <option value="twenty-five">25</option>
+                <option value="thirty">30</option>
+            </select>
+            
+            <h6>Your current mood level:</h6>
+            <label for="aww-level">
+                <span class="strong align-left">No Aww</span>
+                <span class="strong align-right">Lots of Awws</span>
+            </label>
+            <input type="range" id="user-level" name="user-level"
+                   min="0" max="5">
+
         <!-- submit button -->
         <input type="submit" value="Generate!">
+
+        </article>
 
     </section>
 
     </main>
 
-    <!-- background images (z-indexed to go to the background) -->
+    <footer>
+        <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
+    </footer>
 
-    <div class="-z-10">
-    <img src="./assets/img/cat.png" alt="A cute kitten">
-    <img src="./assets/img/dog.png" alt="A cute golden retriever">
-    </div>
 </body>
 </html>
