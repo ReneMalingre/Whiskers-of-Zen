@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- pico CSS -->
+    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css">
+    <html data-theme="light"></html>
+
+    <!-- W3 schools CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+ 
+    <title>Whiskers of Zen - Results page</title>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <!-- TODO: leave sidebr opened -->
+    <aside>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">Close &times;</button> 
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-spotify"></i>  Spotify</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Bookmarks</a>
+        </div>
+    </aside>
+    
+    <!-- Hamburger button for sidebar -->
+    <nav>
+        <ul>
+        <div id="main">
+            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        </ul>
+    </nav>
+
+    <!-- main content -->
+    <main class="container">
+
+        <!-- Grid of 2 columns; max 2 cards display for large screens -->
+        <div class="grid">
+            <!-- example card -->
+            <article class="polaroid">
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/cat-sml.png" alt="">
+                <!-- text align (e.g. breed) -->
+                <p><span class="strong">Breed:</span> (sample breed)</p>
+                <!-- Aww slider -->
+                <div>
+                    <p>How aww do you rate this friend?</p>
+                    <label for="aww-level">
+                        <span class="strong align-left">No Aww</span>
+                        <span class="strong align-right">Lots of Awws</span>
+                    </label>
+                    <input type="range" id="aww-level" name="aww-level"
+                           min="0" max="5">
+                </div>
+
+                <!-- Mood slider -->
+                <div>
+                    <p>Is this helping your mood?</p>
+                    <label for="mood-level">
+                        <span class="strong align-left">Totally Anxious</span>
+                        <span class="strong align-right">Totally Zen</span>
+                    </label>
+                    <input type="range" id="mood-level" name="mood-level"
+                           min="0" max="5">
+                </div>
+                <!-- user comment -->
+                <label for="user-comment">
+                    <input type="text" id="user-comment" name="user-comment" placeholder="Personal comment... Enter to submit" required>
+                  </label>
+                <!-- Buttons for various functions -->
+                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+
+            <article class="polaroid">
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/dog-sml.png" alt="">
+                <!-- text align (e.g. breed) -->
+                <p><span class="strong">Breed:</span> (sample breed)</p>
+                <!-- Aww slider -->
+                <div>
+                    <p>How aww do you rate this friend?</p>
+                    <label for="aww-level">
+                        <span class="strong align-left">No Aww</span>
+                        <span class="strong align-right">Lots of Awws</span>
+                    </label>
+                    <input type="range" id="aww-level" name="aww-level"
+                           min="0" max="11">
+                </div>
+
+                <!-- Mood slider -->
+                <div>
+                    <p>Is this helping your mood?</p>
+                    <label for="mood-level">
+                        <span class="strong align-left">Totally Anxious</span>
+                        <span class="strong align-right">Totally Zen</span>
+                    </label>
+                    <input type="range" id="mood-level" name="mood-level"
+                           min="0" max="11">
+                </div>
+                <!-- user comment -->
+                <label for="user-comment">
+                    <input type="text" id="user-comment" name="user-comment" placeholder="Personal comment... Enter to submit" required>
+                  </label>
+                <!-- Buttons for various functions -->
+                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+
+          </div>
+
+    </main>
+
+            <!-- TODO: make a right sidebar for 4 cards -->
+           <!-- mockup 4 images -->
+  
+
+  <script src="./assets/js/results.js"></script> 
+  <!-- font awesome kit-->
+  <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
+
+</body>
+
+    
+
+</html>
