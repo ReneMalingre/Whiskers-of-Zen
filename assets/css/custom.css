@@ -29,7 +29,7 @@ select {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.favourite {
+.top-right-button {
   margin-bottom: 15px;
   float: right;
 }
@@ -58,11 +58,17 @@ aside {
   left: 0;
 }
 
+.ending-sidebar1 {
+  padding: 2%;
+  width: 
+}
+
 #sidebar2 {
   float:right;
-  width: 15%;
-  margin: 1%;
+  width: 25%;
+  margin: 2%;
   padding: 5px;
+  padding-left: 50px;
   top: 0;
   margin-top: 20px;
   }
@@ -73,7 +79,9 @@ aside {
   float: left;
 }
 
-
+.text-center {
+  text-align: center;
+}
 
 .align-right {
   float: right;
@@ -83,6 +91,7 @@ aside {
 
 .test {
   width: 300px;
+  margin-bottom: 10px;
 }
 
 .slider {
