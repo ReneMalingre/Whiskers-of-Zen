@@ -4,10 +4,17 @@
 // it holds the common properties and methods
 // and is used to serialise and deserialise the common data
 class AnimalImage {
-  constructor(url = '') {
+  constructor(url = '', width = 0, height = 0) {
     this.url = url; // url of image
     this.rating = 0; // rating of image
+    this.width = width;
+    this.height = height;
     this.isFavourite = false; // is image a favourite?
+    this.description = ''; // description of image
+    this.moodRating = 0; // mood rating of image
+    this.comment = ''; // comment on image
+    this.imgElementID = ''; // id of img element
+    this.invalidImage = false; // is image invalid?
   }
   // serialise and deserialise functions
   // serialize returns a JSON object
@@ -15,24 +22,54 @@ class AnimalImage {
     return {
       url: this.url,
       rating: this.rating,
+      width: this.width,
+      height: this.height,
       isFavourite: this.isFavourite,
+      description: this.description,
+      moodRating: this.moodRating,
+      comment: this.comment,
     };
   }
-
   // deserialize parameter is a JSON object
   deserialize(jsonObject) {
     this.url = jsonObject.url;
     this.rating = jsonObject.rating;
+    this.width = jsonObject.width;
+    this.height = jsonObject.height;
     this.isFavourite = jsonObject.isFavourite;
+    this.description = jsonObject.description;
+    this.moodRating = jsonObject.moodRating;
+    this.comment = jsonObject.comment;
+  }
+
+  addURLAndAltToImgByID(id) {
+    // console.log(id);
+    const imageElement = document.getElementById(id);
+    if (!this.url) {
+      imageElement.setAttribute('src', 'assets/images/dog-sml.png');
+    } else {
+      imageElement.setAttribute('src', this.url);
+    }
+    if (!(typeof this.description === 'undefined')) {
+      imageElement.setAttribute('alt', this.description);
+    } else {
+      imageElement.setAttribute('alt', 'placeholder');
+    }
+    // save the id of the img element
+    this.imgElementID = id;
+  }
+
+  addCaptionToImgByID(id) {
+    const imageElement = document.getElementById(id);
+    imageElement.textContent = this.description;
   }
 }
 
 class CatImage extends AnimalImage {
   constructor(id = '', url = '', width = 0, height = 0) {
-    super(url);
+    super(url, width, height);
     this.id = id;
-    this.width = width;
-    this.height = height;
+    super.description = `Cat Image ${id}`;
   }
   static fromJSON(data) {
     const {id, url, width, height} = data;
@@ -44,24 +81,21 @@ class CatImage extends AnimalImage {
     return {
       ...super.serialize(),
       id: this.id,
-      width: this.width,
-      height: this.height,
     };
   }
   // deserialize parameter is a JSON object
   deserialize(jsonObject) {
     super.deserialize(jsonObject);
     this.id = jsonObject.id;
-    this.width = jsonObject.width;
-    this.height = jsonObject.height;
   }
 }
 
 class DogImage extends AnimalImage {
-  constructor(url = '', dogBreed = '', subBreed = '') {
-    super(url);
+  constructor(url = '', dogBreed = '', subBreed = '', width = 0, height = 0) {
+    super(url, width, height);
     this.dogBreed = dogBreed;
     this.subBreed = subBreed;
+    super.description = `${subBreed} ${dogBreed}`.trim();
   }
   static fromJSON(data) {
     // eg https://images.dog.ceo/breeds/spaniel-welsh/n02102177_2586.jpg
@@ -209,11 +243,17 @@ class AnimalAPICall {
 class DogAPICall extends AnimalAPICall {
   constructor(_imageCount) {
     super(_imageCount);
+    this.maxCount = 50;
+    this.preferredMaxCount = 50;
     // validate the imageCount parameter so that it is at most 50 (the API limit)
-    if (this.imageCount > 50) {
-      this.imageCount = 50;
+    if (this.imageCount > this.maxCount) {
+      this.imageCount = this.maxCount;
     }
+
     this.url = `https://dog.ceo/api/breeds/image/random/${this.imageCount}`;
+  }
+  static preferredMaxCount() {
+    return 50;
   }
 }
 
@@ -221,20 +261,48 @@ class DogAPICall extends AnimalAPICall {
 class CatAPICall extends AnimalAPICall {
   constructor(_imageCount) {
     super(_imageCount);
+    this.maxCount = 100;
     // validate the imageCount parameter so that it is at most 100 (the API limit)
-    if (this.imageCount > 100) {
-      this.imageCount = 100;
+    if (this.imageCount > this.maxCount) {
+      this.imageCount = this.maxCount;
     }
     // if the imageCount is greater than 10, use the API key
-    let apiKey = '';
     if (this.imageCount > 10) {
-        apiKey= '&api_key=' + this.catAPIKey();
+      this.url= `https://api.thecatapi.com/v1/images/search?limit=${this.imageCount}&api_key=${this.catAPIKey()}`;
+    } else {
+      this.url= `https://api.thecatapi.com/v1/images/search?limit=${this.imageCount}`;
     }
-    this.url = `https://api.thecatapi.com/v1/images/search?limit=${this.imageCount}${apiKey}`;
   }
   catAPIKey() {
     // this is a function to obfuscate the API key from bots
     return 'live_wl' + 'Yu6IfaRaG' + 'ebWK7gPyIBbog' + 'WmIZg' + 'hev' + 'pPEXWxL' + 'XdSB2oVF0cYk' + 'FylB3fZ' + 'lO66lV';
   }
+  static preferredMaxCount() {
+    return 10;
+  }
 }
 
+class LoadTimer {
+  constructor(intervalMilliseconds = 150) {
+    this.timerInterval = intervalMilliseconds;
+    this.loadTimer = null;
+    this.totalTime = 0;
+  }
+  // this method raises a custom event that is handled outside the class
+  raiseEventTimerTick() {
+    this.totalTime += this.timerInterval;
+    const timerTickEvent = new CustomEvent('timerTick');
+    document.dispatchEvent(timerTickEvent);
+  }
+  startTimer() {
+    this.totalTime = 0;
+    // start the timer and set the function to run every interval defined by this.timerInterval
+    this.loadTimer = setInterval(() => {
+      this.raiseEventTimerTick();
+    }, this.timerInterval);
+  }
+  // stop the timer
+  stopTimer() {
+    clearInterval(this.loadTimer);
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- pico CSS -->
+    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css" />
+    <html data-theme="light"></html>
+
+    <!-- W3 schools CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+
+    <title>Whiskers of Zen - Results page</title>
+  </head>
+
+  <body>
+    <!-- Hamburger button for sidebar -->
+    <div class="invisible-element w3-large w3-padding" id="nav-burger">
+      <button
+        id="openNav"
+        class="w3-button w3-xlarge w3-text-white"
+        onclick="w3_open()">
+        &#9776;
+      </button>
+    </div>
+    <div class="invisible-element w3-container w3-center" id="app-title">
+      <h1 class="w3-text-white w3-center">Whiskers of Zen</h1>
+    </div>
+
+    <!-- Sidebar -->
+    <aside>
+      <div
+        class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-cyan"
+        style="display: none"
+        id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+          Close &times;
+        </button>
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-brands fa-spotify"></i> Spotify</a
+        >
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-trophy"></i> Achievements</a
+        >
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-bookmark"></i> Bookmarks</a
+        >
+      </div>
+    </aside>
+
+    <div id="app-loading">
+      <h1 class="w3-text-white">
+        Finding you some Amazing Images to Increase your Zen...
+      </h1>
+      <progress></progress>
+      <div id="loading-image-container"></div>
+    </div>
+
+    <!-- main content -->
+    <main id="main-app">
+      <section id="image-store" class="invisible-element"></section>
+    </main>
+
+    <script src="./assets/js/app-w3.js"></script>
+    <script src="./assets/js/pet-benefits.js"></script>
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/images.js"></script>
+    <script src="./assets/js/app-script.js"></script>
+
+    <!-- font awesome kit-->
+    <script
+      src="https://kit.fontawesome.com/cea607b6d1.js"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
