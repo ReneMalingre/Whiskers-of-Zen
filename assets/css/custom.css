@@ -25,7 +25,7 @@ body {
 .img-scale {
   border-radius: 50%;
   border: 10px solid #aeb3eb;
-  width: 80%;
+  width: 50%;
   margin-top: 30px;
   max-width: 400px;
 }
@@ -73,6 +73,7 @@ select {
 .top-right-button {
   margin-bottom: 15px;
   float: right;
+  
 .polaroid {
   display: inline-flex;
   flex-direction: column;
