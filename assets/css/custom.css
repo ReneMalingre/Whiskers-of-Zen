@@ -5,6 +5,10 @@ body {
   text-align: center;
 }
 
+.grid {
+
+}
+
 .img-scale {
   border-radius: 50%;
   border: 10px solid #aeb3eb;
@@ -58,9 +62,9 @@ aside {
   left: 0;
 }
 
-.ending-sidebar1 {
-  padding: 2%;
-  width: 
+.ending-results {
+  background-color: white;
+  padding: 20px;
 }
 
 #sidebar2 {

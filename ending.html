@@ -14,84 +14,113 @@
 
     <!-- custom CSS -->
     <link rel="stylesheet" href="./assets/css/custom.css" />
- 
+
     <title>Whiskers of Zen - Results page</title>
 </head>
 
 <body>
 
-    <!-- Sidebar -->
-    <!-- TODO: leave sidebr opened -->
-    <aside>
-        <div class="w3-sidebar w3-light-grey w3-bar-block ending-sidebar1 container">
-            <!-- TODO: replace contents of span with user input content -->
-            <article>You viewed <span class="image-number">30 (sample)</span> Fluffy animals!</article> 
-            <article>You viewed <span class="image-number">30 (sample)</span> Fluffy animals!</article> 
-          </div>
+    <!-- Nav bar with achievement details -->
+    <nav class="ending-results">
+        <div class="container">
+        <details open>
+            <summary><span class="strong">Achievements earned this session</span></summary>
+            <p>You viewed <span class="strong user-number">X</span> fluffy animals!</p>
+            <p>You earned <span class="strong badge-points">Y</span> points!</p>
+            <p>You earned <span class="strong badge-dialog">Z</span> badge!</p>
+          </details>
           
-    </aside>
+          <details>
+            <summary><span class="strong">Your Achievements</span></summary> 
+            <p>(achievement 1)</p>
+            <p>(achievement 2...)</p>
+          </details>
+        </div>
+      </nav>
 
-    <!-- photos for right sidebar -->
-    <main class="container">
+     
 
-        <!-- Grid of 2 columns; max 2 cards display for large screens -->
-        <article class="polaroid">
+    <main class="container" >
+
+        <!-- displays user results numbers -->
+        <article>
             <header>
-                <h3>Cutest</h3>
+                <h3>How was meeting your fluffy friends today?</h3>
             </header>
-        <!-- Favourite button -->
-        <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-            <img class="test" src="./assets/img/cat-sml.png" alt="">
-            <!-- Buttons for various functions -->
-             <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            <!-- todo: insert user results into the spans -->
+            <p>Your Zen level before you looked at the animals was: <span class="strong user-zen-before">3 (sample)</span></p> 
+            <p>You added <span class="strong zen-points-total">XX</span> points from the kittens and very good boys.</p>
+            <p>Your Zen level now is: <span class="strong zen-level-current">YY</span></p> 
         </article>
 
-        <!-- Most basic (example)-->
-        <article class="polaroid">
-            <header>
-                <h3>Most basic</h3>
-            </header>
+        <!--photos from user's results  -->
+        <div class="grid">
+            <!-- Cutest (example) -->
+            <article class="polaroid">
+                <header>
+                    <h3>Cutest</h3>
+                </header>
             <!-- Favourite button -->
             <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-            <img class="test" src="./assets/img/dog-sml.png" alt="">
-            <!-- Buttons for various functions -->
-             <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-        </article>
+                <img class="test" src="./assets/img/cat-sml.png" alt="">
+                <br></br>
+                <!-- Buttons for various functions -->
+                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+    
+            <!-- Most basic (example)-->
+            <article class="polaroid">
+                <header>
+                    <h3>Most basic</h3>
+                </header>
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/dog-sml.png" alt="">
+                <br></br>
+                <!-- Buttons for various functions -->
+                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+          </div>
 
-        <!-- Most zen (example)-->
-        <article class="polaroid">
-            <header>
-                <h3>Most zen</h3>
-            </header>
-            <!-- Favourite button -->
-            <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-            <img class="test" src="./assets/img/cat-sml.png" alt="">
-            <!-- Buttons for various functions -->
-             <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-        </article>
+        <div class="grid">
+            <!-- Most zen (example)-->
+            <article class="polaroid">
+                <header>
+                    <h3>Most zen</h3>
+                </header>
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/cat-sml.png" alt="">
+                <br></br>
+                <!-- Buttons for various functions -->
+                <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
 
-        <!-- Most favourite (example)-->
-        <article class="polaroid">
-            <header>
-                <h3>Most favourite</h3>
-            </header>
-            <!-- Favourite button -->
-            <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-            <img class="test" src="./assets/img/dog-sml.png" alt="">
-            <!-- Buttons for various functions -->
-             <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-             <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-        </article>
+            <!-- Most favourite (example)-->
+            <article class="polaroid">
+                <header>
+                    <h3>Most favourite</h3>
+                </header>
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/dog-sml.png" alt="">
+                <br></br>
+                <!-- Buttons for various functions -->
+                <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+        </div>
 
     </main>
-        
+
+
 
   <script src="./assets/js/results.js"></script> 
   <!-- font awesome kit-->
