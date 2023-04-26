@@ -18,6 +18,10 @@ body {
   color: white;
 }
 
+.grid {
+
+}
+
 .img-scale {
   border-radius: 50%;
   border: 10px solid #aeb3eb;
@@ -66,6 +70,9 @@ select {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.top-right-button {
+  margin-bottom: 15px;
+  float: right;
 .polaroid {
   display: inline-flex;
   flex-direction: column;
@@ -144,10 +151,29 @@ aside {
   left: 0;
 }
 
+.ending-results {
+  background-color: white;
+  padding: 20px;
+}
+
+#sidebar2 {
+  float:right;
+  width: 25%;
+  margin: 2%;
+  padding: 5px;
+  padding-left: 50px;
+  top: 0;
+  margin-top: 20px;
+  }
+
 /* text item formatting */
 
 .align-left {
   float: left;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .align-right {
@@ -158,6 +184,7 @@ aside {
 
 .test {
   width: 300px;
+  margin-bottom: 10px;
 }
 
 .slider {
