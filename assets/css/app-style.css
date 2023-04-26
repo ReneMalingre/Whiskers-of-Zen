@@ -18,10 +18,6 @@ body {
   color: white;
 }
 
-/* .grid {
-
-} */
-
 .img-scale {
   border-radius: 50%;
   border: 10px solid #aeb3eb;
@@ -67,12 +63,7 @@ select {
   box-sizing: border-box;
   width: 100%;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.top-right-button {
-  margin-bottom: 15px;
-  float: right;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
 }
 
 .polaroid {
@@ -84,7 +75,7 @@ select {
   padding: 0;
   width: 100%;
   background-color: #f8f8f6;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 10px rgb(0 0 0 / 50%);
   border-radius: 5px;
   margin: 10px 0;
   transition: transform 0.3s ease;
@@ -126,9 +117,9 @@ select {
 }
 
 /* 
-.favourite {
-  margin-bottom: 5px;
-} */
+  .favourite {
+    margin-bottom: 5px;
+  } */
 
 /* animations */
 
@@ -148,34 +139,19 @@ aside {
   background-color: white;
 }
 
+#app-sidebar{
+  display: none;
+}
+
 #nav-burger {
   position: fixed;
   left: 0;
 }
 
-.ending-results {
-  background-color: white;
-  padding: 20px;
-}
-
-#sidebar2 {
-  float:right;
-  width: 25%;
-  margin: 2%;
-  padding: 5px;
-  padding-left: 50px;
-  top: 0;
-  margin-top: 20px;
-  }
-
 /* text item formatting */
 
 .align-left {
   float: left;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .align-right {
@@ -186,11 +162,6 @@ aside {
 
 .test {
   width: 300px;
-  margin-bottom: 10px;
-}
-
-.slider {
-  position: relative;
 }
 
 /* Toggle switch by W3 Schools */
@@ -210,16 +181,16 @@ aside {
   height: 0;
 }
 
+/* .slider {
+    position: relative;
+  } */
+
 /* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -231,7 +202,6 @@ aside {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -244,8 +214,6 @@ input:focus + .slider {
 }
 
 input:checked + .slider::before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
@@ -277,7 +245,7 @@ input:checked + .slider::before {
     width: 440px;
     padding: 10px;
   }
-  
+
   .polaroid-img {
     height: 360px;
   }

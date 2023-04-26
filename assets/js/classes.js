@@ -1,5 +1,6 @@
 // Description: Classes for the Cat and Dog API calls
 
+// ====================== Base AnimalImage class ======================
 // AnimalImage is the base class for CatImage and DogImage
 // it holds the common properties and methods
 // and is used to serialise and deserialise the common data
@@ -64,7 +65,9 @@ class AnimalImage {
     imageElement.textContent = this.description;
   }
 }
+// ====================== End Base AnimalImage class ======================
 
+// ====================== CatImage class, inherits AnimalImage class ======================
 class CatImage extends AnimalImage {
   constructor(id = '', url = '', width = 0, height = 0) {
     super(url, width, height);
@@ -89,7 +92,9 @@ class CatImage extends AnimalImage {
     this.id = jsonObject.id;
   }
 }
+// ====================== End CatImage class ======================
 
+// ====================== DogImage class, inherits AnimalImage class ======================
 class DogImage extends AnimalImage {
   constructor(url = '', dogBreed = '', subBreed = '', width = 0, height = 0) {
     super(url, width, height);
@@ -129,8 +134,11 @@ class DogImage extends AnimalImage {
     this.subBreed = jsonData.subBreed;
   }
 }
+// ====================== End DogImage class ======================
 
+// ====================== APIReturn class =========================
 // holds the data, status and error message returned from the API
+// why use an object when a class can be used? 😉
 class APIReturn {
   constructor(status = 0, message = '', data = null) {
     this.responseStatus = status; // response.status: 200 = OK, 404 = Not Found, etc.
@@ -138,7 +146,9 @@ class APIReturn {
     this.jsonData = data; // response JSON data or null
   }
 }
+// ====================== End APIReturn class ======================
 
+// ====================== DogData class =========================
 // used to hold the data returned from the API
 // and convert it to an array of DogImage objects
 class DogData {
@@ -159,7 +169,9 @@ class DogData {
     return returnArray;
   }
 }
+// ====================== End DogData class ======================
 
+// ====================== CatData class =========================
 // used to hold the data returned from the API
 // and convert it to an array of CatImage objects
 class CatData {
@@ -181,7 +193,10 @@ class CatData {
     return returnArray;
   }
 }
+// ====================== End CatData class ======================
 
+// ====================== AnimalAPICall base class =========================
+// base class for API calls, with common properties and methods
 class AnimalAPICall {
   constructor(imageCount) {
     this.url = '';
@@ -238,8 +253,11 @@ class AnimalAPICall {
     });
   }
 }
+// ====================== End AnimalAPICall base class ======================
 
+// ====================== DogAPICall class inherits AnimalAPICall class =====
 // call the Dog API: formats the URL appropriately to get dogs
+// contains the dog-specific properties and methods (url, maxCount, preferredMaxCount)
 class DogAPICall extends AnimalAPICall {
   constructor(_imageCount) {
     super(_imageCount);
@@ -256,8 +274,11 @@ class DogAPICall extends AnimalAPICall {
     return 50;
   }
 }
+// ====================== End DogAPICall class =============================
 
+// ====================== CatAPICall class inherits AnimalAPICall class =====
 // call the Cat API: formats the URL appropriately to get cats
+// contains the cat-specific properties and methods (url, maxCount, preferredMaxCount)
 class CatAPICall extends AnimalAPICall {
   constructor(_imageCount) {
     super(_imageCount);
@@ -281,7 +302,13 @@ class CatAPICall extends AnimalAPICall {
     return 10;
   }
 }
+// ====================== End CatAPICall class =============================
 
+// ====================== LoadTimer class ==================================
+// this class encapsulates the timer that is used to check the loading status of images
+// it raises a custom event that is handled outside the class
+// the timer interval is set to 150ms by default
+// its a bit easier to use than the built-in setInterval function IMHO
 class LoadTimer {
   constructor(intervalMilliseconds = 150) {
     this.timerInterval = intervalMilliseconds;
@@ -306,3 +333,4 @@ class LoadTimer {
     clearInterval(this.loadTimer);
   }
 }
+// ====================== End LoadTimer class ==============================

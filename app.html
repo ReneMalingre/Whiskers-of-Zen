@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css" />
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
     <html data-theme="light"></html>
 
     <!-- W3 schools CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="./assets/css/app-style.css" />
 
     <title>Whiskers of Zen - Results page</title>
   </head>
@@ -22,9 +22,9 @@
     <!-- Hamburger button for sidebar -->
     <div class="invisible-element w3-large w3-padding" id="nav-burger">
       <button
-        id="openNav"
+        id="open-nav"
         class="w3-button w3-xlarge w3-text-white"
-        onclick="w3_open()">
+        onclick="openSideBar()">
         &#9776;
       </button>
     </div>
@@ -36,9 +36,8 @@
     <aside>
       <div
         class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-cyan"
-        style="display: none"
-        id="mySidebar">
-        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+        id="app-sidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="closeSideBar()">
           Close &times;
         </button>
         <a href="#" class="w3-bar-item w3-button"

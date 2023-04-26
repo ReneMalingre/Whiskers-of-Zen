@@ -102,8 +102,8 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       parentElement.appendChild(newRow);
     }
   }
-
 }
+
 // create the HTML for an empty animal card
 function emptyAppCardHTML(id, i) {
   // construct the image template
