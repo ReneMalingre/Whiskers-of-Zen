@@ -5,6 +5,7 @@ body {
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
   margin: 0;
   padding: 0;
+
 }
 
 /* party popper gif */
@@ -12,6 +13,7 @@ body {
   z-index: 1;
   top: 5px;
 }
+
 
 #main-app {
   padding: 0;
@@ -177,7 +179,7 @@ aside {
   margin-top: 20px;
   }
 
-/* text item formatting */
+/* formatting */
 
 .align-left {
   float: left;
@@ -190,6 +192,11 @@ aside {
 .align-right {
   float: right;
 }
+
+.summary {
+  margin-top: 15px;
+}
+
 
 /* for testing only */
 
