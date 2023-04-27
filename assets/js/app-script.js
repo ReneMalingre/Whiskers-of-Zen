@@ -44,6 +44,8 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let appCardRow;
   for (let i=0; i < combinedArray.length; i++) {
     // every even image, add a new row div
+    // TODO set the first row to be visible and subsequent rows to be hidden
+    // TODO by adding the .invisible-element class to the row div
     if (i % 2 === 0) {
       newRow = document.createElement('div');
       newRow.classList.add('app-card-row');
@@ -84,7 +86,6 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
     }
   }
 }
-
 
 async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   if (loadingImages) {
@@ -264,14 +265,15 @@ async function getFreshCatImages(imageCount, catImageStore) {
 
   // get cat image data from the APIs
   const apiCall = new CatAPICall(currentImagesRequest, getCatBreed);
-  const returnData = new CatData(await apiCall.callAPI());
+  const returnData = new CatData(await apiCall.callAPI()); // this is an APIReturn object with response status, error message and JSON data
   // if API call was successful
-  if (returnData.apiReturn.responseStatus === 200) {
+  if (returnData.apiReturn.responseStatus === 200) { // TODO see if other codes are ok here??
     // save cat images object to array
-    newCats=returnData.dataToArray();
+    newCats=returnData.dataToArray(); // this returns an array of CatImage objects
   } else {
     // if API call was not successful
     // display error message
+    // TODO - use a modal to display the error message, not inbuilt alert due to project requirements
     alert(`Could not retrieve cat url collection data: ${returnData.apiReturn.errorMessage}`);
     return;
   }
@@ -345,6 +347,20 @@ function addPulsingButtonEventListener(parentElement) {
       // console.log('pulsing-button clicked');
       event.preventDefault();
       parentElement.classList.remove('pulsing-button');
+      // TODO - get the user selections and add them to the right dogImage or catImage object
+      // get the id of the button that was clicked
+      // this will be 'submit-dog-image-0 or submit-cat-image-0
+      const buttonClicked= event.target;
+      const idValue = buttonClicked.id;
+      // ! For Iggy - this is where you need to get the slider value etc and add it to the dogImage or catImage object
+//       if(idValue.includes('dog')) {
+//       dogImage[i].isFavourite=true;
+//       dogImage[i].cuteRating = sliderElement.value;
+//       } else {
+// catImage[i].isFavourite=true;
+//       }
+
+
     });
   }
 
@@ -619,6 +635,7 @@ function emptyAppCardHTML(id, i) {
     animalType = 'cute cat';
     compliment = 'awww-dorable';
   }
+  // string literals are awesome!
 
   const imageTemplate= `<article class="app-card w3-col w3-padding" id="app-card-${id}-${i}">
   <div class="polaroid">
