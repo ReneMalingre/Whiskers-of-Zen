@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css" />
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
     <html data-theme="light"></html>
 
     <!-- W3 schools CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="./assets/css/app-style.css" />
 
     <title>Whiskers of Zen - Results page</title>
   </head>
@@ -22,9 +22,9 @@
     <!-- Hamburger button for sidebar -->
     <div class="invisible-element w3-large w3-padding" id="nav-burger">
       <button
-        id="openNav"
+        id="open-nav"
         class="w3-button w3-xlarge w3-text-white"
-        onclick="w3_open()">
+        onclick="openSideBar()">
         &#9776;
       </button>
     </div>
@@ -36,9 +36,8 @@
     <aside>
       <div
         class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-text-cyan"
-        style="display: none"
-        id="mySidebar">
-        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+        id="app-sidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="closeSideBar()">
           Close &times;
         </button>
         <a href="#" class="w3-bar-item w3-button"
@@ -60,15 +59,35 @@
       <progress></progress>
       <div id="loading-image-container"></div>
     </div>
-
+    <div id="temp-breeds"></div>
     <!-- main content -->
     <main id="main-app">
       <section id="image-store" class="invisible-element"></section>
     </main>
 
-    <script src="./assets/js/app-w3.js"></script>
+    <div id="modal-info" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container">
+          <span onclick="closeInfoModal()"
+                class="modal-close w3-button w3-display-topright w3-red w3-text-white">&times;</span>
+          <h3 class="w3-text-deep-purple" id="modal-info-title"></h2>
+          <p id="modal-info-description"></p>
+          <a href = "" id="modal-info-link" target="_blank">Click here to open in a new tab</a>
+          <iframe id="modal-info-iframe" src="" title="animal info from web"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- button to save dogs to local storage -->
+      <button
+        id="save-images"
+        class="w3-button w3-cyan w3-round-large w3-margin-bottom">
+        Save Dogs
+    </footer>
     <script src="./assets/js/pet-benefits.js"></script>
     <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/dog-breeds.js"></script>
     <script src="./assets/js/images.js"></script>
     <script src="./assets/js/app-script.js"></script>
 
