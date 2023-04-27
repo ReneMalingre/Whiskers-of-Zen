@@ -5,7 +5,15 @@ body {
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
   margin: 0;
   padding: 0;
+
 }
+
+/* party popper gif */
+.party-popper {
+  z-index: 1;
+  top: 5px;
+}
+
 
 #main-app {
   padding: 0;
@@ -18,14 +26,16 @@ body {
   color: white;
 }
 
-/* .grid {
+.small-text {
+  font-size: 0.8rem;
+  padding-top: 0.8rem;
+}
 
-} */
 
 .img-scale {
   border-radius: 50%;
   border: 10px solid #aeb3eb;
-  width: 80%;
+  width: 50%;
   margin-top: 30px;
   max-width: 400px;
 }
@@ -73,6 +83,7 @@ select {
 .top-right-button {
   margin-bottom: 15px;
   float: right;
+  
 }
 
 .polaroid {
@@ -168,7 +179,7 @@ aside {
   margin-top: 20px;
   }
 
-/* text item formatting */
+/* formatting */
 
 .align-left {
   float: left;
@@ -182,6 +193,11 @@ aside {
   float: right;
 }
 
+.summary {
+  margin-top: 15px;
+}
+
+
 /* for testing only */
 
 .test {
@@ -192,6 +208,7 @@ aside {
 .slider {
   position: relative;
 }
+
 
 /* Toggle switch by W3 Schools */
 

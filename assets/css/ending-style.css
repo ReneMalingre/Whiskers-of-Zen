@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+nav {
+  background-color: white;
+}
+body {
+  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+}
+
 .summary-card{
   display: grid;
   grid-template-columns: 1fr 1fr;
