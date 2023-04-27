@@ -3,19 +3,19 @@ const petAffirmationsArray = [
   'When life gets ruff, hug a cat.',
   'Pawsitive vibes only!',
   'The road to happiness is paved with paw prints.',
-  'A cat\'s love can brighten even the darkest day.',
+  'A dog\'s love can brighten even the darkest day.',
   'Smile, you\'re never fully dressed without a cat\'s purr.',
   'Life is better with a furry companion.',
   'Cats are not our whole life, but they make our lives whole.',
   'There\'s no better therapist than a kitten\'s purr.',
-  'Be the person your cat thinks you are.',
+  'Be the person your dog thinks you are.',
   'You are as amazing as your furry friend thinks you are.',
   'Happiness is a warm puppy.',
   'When things get tough, remember that your pet loves you unconditionally.',
   'Your pet\'s love is always there to lift you up.',
   'Sometimes, all you need is a hug from your furry friend.',
-  'Cats leave paw prints on your heart.',
-  'Your cat\'s wagging tail is a reminder to stay positive.',
+  'Dogs leave paw prints on your heart.',
+  'Your dog\'s wagging tail is a reminder to stay positive.',
   'Take a moment to appreciate the simple joys of your pet\'s company.',
   'Your cat\'s purr is a reminder that good things are always close by.',
   'No matter how tough life gets, remember that you have a furry friend who adores you.',
@@ -31,7 +31,7 @@ const petAffirmationsArray = [
   'You are pawsitively amazing!',
   'When life gets tough, remember that you have a purrfect companion.',
   'Let your pet\'s love chase away your worries.',
-  'Pets make life a little less ruff.',
+  'Dogs make life a little less ruff.',
   'You and your pet are a purrfect team.',
   'Your pet\'s love is the sunshine on a cloudy day.',
   'Breathe in peace, breathe out stress, and snuggle with your pet.',
@@ -49,7 +49,7 @@ const petAffirmationsArray = [
   'Unconditional love is as close as your pet.',
   'When life gets overwhelming, let your pet\'s love carry you through.',
   'A furry friend\'s love is the best stress relief.',
-  'Time spent with cats is never wasted.',
+  'Time spent with dogs is never wasted.',
   'Cats are connoisseurs of comfort.',
   'In ancient times, cats were worshipped as gods; they have not forgotten this.',
   'The smallest feline is a masterpiece.',
@@ -70,4 +70,8 @@ const petAffirmationsArray = [
   'Cats speak a language all their own.',
   'A cat is the best alarm clock, and it never needs batteries.',
 ];
+
+function randomAffirmation() {
+  return petAffirmationsArray[getRandomInt(0, petAffirmationsArray.length - 1)];
+}
 

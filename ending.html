@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/pico-1.5.10/css/pico.min.css">
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css">
     <html data-theme="light"></html>
 
     <!-- W3 schools CSS -->
@@ -14,6 +14,7 @@
 
     <!-- custom CSS -->
     <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="./assets/css/ending-style.css" />
 
     <title>Whiskers of Zen - Results page</title>
 </head>
@@ -30,6 +31,7 @@
             <ul>
                 <li><a href="./index.html" role="button" class="secondary outline"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="./results.html" role="button" class="secondary outline"><i class="fa-solid fa-left-long"></i></a></li>
+                <li><a href="./favourites.html" role="button" class="secondary outline"><i class="fa-solid fa-star"></i></a></li>
               </ul>
          
         <details open>
@@ -50,12 +52,11 @@
      
 
     <main class="container" >
-
         <!-- displays user results numbers -->
         <article>
-            <header>
+            <div>
                 <h3>How was meeting your fluffy friends today?</h3>
-            </header>
+            </div>
             <!-- todo: insert user results into the spans -->
             <p>Your Zen level before you looked at the animals was: <span class="strong user-zen-before">3 (sample)</span></p> 
             <p>You added <span class="strong zen-points-total">XX</span> points from the kittens and very good boys.</p>
@@ -63,13 +64,45 @@
         </article>
 
         <!--photos from user's results  -->
-        <article>
-            <div class="grid">
-                <!-- Cutest (example) -->
-                <article class="polaroid">
-                    <header>
-                        <h3>Cutest</h3>
-                    </header>
+        <div class="grid">
+            <!-- Cutest (example) -->
+            <article class="app-card">
+                <div>
+                    <h3>Cutest</h3>
+                </div>
+                <div class="summary-card" id='cutest'></div>
+            </article>
+
+            <!-- Most basic (example)-->
+            <article class="app-card">
+                <div>
+                    <h3>Most basic</h3>
+                </div>
+                <div class="summary-card" id="basic-holder"></div>
+            </article>
+          </div>
+        </div>
+        <div class="grid">
+            <!-- Most zen (example)-->
+            <article class="app-card">
+                <div>
+                    <h3>Most zen</h3>
+                </div>
+                <!-- Favourite button -->
+                <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
+                <img class="test" src="./assets/img/cat-sml.png" alt="">
+                <br></br>
+                <!-- Buttons for various functions -->
+                <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+            </article>
+
+            <!-- Most favourite (example)-->
+            <article class="app-card">
+                <div>
+                    <h3>Most favourite</h3>
+                </div>
                 <!-- Favourite button -->
                 <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
                     <img class="test" src="./assets/img/cat-sml.png" alt="">
@@ -132,8 +165,9 @@
     </main>
 
 
-
-  <script src="./assets/js/results.js"></script> 
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/images.js"></script>
+    <script src="./assets/js/ending-script.js"></script> 
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
 
