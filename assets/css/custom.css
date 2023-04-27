@@ -7,6 +7,12 @@ body {
   padding: 0;
 }
 
+/* party popper gif */
+.party-popper {
+  z-index: 1;
+  top: 5px;
+}
+
 #main-app {
   padding: 0;
   margin: 0;
