@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="./assets/css/ending-style.css" />
 
     <title>Whiskers of Zen - Results page</title>
 </head>
@@ -41,12 +41,11 @@
      
 
     <main class="container" >
-
         <!-- displays user results numbers -->
         <article>
-            <header>
+            <div>
                 <h3>How was meeting your fluffy friends today?</h3>
-            </header>
+            </div>
             <!-- todo: insert user results into the spans -->
             <p>Your Zen level before you looked at the animals was: <span class="strong user-zen-before">3 (sample)</span></p> 
             <p>You added <span class="strong zen-points-total">XX</span> points from the kittens and very good boys.</p>
@@ -56,42 +55,28 @@
         <!--photos from user's results  -->
         <div class="grid">
             <!-- Cutest (example) -->
-            <article class="polaroid">
-                <header>
+            <article class="app-card">
+                <div>
                     <h3>Cutest</h3>
-                </header>
-            <!-- Favourite button -->
-            <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-                <img class="test" src="./assets/img/cat-sml.png" alt="">
-                <br></br>
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="summary-card" id='cutest'></div>
             </article>
-    
+
             <!-- Most basic (example)-->
-            <article class="polaroid">
-                <header>
+            <article class="app-card">
+                <div>
                     <h3>Most basic</h3>
-                </header>
-                <!-- Favourite button -->
-                <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
-                <img class="test" src="./assets/img/dog-sml.png" alt="">
-                <br></br>
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="summary-card" id="basic-holder"></div>
             </article>
           </div>
-
+        </div>
         <div class="grid">
             <!-- Most zen (example)-->
-            <article class="polaroid">
-                <header>
+            <article class="app-card">
+                <div>
                     <h3>Most zen</h3>
-                </header>
+                </div>
                 <!-- Favourite button -->
                 <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
                 <img class="test" src="./assets/img/cat-sml.png" alt="">
@@ -103,10 +88,10 @@
             </article>
 
             <!-- Most favourite (example)-->
-            <article class="polaroid">
-                <header>
+            <article class="app-card">
+                <div>
                     <h3>Most favourite</h3>
-                </header>
+                </div>
                 <!-- Favourite button -->
                 <a href="#" role="button" class="secondary outline top-right-button favourite"><i class="fa-solid fa-bookmark"></i></a>
                 <img class="test" src="./assets/img/dog-sml.png" alt="">
@@ -121,8 +106,9 @@
     </main>
 
 
-
-  <script src="./assets/js/results.js"></script> 
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/images.js"></script>
+    <script src="./assets/js/ending-script.js"></script> 
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
 

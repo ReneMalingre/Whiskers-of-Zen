@@ -50,17 +50,27 @@ select {
 }
 
 /* results cards */
+.app-card-row{
+  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  padding-top: 0.25rem;
+}
+
+.affirmation{
+  background: transparent;
+  font-size: 1rem;
+}
+
 .app-row {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 4rem;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
 }
 
 .app-card {
   box-sizing: border-box;
+  margin-top: 1rem;
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
@@ -93,6 +103,12 @@ select {
   font-size: 1rem;
   margin: 2px;
   color: #515ada;
+}
+
+.animal-info-url{
+  color: #6A5ACD;
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
 }
 
 .card-question {
@@ -134,7 +150,6 @@ a:hover {
 }
 
 /* Sidebar */
-
 aside {
   background-color: white;
 }
@@ -158,10 +173,29 @@ aside {
   float: right;
 }
 
-/* for testing only */
+/* #modal-info{
+  display: flex;
+  flex-direction: column;
+} */
+.modal-close{
+  font-size: 1.5rem;
+  padding: 0.2rem 0.8rem;
+}
 
-.test {
-  width: 300px;
+#modal-info-link{
+  margin: 3px;
+  color: #6A5ACD;
+}
+
+#modal-info-description{
+  font-size: 0.9rem;
+  color: #6A5ACD;
+}
+
+#modal-info-iframe{
+  width: 100%;
+  height: 60vh;
+  border: none;
 }
 
 /* Toggle switch by W3 Schools */
@@ -237,6 +271,10 @@ input:checked + .slider::before {
 }
 
 @media screen and (min-width: 500px) {
+  .affirmation{
+    font-size: 1.5rem;
+  }
+
   .app-card {
     width: 500px;
   }
@@ -255,7 +293,7 @@ input:checked + .slider::before {
   }
 
   .card-question {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin: 8px 0;
   }

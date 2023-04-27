@@ -59,15 +59,35 @@
       <progress></progress>
       <div id="loading-image-container"></div>
     </div>
-
+    <div id="temp-breeds"></div>
     <!-- main content -->
     <main id="main-app">
       <section id="image-store" class="invisible-element"></section>
     </main>
 
-    <script src="./assets/js/app-w3.js"></script>
+    <div id="modal-info" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container">
+          <span onclick="closeInfoModal()"
+                class="modal-close w3-button w3-display-topright w3-red w3-text-white">&times;</span>
+          <h3 class="w3-text-deep-purple" id="modal-info-title"></h2>
+          <p id="modal-info-description"></p>
+          <a href = "" id="modal-info-link" target="_blank">Click here to open in a new tab</a>
+          <iframe id="modal-info-iframe" src="" title="animal info from web"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- button to save dogs to local storage -->
+      <button
+        id="save-images"
+        class="w3-button w3-cyan w3-round-large w3-margin-bottom">
+        Save Dogs
+    </footer>
     <script src="./assets/js/pet-benefits.js"></script>
     <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/dog-breeds.js"></script>
     <script src="./assets/js/images.js"></script>
     <script src="./assets/js/app-script.js"></script>
 
