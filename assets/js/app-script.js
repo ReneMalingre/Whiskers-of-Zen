@@ -123,6 +123,9 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   addImageLoadedEventListener(parentElement);
   addPulsingButtonEventListener(parentElement);
   addAnimalInfoURLEventListener(parentElement);
+  // addEventListenerToDOMBranch(parentElement, 'fav-btn', 'click', handleFavoriteButton);
+  addEventListenerToDOMBranch(parentElement, 'share-btn', 'click', handleShareButton);
+  addEventListenerToDOMBranch(parentElement, 'download-btn', 'click', handleDownloadButton);
 
   // call function to get images from APIs
   // and add them to the dogImages and catImages arrays
@@ -670,10 +673,10 @@ function emptyAppCardHTML(id, i) {
       <input class="user-comment w3-input w3-border w3-border-deep-purple w3-text-deep-purple w3-sans-serif" type="text" id="user-comment-${id}-${i}" name="user-comment" placeholder="comment on this ${animalType}">
     </label>
   <!-- Buttons for various functions -->
-   <a href="#" role="button" id="fav-btn-${id}-${i}" class="w3-text-amber secondary outline w3-border-amber w3-hover-border-green favourite"><i class="fa-solid fa-bookmark"></i></a>
-   <a href="#" role="button" id="download-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-solid fa-download"></i></a>
-   <a href="#" role="button" id="facebook-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-square-facebook"></i></a>
-   <a href="#" role="button" id="twitter-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-twitter"></i></a>
+   <a href="#" role="button" id="fav-btn-${id}-${i}" class="fav-btn w3-text-amber secondary outline w3-border-amber w3-hover-border-green favourite"><i class="fa-solid fa-bookmark"></i></a>
+   <a href="#" role="button" id="download-${id}-${i}" class="download-btn secondary outline w3-text-blue"><i class="fa-solid fa-download"></i></a>
+   <a href="#" role="button" id="facebook-${id}-${i}" class="share-btn secondary outline w3-text-blue"><i class="fa-brands fa-square-facebook"></i></a>
+   <a href="#" role="button" id="twitter-${id}-${i}" class="twitter-btn secondary outline w3-text-blue"><i class="fa-brands fa-twitter" target="_blank"></i></a>
    <a href="#" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
 </article>`;
 

@@ -132,13 +132,6 @@ select {
   font-size: 1rem;
 }
 
-/* 
-  .favourite {
-    margin-bottom: 5px;
-  } */
-
-/* animations */
-
 .secondary {
   transition: 300ms;
 }
@@ -173,10 +166,6 @@ aside {
   float: right;
 }
 
-/* #modal-info{
-  display: flex;
-  flex-direction: column;
-} */
 .modal-close{
   font-size: 1.5rem;
   padding: 0.2rem 0.8rem;

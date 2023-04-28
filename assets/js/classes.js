@@ -48,6 +48,7 @@ class AnimalImage {
 
   addURLAndAltToImgByID(id) {
     // console.log(id);
+
     const imageElement = document.getElementById(id);
     if (!this.url) {
       imageElement.setAttribute('src', 'assets/images/dog-sml.png');
@@ -56,8 +57,15 @@ class AnimalImage {
     }
     if (!(typeof this.description === 'undefined')) {
       imageElement.setAttribute('alt', this.description);
+      imageElement.setAttribute('data-filename', `${this.description}.png`);
+      // now add info to other elements
+      // twitter button
+      const twitterButton = document.getElementById('twitter-' + id);
+      const twitterURL = createTwitterIntent(this.url, 'Check out this cute animal: ' + this.description);
+      twitterButton.setAttribute('href', twitterURL);
     } else {
       imageElement.setAttribute('alt', 'placeholder');
+      imageElement.setAttribute('data-filename', `cute animal.png`);
     }
     // save the id of the img element
     this.imgElementID = id;
@@ -108,7 +116,7 @@ class CatImage extends AnimalImage {
         // search for cat breed in wikipedia
         let searchTerm = `${this.description}`.trim();
         if (searchTerm) {
-          if (!searchTerm.toLowerCase.includes('cat')) {
+          if (!searchTerm.toLowerCase().includes('cat')) {
             searchTerm += ' cat';
           }
           const encodedSearchTerm = encodeURIComponent(searchTerm);
@@ -154,7 +162,7 @@ class DogImage extends AnimalImage {
     const url = String(data);
     const pathSegments = url.split('/');
 
-    const breedInfo = pathSegments[4]; // "spaniel-japanese" in the example
+    const breedInfo = pathSegments[4]; // "spaniel-welsh" in the example
     // console.log(breedInfo);
     const breedParts = breedInfo.split('-');
     const dogBreed = breedParts[0];
@@ -172,7 +180,7 @@ class DogImage extends AnimalImage {
       if (searchTerm.toLowerCase() === 'mix') {
         searchTerm = 'Mongrel';
       }
-      if (!searchTerm.toLowerCase.includes('dog')) {
+      if (!searchTerm.toLowerCase().includes('dog')) {
         searchTerm += ' dog';
       }
       const encodedSearchTerm = encodeURIComponent(searchTerm);

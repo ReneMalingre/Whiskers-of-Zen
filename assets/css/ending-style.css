@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -9,7 +11,7 @@ body {
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
 }
 
-.summary-card{
+.summary-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 0.5rem;
@@ -55,19 +57,25 @@ body {
   color: #515ada;
 }
 
-.animal-info-url{
-  color: #6A5ACD;
+.animal-info-url {
+  color: #6a5acd;
   font-size: 0.9rem;
   margin-top: 0.3rem;
 }
 
-.summary-comment{
+.summary-comment {
   font-size: 0.8rem;
   margin: 2px;
 }
 
-.summary-button{
+.summary-button {
   font-size: 0.8rem;
   padding: 2px 6px;
-  margin:2px;
+  margin: 2px;
+}
+
+.fb-like {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
 }
