@@ -9,12 +9,12 @@ class AnimalImage {
     this.url = url; // url of image
     this.width = width;
     this.height = height;
-    this.description = ''; // description of image
+    this.description = ''; // description of image (breed)
     this.cuteRating = 0; // cuteRating of image
     this.zenRating = 0; // mood rating of image
     this.isFavourite = false; // is image a favourite?
     this.userComment = ''; // comment on image
-    this.imgElementID = ''; // id of img element
+    this.imgElementID = ''; // id of img element dog-image-1 or cat-image-1
     this.invalidImage = false; // is image invalid?
     this.infoURL = '';
   }
