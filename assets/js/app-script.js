@@ -22,6 +22,7 @@ window.addEventListener('load', () => {
   catImageCount = parseInt(searchParams.get('cats')); // Output: value2
   // add the modal to the DOB
   addInfoModalToDOM();
+  addImageModalToDOM();
   createAndPopulateAppElements();
 });
 
@@ -121,6 +122,7 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   addImageLoadedEventListener(parentElement);
   addPulsingButtonEventListener(parentElement);
   addAnimalInfoURLEventListener(parentElement);
+  addEventListenerToDOMBranch(parentElement, 'polaroid-img', 'click', animalImageClicked);
 
   // call function to get images from APIs
   // and add them to the dogImages and catImages arrays
@@ -366,7 +368,6 @@ function addPulsingButtonEventListener(parentElement) {
     }
   }
 }
-
 
 
 // get event handler that recognises that an image has loaded
@@ -709,6 +710,52 @@ document.getElementById('save-images').addEventListener('click', (event) => {
   // window.location.href = 'ending.html';
 });
 
+function addAnimalInfoURLEventListener(parentElement) {
+  // Check if the current element has the class animal-info-url
+  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
+    // Add the event listener to the info link element
+    parentElement.addEventListener('click', showInfoModal);
+  }
+
+  // Traverse the child elements recursively
+  if (parentElement.children && parentElement.children.length > 0) {
+    for (const child of parentElement.children) {
+      addAnimalInfoURLEventListener(child);
+    }
+  }
+}
+
+
+// event handler to show the info modal
+function showInfoModal(event) {
+  console.log('info link clicked');
+  event.preventDefault();
+  // display the modal
+  const uiElement = event.target;
+  const idValue = uiElement.id;
+  const imageType = idValue.substring(16, 25);
+  const idNumber = parseInt(idValue.substring(26));
+
+  let infoURL;
+  let modalTitle;
+  let modalInfoText='';
+  if (imageType === 'cat-image') {
+    let catImage = new CatImage;
+    catImage = catImages[parseInt(idNumber)];
+    infoURL = catImage.infoURL;
+    modalTitle = catImage.description;
+  } else {
+    let dogImage = new DogImage;
+    dogImage = dogImages[parseInt(idNumber)];
+    infoURL = dogImage.infoURL;
+    modalTitle = dogImage.description;
+    modalInfoText = getDogBreedInfo(dogImage.subBreed, dogImage.dogBreed);
+  }
+  if (infoURL === '') {
+    return;
+  }
+  openModal(infoURL, modalTitle, modalInfoText);
+}
 
 // ===================== End Event Handlers =====================
 
@@ -726,6 +773,5 @@ function closeSideBar() {
   document.getElementById('open-nav').style.display = 'inline-block';
 }
 // ===================== End W3 Schools Sidebar ===================
-
 
 

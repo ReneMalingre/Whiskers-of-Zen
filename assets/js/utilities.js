@@ -84,18 +84,25 @@ function addEventListenerToDOMBranch(parentElement, className, eventName, functi
 // Toggling Favourite Button
 // ==================================================================
 // parameter might be fav-btn-dog-image-3
-function toggleFavourite(elementID) {
+function toggleFavourite(elementID, newFavoriteState) {
   const favButton = document.getElementById(elementID);
+  if (!favButton) {
+    // console.log(elementID + ' not found');
+    return;
+  }
+
   const favIcon = favButton.querySelector('i');
 
-  if (favButton.classList.contains('favourited')) {
-      favButton.classList.remove('favourited');
-      favButton.classList.add('non-favourited');
-      favIcon.className = 'far fa-heart';
+  if (!newFavoriteState) {
+    favButton.classList.remove('favourited');
+    favButton.classList.add('non-favourited');
+    favIcon.classList.add('far');
+    favIcon.classList.remove('fas');
   } else {
-      favButton.classList.add('favourited');
-      favButton.classList.remove('non-favourited');
-      favIcon.className = 'fas fa-heart';
+    favButton.classList.add('favourited');
+    favButton.classList.remove('non-favourited');
+    favIcon.classList.remove('far');
+    favIcon.classList.add('fas');
   }
 }
 
@@ -103,7 +110,7 @@ function toggleFavourite(elementID) {
 // Modal Dialog Functions
 // ==================================================================
 
-// add w3 modal to the DOM
+// add w3 modal to the DOM to show information page
 function addInfoModalToDOM() {
   const parentElement = document.querySelector('body');
   const modalHTML = `<div id="modal-info" class="w3-modal">
@@ -139,48 +146,7 @@ function closeInfoModal() {
   document.getElementById('modal-info-iframe').src = '';
 }
 
-function addAnimalInfoURLEventListener(parentElement) {
-  // Check if the current element has the class animal-info-url
-  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
-    // Add the event listener to the info link element
-    parentElement.addEventListener('click', function(event) {
-      console.log('info link clicked');
-      event.preventDefault();
-      // display the modal
-      const uiElement = event.target;
-      const idValue = uiElement.id;
-      const imageType = idValue.substring(16, 25);
-      const idNumber = parseInt(idValue.substring(26));
 
-      let infoURL;
-      let modalTitle;
-      let modalInfoText='';
-      if (imageType === 'cat-image') {
-        let catImage = new CatImage;
-        catImage = catImages[parseInt(idNumber)];
-        infoURL = catImage.infoURL;
-        modalTitle = catImage.description;
-      } else {
-        let dogImage = new DogImage;
-        dogImage = dogImages[parseInt(idNumber)];
-        infoURL = dogImage.infoURL;
-        modalTitle = dogImage.description;
-        modalInfoText = getDogBreedInfo(dogImage.subBreed, dogImage.dogBreed);
-      }
-      if (infoURL === '') {
-        return;
-      }
-      openModal(infoURL, modalTitle, modalInfoText);
-    });
-  }
-
-  // Traverse the child elements recursively
-  if (parentElement.children && parentElement.children.length > 0) {
-    for (const child of parentElement.children) {
-      addAnimalInfoURLEventListener(child);
-    }
-  }
-}
 // ============= Custom Modal Alert ==================
 // replace the inbuilt alert with this w3 modal
 function showCustomAlert(alertMessage) {
@@ -225,6 +191,53 @@ function showCustomAlert(alertMessage) {
 
   // Append the modal to the body
   document.body.appendChild(modal);
+}
+
+// image modal
+function addImageModalToDOM() {
+  const parentElement = document.querySelector('body');
+  const modalHTML = `<div id="image-modal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-zoom w3-animate-opacity w3-deep-purple" id="image-modal-content">
+          <div class="w3-container">
+              <span class="w3-button w3-display-topright w3-red w3-text-white" onclick="document.getElementById('image-modal').style.display='none'">&times;</span>
+              <div>
+              <img id="modal-image" class="w3-padding" src="">
+              </div>
+          </div>
+      </div>
+  </div>`;
+  parentElement.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function showImageModal(imageURL) {
+  const modalImage= document.getElementById('modal-image');
+  modalImage.src = imageURL;
+  modalImage.onload = function() {
+    // Adjust the width of the modal content after the image has loaded
+    const modalContent = document.getElementById('image-modal-content');
+    modalContent.style.width = (modalImage.naturalWidth > (window.innerWidth - 32) ? (window.innerWidth - 32) : modalImage.naturalWidth) + 'px';
+    document.getElementById('image-modal').style.display = 'block';
+  };
+}
+
+
+// show a modal when the user clicks an image
+function animalImageClicked(event) {
+  event.preventDefault();
+  const imgElement = event.target;
+  if (!imgElement) {
+    return;
+  }
+
+  if (!imgElement.tagName || imgElement.tagName.toLowerCase() !== 'img') {
+    return;
+  }
+  const url = imgElement.src;
+  if (!url) {
+    return;
+  }
+
+  showImageModal(url);
 }
 
 // ==================================================================

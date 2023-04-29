@@ -50,12 +50,12 @@ select {
 }
 
 /* results cards */
-.app-card-row{
+.app-card-row {
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
   padding-top: 0.25rem;
 }
 
-.affirmation{
+.affirmation {
   background: transparent;
   font-size: 1rem;
 }
@@ -105,8 +105,8 @@ select {
   color: #515ada;
 }
 
-.animal-info-url{
-  color: #6A5ACD;
+.animal-info-url {
+  color: #6a5acd;
   font-size: 1.1rem;
   margin-top: 0.3rem;
 }
@@ -147,7 +147,7 @@ aside {
   background-color: white;
 }
 
-#app-sidebar{
+#app-sidebar {
   display: none;
 }
 
@@ -166,6 +166,11 @@ aside {
   float: right;
 }
 
+#image-modal-content {
+  box-sizing: border-box;
+  max-height: 90vh;
+  max-width: 90vh;
+}
 
 /* Toggle switch by W3 Schools */
 
@@ -240,7 +245,7 @@ input:checked + .slider::before {
 }
 
 @media screen and (min-width: 500px) {
-  .affirmation{
+  .affirmation {
     font-size: 1.5rem;
   }
 
