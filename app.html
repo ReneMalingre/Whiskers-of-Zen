@@ -12,6 +12,9 @@
     <!-- W3 schools CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
+    <!-- customising W3 modal CSS -->
+    <link rel="stylesheet" href="./assets/css/w3-modal.css" />
+    
     <!-- custom CSS -->
     <link rel="stylesheet" href="./assets/css/app-style.css" />
 
@@ -66,19 +69,6 @@
     <main id="main-app">
       <section id="image-store" class="invisible-element"></section>
     </main>
-
-    <div id="modal-info" class="w3-modal">
-      <div class="w3-modal-content w3-animate-top">
-        <div class="w3-container">
-          <span onclick="closeInfoModal()"
-                class="modal-close w3-button w3-display-topright w3-red w3-text-white">&times;</span>
-          <h3 class="w3-text-deep-purple" id="modal-info-title"></h2>
-          <p id="modal-info-description"></p>
-          <a href = "" id="modal-info-link" target="_blank">Click here to open in a new tab</a>
-          <iframe id="modal-info-iframe" src="" title="animal info from web"></iframe>
-        </div>
-      </div>
-    </div>
 
     <footer>
       <!-- button to save dogs to local storage -->

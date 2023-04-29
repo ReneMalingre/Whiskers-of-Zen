@@ -58,11 +58,7 @@ class AnimalImage {
     if (!(typeof this.description === 'undefined')) {
       imageElement.setAttribute('alt', this.description);
       imageElement.setAttribute('data-filename', `${this.description}.png`);
-      // now add info to other elements
-      // twitter button
-      const twitterButton = document.getElementById('twitter-' + id);
-      const twitterURL = createTwitterIntent(this.url, 'Check out this cute animal: ' + this.description);
-      twitterButton.setAttribute('href', twitterURL);
+      // add info to other elements here if needed
     } else {
       imageElement.setAttribute('alt', 'placeholder');
       imageElement.setAttribute('data-filename', `cute animal.png`);
@@ -180,7 +176,7 @@ class DogImage extends AnimalImage {
       if (searchTerm.toLowerCase() === 'mix') {
         searchTerm = 'Mongrel';
       }
-      if (!searchTerm.toLowerCase().includes('dog')) {
+      if (!searchTerm.toLowerCase().includes('dog') && !searchTerm.toLowerCase().includes('terrier')) {
         searchTerm += ' dog';
       }
       const encodedSearchTerm = encodeURIComponent(searchTerm);

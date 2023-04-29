@@ -166,26 +166,6 @@ aside {
   float: right;
 }
 
-.modal-close{
-  font-size: 1.5rem;
-  padding: 0.2rem 0.8rem;
-}
-
-#modal-info-link{
-  margin: 3px;
-  color: #6A5ACD;
-}
-
-#modal-info-description{
-  font-size: 0.9rem;
-  color: #6A5ACD;
-}
-
-#modal-info-iframe{
-  width: 100%;
-  height: 60vh;
-  border: none;
-}
 
 /* Toggle switch by W3 Schools */
 
