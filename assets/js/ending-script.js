@@ -181,7 +181,7 @@ function checkForAchievements(dogImages, catImages) {
   let achievementLevel = achievementCountToLevel(doggedDeterminationAchievementLevel);
   let achievementText = '🎖️ ' + 'Dogged Determination level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "You've rated " + achievementLevelToDescription(achievementLevel, 'dogs');
+  achievementText = 'You\'ve rated ' + achievementLevelToDescription(achievementLevel, 'dogs');
   achievementSubElement.textContent = achievementText;
 
   achievementElement = document.getElementById('achievement-2');
@@ -189,7 +189,7 @@ function checkForAchievements(dogImages, catImages) {
   achievementLevel = achievementCountToLevel(purrfectionistAchievementLevel);
   achievementText = '🎖️ ' + 'Purrfectionist level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "You've rated " + achievementLevelToDescription(achievementLevel, 'cats');
+  achievementText = 'You\'ve rated ' + achievementLevelToDescription(achievementLevel, 'cats');
   achievementSubElement.textContent = achievementText;
 
   achievementElement = document.getElementById('achievement-3');
@@ -197,7 +197,7 @@ function checkForAchievements(dogImages, catImages) {
   achievementLevel = achievementCountToLevel(barkingUpTheRightTreeAchievementLevel);
   achievementText = '🎖️ ' + 'Barking Up the Right Tree level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "Your Zen has been lifted by " + achievementLevelToDescription(achievementLevel, 'dogs');
+  achievementText = 'Your Zen has been lifted by ' + achievementLevelToDescription(achievementLevel, 'dogs');
   achievementSubElement.textContent = achievementText;
 
   achievementElement = document.getElementById('achievement-4');
@@ -205,7 +205,7 @@ function checkForAchievements(dogImages, catImages) {
   achievementLevel = achievementCountToLevel(purrsitiveVibesAchievementLevel);
   achievementText = '🎖️ ' + 'Purrsitive Vibes level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "Your Zen has been lifted by " + achievementLevelToDescription(achievementLevel, 'cats');
+  achievementText = 'Your Zen has been lifted by ' + achievementLevelToDescription(achievementLevel, 'cats');
   achievementSubElement.textContent = achievementText;
 
   achievementElement = document.getElementById('achievement-5');
@@ -213,7 +213,7 @@ function checkForAchievements(dogImages, catImages) {
   achievementLevel = achievementCountToLevel(hotDiggityDogAchievementLevel);
   achievementText = '🎖️ ' + 'Hot Diggity Dog level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "You've been awww-ed by " + achievementLevelToDescription(achievementLevel, 'dogs');
+  achievementText = 'You\'ve been awww-ed by ' + achievementLevelToDescription(achievementLevel, 'dogs');
   achievementSubElement.textContent = achievementText;
 
   achievementElement = document.getElementById('achievement-6');
@@ -221,10 +221,9 @@ function checkForAchievements(dogImages, catImages) {
   achievementLevel = achievementCountToLevel(hotDiggityDogAchievementLevel);
   achievementText = '🎖️ ' + 'No Kitten Around level - ' + achievementLevel + ' ' + achievementLevelToLabel(achievementLevel);
   achievementElement.innerHTML = achievementText;
-  achievementText = "You've been awww-ed by " + achievementLevelToDescription(achievementLevel, 'cats');
+  achievementText = 'You\'ve been awww-ed by ' + achievementLevelToDescription(achievementLevel, 'cats');
   achievementSubElement.textContent = achievementText;
 }
-
 
 
 function achievementCountToLevel(achievementCount) {
@@ -312,18 +311,18 @@ function achievementLevelToDescription(achievementLevel, animalType) {
 function displayResultantAnimals() {
   // display the cutest dog and cat images
   let containerElement = document.getElementById('cutest-holder');
-  loadEndingCardWithImages(containerElement, dogImagesCutest, catImagesCutest, 'app-card-title-cutest', 'Cutest');
+  loadEndingCardWithImages(containerElement, dogImagesCutest, catImagesCutest, 'app-card-title-cutest', 'Cutest', 'cute');
   containerElement = document.getElementById('ugliest-holder');
-  loadEndingCardWithImages(containerElement, dogImagesUgliest, catImagesUgliest, 'app-card-title-ugliest', 'Most Basic');
+  loadEndingCardWithImages(containerElement, dogImagesUgliest, catImagesUgliest, 'app-card-title-ugliest', 'Most Basic', 'ugly');
   containerElement = document.getElementById('most-zen-holder');
-  loadEndingCardWithImages(containerElement, dogImagesMostZen, catImagesMostZen, 'app-card-title-most-zen', 'Most Zen');
+  loadEndingCardWithImages(containerElement, dogImagesMostZen, catImagesMostZen, 'app-card-title-most-zen', 'Most Zen', 'zen');
   containerElement = document.getElementById('favourites-holder');
-  loadEndingCardWithImages(containerElement, dogImagesFavourites, catImagesFavourites, 'app-card-title-favourites', 'Favourites');
+  loadEndingCardWithImages(containerElement, dogImagesFavourites, catImagesFavourites, 'app-card-title-favourites', 'Favourites', 'fav');
   // give the polaroids a jaunty angle
   randomlyRotatePolaroids(3);
 }
 
-function loadEndingCardWithImages(parentElement, dogImages, catImages, titleElementID, title) {
+function loadEndingCardWithImages(parentElement, dogImages, catImages, titleElementID, title, listType) {
   const totalDogs = dogImages.length;
   const totalCats = catImages.length;
   const totalAvailable = totalDogs + totalCats;
@@ -356,14 +355,14 @@ function loadEndingCardWithImages(parentElement, dogImages, catImages, titleElem
     const dogImage = dogImages[i];
     const newDiv = document.createElement('div');
     newDiv.classList.add('polaroid');
-    newDiv.innerHTML = emptyEndingCardHTML(newDiv, 'dog-image', i, dogImage.url, dogImage.description, dogImage.userComment, dogImage.infoURL, dogImage.isFavourite);
+    newDiv.innerHTML = emptyEndingCardHTML(listType, 'dog-image', i, dogImage.url, dogImage.description, dogImage.userComment, dogImage.infoURL, dogImage.isFavourite);
     parentElement.appendChild(newDiv.firstChild);
   };
   // add the cat images to the container
   for (let i=0; i <catsToDisplay; i++) {
     const catImage = catImages[i];
     const newDiv = document.createElement('div');
-    newDiv.innerHTML = emptyEndingCardHTML(newDiv, 'cat-image', i, catImage.url, catImage.description, catImage.userComment, catImage.infoURL, catImage.isFavourite);
+    newDiv.innerHTML = emptyEndingCardHTML(listType, 'cat-image', i, catImage.url, catImage.description, catImage.userComment, catImage.infoURL, catImage.isFavourite);
     parentElement.appendChild(newDiv.firstChild);
   };
 
@@ -378,26 +377,31 @@ function loadEndingCardWithImages(parentElement, dogImages, catImages, titleElem
 
 
 // create the HTML for an empty animal card
-function emptyEndingCardHTML(parentElement, id, i, url, altText, comment, animalInfoUrl, favourited) {
+function emptyEndingCardHTML(listType, id, i, url, altText, comment, animalInfoUrl, favourited) {
   // construct the image template
 
   let favouriteClass;
+  let favouriteIcon;
   if (favourited) {
-    favouriteClass = 'w3-text-amber';
+    favouriteClass = 'favourited';
+    favouriteIcon = 'fas fa-heart';
   } else {
-    favouriteClass = 'w3-text-grey';
+    favouriteClass = 'non-favourited';
+    favouriteIcon = 'far fa-heart';
   }
-  const imageTemplate = `<div class="app-card w3-col w3-padding" id="app-card-${id}-${i}">
+  const imageTemplate = `<div class="app-card w3-col w3-padding" id="${listType}-app-card-${id}-${i}">
     <div class="polaroid">
-      <img id="${id}-${i}" class="polaroid-img" src="${url}" alt="${altText}" height=${polaroidSummaryImageHeight}>
+      <img id="${listType}-${id}-${i}" class="polaroid-img" src="${url}" alt="${altText}" height=${polaroidSummaryImageHeight}>
       <!-- animal info (e.g. breed) -->
-      <a href="${animalInfoUrl}" class="animal-info-url w3-cursive" id="animal-info-url-${id}-${i}">${altText}</a>
+      <a href="${animalInfoUrl}" class="animal-info-url w3-cursive" id="${listType}-animal-info-url-${id}-${i}">${altText}</a>
     </div>
     <!-- user comment -->
     <div class="w3-row w3-center">
-      <p class="summary-comment w3-text-deep-purple w3-sans-serif" type="text" id="user-comment-${id}-${i}">${comment}</p>
+      <p class="summary-comment w3-text-deep-purple w3-sans-serif" type="text" id="${listType}-user-comment-${id}-${i}">${comment}</p>
       <!-- Buttons for various functions -->
-      <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} summary-button secondary outline w3-border-amber w3-hover-border-green"><i class="fa-solid fa-bookmark"></i></a>
+      <a href="#" role="button" id="${listType}-fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
+      summary-button secondary outline w3-border-amber w3-hover-border-green">
+      <i class="${favouriteIcon}"></i></a>
     </div>
   </div>`;
   // console.log(imageTemplate);
@@ -411,19 +415,80 @@ function handleFavouriteButtonClick(event) {
   let id = clickedElement.id;
   if (!id) {
     clickedElement = clickedElement.parentElement;
-    id=clickedElement.id;
+    id = clickedElement.id;
   }
   if (id) {
     const animalType = getAnimalImageTypeFromID(id);
     const arrayIndex = getAnimalImageIndexFromID(id);
+    const listType = getStringBeforeDash(id);
+    const favButtonID =`${listType}-fav-btn-${animalType}-${arrayIndex}`;
+    let imageURL;
+    let isFavourite = false;
     if (animalType === 'dog-image') {
-      dogImages[arrayIndex].isFavourite = !dogImages[arrayIndex].isFavourite;
+      switch (listType) {
+        case 'zen':
+          dogImagesMostZen[arrayIndex].isFavourite = !dogImagesMostZen[arrayIndex].isFavourite;
+          isFavourite = dogImagesMostZen[arrayIndex].isFavourite;
+          imageURL = dogImagesMostZen[arrayIndex].url;
+          break;
+        case 'ugly':
+          dogImagesUgliest[arrayIndex].isFavourite = !dogImagesUgliest[arrayIndex].isFavourite;
+          isFavourite = dogImagesUgliest[arrayIndex].isFavourite;
+          imageURL = dogImagesUgliest[arrayIndex].url;
+          break;
+        case 'cute':
+          dogImagesCutest[arrayIndex].isFavourite = !dogImagesCutest[arrayIndex].isFavourite;
+          isFavourite = dogImagesCutest[arrayIndex].isFavourite;
+          imageURL = dogImagesCutest[arrayIndex].url;
+          break;
+        case 'fav':
+          dogImagesFavourites[arrayIndex].isFavourite = !dogImagesFavourites[arrayIndex].isFavourite;
+          isFavourite = dogImagesFavourites[arrayIndex].isFavourite;
+          imageURL = dogImagesFavourites[arrayIndex].url;
+          break;
+        default:
+          return;
+      }
+      // update every other list that contains this image
+      dogImagesMostZen = dogImagesMostZen.map((dogImage, index) => {
+        if (dogImage.url === imageURL) {
+          console.log(index);
+          return {...dogImage, isFavourite: isFavourite};
+        }
+        return dogImage;
+      });
+      dogImagesUgliest = dogImagesUgliest.map((dogImage, index) => {
+        if (dogImage.url === imageURL) {
+          console.log(index);
+          return {...dogImage, isFavourite: isFavourite};
+        }
+        return dogImage;
+      });
+      dogImagesCutest = dogImagesCutest.map((dogImage, index) => {
+        if (dogImage.url === imageURL) {
+          console.log(index);
+          return {...dogImage, isFavourite: isFavourite};
+        }
+        return dogImage;
+      });
+      dogImagesFavourites = dogImagesFavourites.map((dogImage, index) => {
+        if (dogImage.url === imageURL) {
+          console.log(index);
+          return {...dogImage, isFavourite: isFavourite};
+        }
+        return dogImage;
+      });
+
+      // now find all the fav-buttons that have the image and update them
+      const favButtons = document.getElementsByClassName('favourite-button');
+
       // TODO add or remove the dog to/from the favourites array
       // TODO update the button to show the correct format
     } else if (animalType === 'cat-image') {
-      catImages[arrayIndex].isFavourite = !catImages[arrayIndex].isFavourite;
+      // catImages[arrayIndex].isFavourite = !catImages[arrayIndex].isFavourite;
       // TODO add or remove the cat to/from the favourites array
       // TODO update the button to show the correct format
     }
+    toggleFavourite(favButtonID, isFavourite);
   }
 }

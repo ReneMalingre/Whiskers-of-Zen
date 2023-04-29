@@ -81,6 +81,25 @@ function addEventListenerToDOMBranch(parentElement, className, eventName, functi
   }
 }
 // ==================================================================
+// Toggling Favourite Button
+// ==================================================================
+// parameter might be fav-btn-dog-image-3
+function toggleFavourite(elementID) {
+  const favButton = document.getElementById(elementID);
+  const favIcon = favButton.querySelector('i');
+
+  if (favButton.classList.contains('favourited')) {
+      favButton.classList.remove('favourited');
+      favButton.classList.add('non-favourited');
+      favIcon.className = 'far fa-heart';
+  } else {
+      favButton.classList.add('favourited');
+      favButton.classList.remove('non-favourited');
+      favIcon.className = 'fas fa-heart';
+  }
+}
+
+// ==================================================================
 // Modal Dialog Functions
 // ==================================================================
 
@@ -256,7 +275,7 @@ function getAnimalImageTypeFromID(elementID) {
 }
 
 // return the array index of the dog or cat image
-function getAnimalImageNumberFromID(elementID) {
+function getAnimalImageIndexFromID(elementID) {
   const regex = /.*?((dog|cat)-image)-(\d+)$/;
   const match = elementID.match(regex);
 
@@ -265,6 +284,11 @@ function getAnimalImageNumberFromID(elementID) {
   } else {
     return null; // Returns null if no match is found
   }
+}
+
+function getStringBeforeDash(inputString) {
+  const stringParts = inputString.split('-');
+  return stringParts[0];
 }
 
 // ==================================================================

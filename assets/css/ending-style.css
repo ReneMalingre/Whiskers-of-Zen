@@ -9,12 +9,11 @@ nav {
   padding: 2px 1rem !important;
 }
 
-
 body {
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
 }
 
-.invisible-element{
+.invisible-element {
   display: none;
 }
 
@@ -23,11 +22,11 @@ body {
   margin: 2px;
 }
 
-.popper{
+.popper {
   width: 240px;
 }
 
-.party-popper{
+.party-popper {
   height: 160px;
 }
 
@@ -35,7 +34,7 @@ main.container {
   padding: 0;
 }
 
-article{
+article {
   margin: 1rem 0;
   padding: 1rem;
 }
@@ -103,6 +102,18 @@ a {
   margin-top: 0.3rem;
 }
 
+.favourited {
+  color: #ff0000;
+  background-color: #ffaaaa;
+  border-color: red;
+}
+
+.non-favourited {
+  color: #808080;
+  background-color: #fff;
+  border-color: #808080;
+}
+
 .summary-comment {
   font-size: 0.8rem;
   margin: 2px;
@@ -127,7 +138,7 @@ footer {
   list-style-type: none;
 }
 
-ul li{
+ul li {
   list-style: none;
   padding: 4px 8px;
 }
