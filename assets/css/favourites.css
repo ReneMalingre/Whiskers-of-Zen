@@ -4,9 +4,28 @@ body {
     background: linear-gradient(0, #efd5ff 0%, #515ada 100%);
     text-align: center;
   }
+  .title {
+    font-weight:100;
+    font-size: 80px;
+    font-style: serif;
+    
+  } 
+  .subtitle {
+    font-weight: bold;
+    font-size: 40px; 
+    font-style:oblique;
+  } 
+  .information {
+    font-weight: bold;
+    font-size: 60px;
+    font-style: oblique;
+    background-color: pink;
+
+  }
+  
   
   .img-scale {
-    border-radius: 100%;
+    border-radius: 80%;
     border: 10px solid #aeb3eb;
     width: 80%;
     margin-top: 30px;
@@ -20,18 +39,24 @@ body {
   
   .strong1{
     font-weight: bold;
+    font-style: italic;
+
   }
   .strong2{
     font-weight: bold;
     text-align: start;
+    font-style: italic;
   }.strong3{
     font-weight: bold;
+    font-style: italic;
   }
   /* results cards */
   .polaroid {
     width: 80%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
+    align-content: space-between;
   }
   
   .btn {
