@@ -16,16 +16,15 @@
     <link rel="stylesheet" href="./assets/css/w3-modal.css" />
     
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/custom.css" /> -->
 
     <link rel="stylesheet" href="./assets/css/ending-style.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/app-style.css" /> -->
 
     <title>Whiskers of Zen - Ending page</title>
   </head>
 
 <body>
-
-
     <!-- Sidebar -->
     <aside>
         <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
@@ -51,17 +50,15 @@
     
     <!-- Hamburger button for sidebar -->
     <nav>
-        <ul>
+        <!-- <ul> -->
         <div id="main">
             <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
         </div>
-        </ul>
+        <!-- </ul> -->
     </nav>
-
-    
    
     <!-- Nav bar with achievement details -->
-    <nav class="ending-results">
+    <section class="ending-results">
       <div class="container">
         <!-- home & back button -->
         <ul id="nav-btns">
@@ -90,7 +87,7 @@
             >
           </summary>
           <div class="w3-cell-row">
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge">
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
               <p class=" w3-text-white">
                 You just viewed <span id="user-number" class="strong">X</span> fluffy
                 animals!
@@ -99,7 +96,7 @@
               <p class="w3-text-white" id="totally-zen"></p>
               <p class="w3-text-white invisible-element" id="let-down-gently"></p>
             </div>
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper">
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
               <img
                 class="party-popper"
                 src="./assets/img/party-popper-joypixels.gif"
@@ -115,7 +112,7 @@
             >
           </summary>
           <div class="w3-cell-row">
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge">
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
               <p id="achievement-1" class="achievement w3-text-white"></p>
               <p id="achievement-1-sub" class="achievement-sub w3-text-sand"></p>
               <p id="achievement-2" class="achievement w3-text-white"></p>
@@ -130,7 +127,7 @@
               <p id="achievement-6-sub" class="achievement-sub w3-text-sand"></p>
               </p>
             </div>
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper">
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
               <img
                 class="party-popper"
                 src="./assets/img/badge.gif"
@@ -139,34 +136,33 @@
           </div>
         </details>
       </div>
-    </nav>
+    </section>
 
     <main class="container">
       <!-- displays user results numbers -->
       <section>
         <header>
-          <h3 class="strong w3-text-white">
+          <h2 class="w3-text-deep-purple w3-center strong">
             How was meeting your fluffy friends today?
-          </h3>
+          </h2>
         </header>
-        <!-- todo: insert user results into the spans -->
-        <p class="w3-text-sand">
+        <p class="w3-text-sand w3-center">
           Your Zen Level before you looked at the animals was:
-          <span id="user-zen-before" class="strong">3 (sample)</span>
+          <span id="user-zen-before" class="strong"></span>
         </p>
-        <p class="w3-text-sand">
+        <p class="w3-text-sand w3-center">
           You added <span id="zen-points-total" class="strong"></span> Zen points
           from rating the Fluffy Overlords and the Very Good Boys.
         </p>
-        <p class="w3-text-sand">
+        <p class="w3-text-sand w3-center">
           Your Zen Level now is:
-          <span id="zen-level-current" class="strong">YY</span>
+          <span id="zen-level-current" class="strong"></span>
         </p>
       </section>
 
       <section>
         <!--photos from user's results  -->
-        <div class="grid">
+        <div class="grid w3-center">
           <!-- Cutest -->
           <article>
             <div>
@@ -188,7 +184,7 @@
             <div class="summary-card" id="ugliest-holder"></div>
           </article>
         </div>
-        <div class="grid">
+        <div class="grid w3-center">
           <!-- Most Zen -->
           <article>
             <div>
@@ -213,6 +209,7 @@
           </article>
         </div>
       </section>
+      
     </main>
     <footer>
         <!-- home & back button -->
@@ -239,7 +236,7 @@
     <script src="./assets/js/dog-breeds.js"></script>
     <script src="./assets/js/utilities.js"></script>
     <script src="./assets/js/ending-script.js"></script>
-      <script src="./assets/js/results.js"></script>
+      <script src="./assets/js/sidebar.js"></script>
   <!-- font awesome kit-->
     <script
       src="https://kit.fontawesome.com/cea607b6d1.js"

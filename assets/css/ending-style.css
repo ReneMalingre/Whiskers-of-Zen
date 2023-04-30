@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.root {
+:root {
   --non-favourited: #808080;
   --favourited: #ff0000;
   --favourited-bg: #ffaaaa;
@@ -22,9 +22,10 @@
   --pulse-colour:#b8daf0;
 }
 
-nav {
+.ending-results {
   background-color: var(--light-bg);
   padding: 2px 1rem !important;
+  margin: 0;
 }
 
 body {
@@ -41,7 +42,8 @@ body {
 }
 
 .popper {
-  width: 240px;
+  width: 200px;
+
 }
 
 .party-popper {
@@ -63,6 +65,10 @@ p {
 
 a {
   margin: 0.2rem;
+}
+
+.strong {
+  font-weight: bold;
 }
 
 .summary-card {
@@ -121,14 +127,16 @@ a {
   margin-top: 0.3rem;
 }
 
+.summary-button {
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  margin: 2px;
+}
+
 .favourited {
   color: var(--favourited);
   background-color: var(--favourited-bg);
   border-color: var(--favourited);
-}
-
-.fav-icon-favourited {
-  font-size: 3rem;
 }
 
 .non-favourited {
@@ -137,14 +145,12 @@ a {
   border-color: var(--non-favourited);
 }
 
-.summary-comment {
-  font-size: 0.8rem;
-  margin: 2px;
+.fav-icon-favourited {
+  font-size: 3rem;
 }
 
-.summary-button {
+.summary-comment {
   font-size: 0.8rem;
-  padding: 2px 6px;
   margin: 2px;
 }
 
@@ -153,12 +159,17 @@ footer {
   padding: 1rem !important;
 }
 
-#nav-btns-footer {
+#nav-btns-footer, #nav-btns {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
   list-style-type: none;
+}
+
+#nav-btns {
+  justify-content: start;
+  margin-left: 0;
 }
 
 ul li {

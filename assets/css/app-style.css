@@ -1,29 +1,65 @@
 /* additional CSS styling sheet (separate to framework) */
 
-.root{
+:root {
   --non-favourited: #808080;
   --favourited: #ff0000;
   --favourited-bg: #ffaaaa;
-  --light-bg:#fff;
+  --light-bg: #fff;
   --purplish: #515ada;
-  --deep-purple:#6a5acd;
-  --light-purple:#efd5ff;
-  --box-shadow-light:1px 3px 6px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
-  --box-shadow-dark:1px 2px 4px rgb(0 0 0 / 50%);
-  --polaroid-border:#f8f8f6;
-  --slider-bg:#ccc;
-  --slider-blue:#2196F3;
-  --background-gradient:linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
-  --img-border:#aeb3eb;
-  --pulse-colour:#b8daf0;
+  --deep-purple: #6a5acd;
+  --light-purple: #efd5ff;
+  --box-shadow-light: 1px 3px 6px 0 rgb(0 0 0 / 20%),
+    0 6px 20px 0 rgb(0 0 0 / 18%);
+  --box-shadow-dark: 1px 2px 4px rgb(0 0 0 / 50%);
+  --polaroid-border: #f8f8f6;
+  --slider-bg: #ccc;
+  --slider-blue: #2196f3;
+  --background-gradient: linear-gradient(
+    0deg,
+    var(--light-purple) 0%,
+    var(--purplish) 100%
+  );
+  --img-border: #aeb3eb;
+  --pulse-colour: #b8daf0;
 }
+/* from ending-style.css */
+
+.ending-results {
+  background-color: var(--light-bg);
+  padding: 2px 1rem !important;
+}
+
+.popper {
+  width: 240px;
+}
+
+.party-popper {
+  height: 160px;
+}
+
+.achievement-sub {
+  font-size: 0.9rem;
+  margin: 2px;
+}
+
+p {
+  margin: 0.2rem;
+}
+
+a {
+  margin: 0.2rem;
+}
+
+/* end of ending-style.css */
 
 body {
   text-align: center;
-  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  background: var(--background-gradient);
   margin: 0;
   padding: 0;
 }
+
+
 
 #main-app {
   padding: 0;
@@ -32,8 +68,17 @@ body {
 
 #app-loading {
   min-height: 100vh;
-  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  background: linear-gradient(
+    0deg,
+    var(--light-purple) 0%,
+    var(--purplish) 100%
+  );
   color: var(--light-bg);
+}
+
+article {
+  margin: 1rem 0;
+  padding: 1rem;
 }
 
 select {
@@ -61,14 +106,19 @@ select {
 
 /* results cards */
 .app-card-row {
-  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  background: linear-gradient(
+    0deg,
+    var(--light-purple) 0%,
+    var(--purplish) 100%
+  );
   padding-top: 0.25rem;
 }
 
 .affirmation {
   background: transparent;
   font-size: 1rem;
-  color:var(--light-purple);
+  font-style: italic;
+  color: var(--light-purple);
 }
 
 .app-row {
@@ -79,10 +129,29 @@ select {
   gap: 4rem;
 }
 
+.summary-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.2rem;
+  justify-content: center;
+  align-content: center;
+}
+
 .app-card {
   box-sizing: border-box;
   margin-top: 1rem;
   width: 100%;
+  background-color: var(--light-bg);
+  box-shadow: var(--box-shadow-light);
+}
+
+.app-card-ending {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0.2rem;
+  padding: 2px;
+  width: 95%;
   background-color: var(--light-bg);
   box-shadow: var(--box-shadow-light);
 }
@@ -102,6 +171,13 @@ select {
   transition: transform 0.3s ease;
 }
 
+.polaroid-ending {
+  padding: 3px 0;
+  margin: 2px 0;
+  width: 95%;
+  height: 100%;
+}
+
 .polaroid-img {
   height: 240px;
   object-fit: cover !important;
@@ -110,16 +186,50 @@ select {
   transition: transform 0.3s ease;
 }
 
-.animal-caption {
-  font-size: 1rem;
-  margin: 2px;
-  color: var(--purplish);
+.polaroid-img-ending{
+  height: 120px;
+  padding: 2px;
+  object-fit: cover !important;
+  max-width: 100%;
 }
 
 .animal-info-url {
   color: var(--deep-purple);
   font-size: 1.1rem;
   margin-top: 0.3rem;
+}
+
+.animal-info-url-ending {
+  font-size: 0.9rem;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary-button {
+  font-size: 24px;
+  padding: 4px 10px;
+}
+
+.favourited {
+  color: var(--favourited);
+  background-color: var(--favourited-bg);
+  border-color: var(--favourited);
+}
+
+.non-favourited {
+  color: var(--non-favourited);
+  background-color: var(--light-bg);
+  border-color: var(--non-favourited);
+}
+
+.fav-icon{
+  color: var(--favourited);
+  margin: 0 2px;
 }
 
 .card-question {
@@ -133,6 +243,11 @@ select {
   line-height: normal;
   margin: 2px;
   padding: 2px;
+}
+
+.summary-comment {
+  font-size: 0.8rem;
+  margin: 2px;
 }
 
 .invisible-element {
@@ -177,10 +292,35 @@ aside {
   float: right;
 }
 
+
+footer {
+  margin: 0;
+  padding: 1rem !important;
+}
+
+#nav-btns-footer, #nav-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  list-style-type: none;
+}
+
+#nav-btns {
+  justify-content: start;
+  margin-left: 0;
+}
+
+ul li {
+  list-style: none;
+  padding: 4px 8px;
+}
+
+
 #image-modal-content {
   box-sizing: border-box;
-  max-height: 90vh;
-  max-width: 90vh;
+  max-height: 92vh;
+  max-width: 92vh;
 }
 
 /* Toggle switch by W3 Schools */
@@ -244,6 +384,74 @@ input:checked + .slider::before {
 }
 
 /* end of slider */
+
+/* ============================================================================= */
+/* Range Slider */
+/* ============================================================================= */
+#final-zen-query{
+  max-width: 80vw;
+  margin: auto;
+}
+
+/* This is for the track */
+.zen-slider::-webkit-slider-runnable-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+.zen-slider::-moz-range-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+/* This is for the thumb */
+.zen-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -10px; /* You need to specify a margin for Chrome :/ */
+}
+
+.zen-slider::-moz-range-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* This is for IE */
+.zen-slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.zen-slider::-ms-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.zen-slider::-ms-fill-lower,
+.zen-slider::-ms-fill-upper {
+  background: var(--purplish);
+}
+
+#zen-level{
+  margin: 0.5rem auto 2rem;
+}
+
+/* ============================================================================= */
+/* End of Range Slider */
+/* ============================================================================= */
 
 .pulsing-button {
   background-color: var(--light-bg);

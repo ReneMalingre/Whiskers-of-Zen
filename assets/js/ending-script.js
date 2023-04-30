@@ -76,6 +76,19 @@ function retrieveAppRunAnimals() {
 }
 
 function checkForAchievements(dogImages, catImages) {
+  // initial and final zen level
+  let initialZenLevel = localStorage.getItem('initialZenLevel');
+  if (!initialZenLevel) {
+    initialZenLevel = 3;
+  }
+  document.getElementById('user-zen-before').textContent = initialZenLevel;
+
+  let finalZenLevel = parseInt(localStorage.getItem('finalZenLevel'));
+  if (!finalZenLevel) {
+    finalZenLevel = 3;
+  }
+  document.getElementById('zen-level-current').textContent = finalZenLevel;
+
   // count the number of images in the arrays
   const dogCount = dogImages.length;
   const catCount = catImages.length;
@@ -412,11 +425,11 @@ function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited)
     favouriteClass = 'non-favourited';
     favouriteIcon = 'far fa-heart';
   }
-  const imageTemplate = `<div class="app-card w3-col w3-padding" id="${listType}-app-card-${id}-${i}">
-    <div class="polaroid">
-      <img id="${listType}-${id}-${i}" class="polaroid-img" src="${url}" alt="${altText}" height=${polaroidSummaryImageHeight}>
+  const imageTemplate = `<div class="app-card app-card-ending w3-col w3-padding" id="${listType}-app-card-${id}-${i}">
+    <div class="polaroid polaroid-ending">
+      <img id="${listType}-${id}-${i}" class="polaroid-img polaroid-img-ending" src="${url}" alt="${altText}" height=${polaroidSummaryImageHeight}>
       <!-- animal info (e.g. breed) -->
-      <a href="" class="animal-info-url w3-cursive" id="${listType}-animal-info-url-${id}-${i}">${altText}</a>
+      <a href="" class="animal-info-url animal-info-url-ending w3-cursive" id="${listType}-animal-info-url-${id}-${i}">${altText}</a>
     </div>
     <!-- user comment -->
     <div class="w3-row w3-center">
@@ -424,7 +437,7 @@ function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited)
       <!-- Buttons for various functions -->
       <a href="#" role="button" id="${listType}-fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
       summary-button secondary outline w3-border-amber w3-hover-border-green">
-      <i class="${favouriteIcon}"></i></a>
+      <i class="fav-icon ${favouriteIcon}"></i></a>
     </div>
   </div>`;
   // console.log(imageTemplate);
@@ -473,6 +486,7 @@ function handleFavouriteButtonClick(event) {
           break;
         case 'fav':
           // if it is already a favourite, then remove it
+          console.log("clicked favourite button");
           isFavourite = false;
           imageURL = dogImagesFavourites[arrayIndex].url;
           // remove from object from favourites at this array index
@@ -485,10 +499,12 @@ function handleFavouriteButtonClick(event) {
           return;
       }
 
-      // update current favourite button
-      favButtonID = `${listType}-fav-btn-dog-image-${arrayIndex}`;
-      toggleFavourite(favButtonID, isFavourite);
-
+      // update current favourite button so long as it is not the favourites list
+      // as that will get updated when the favourites list is reloaded
+      if (listType !== 'fav') {
+        favButtonID = `${listType}-fav-btn-dog-image-${arrayIndex}`;
+        toggleFavourite(favButtonID, isFavourite);
+      }
       // update every other list that contains this image
       if (listType !== 'zen') {
         for (let i=0; i<dogImagesMostZen.length; i++) {

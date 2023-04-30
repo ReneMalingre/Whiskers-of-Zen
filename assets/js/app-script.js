@@ -6,7 +6,7 @@ let loadingPlaceholders = false; // flag to indicate if the placeholders are bei
 let loadingImages = false; // flag to indicate if the images are being loaded
 const polaroidImageHeight = 360; // height of the polaroid image in pixels
 const imageLoadTimer = new LoadTimer; // timer to check if all the images have loaded
-
+let initialZenLevel = 0; // initial zen level from the loading screen
 // set standards for acceptable image size and aspect ratio
 const minimumImageHeight = 200;
 const minimumImageAspectRatio = 0.95;
@@ -20,6 +20,19 @@ window.addEventListener('load', () => {
   const searchParams = new URLSearchParams(queryString);
   dogImageCount = parseInt(searchParams.get('dogs')); // Output: value1
   catImageCount = parseInt(searchParams.get('cats')); // Output: value2
+  // get the initial zen level from the query string and set it to 3 if it is not present
+  initialZenLevel = searchParams.get('mood'); // Output: value2
+  if (!initialZenLevel) {
+    initialZenLevel = 3;
+  }
+  else {
+    initialZenLevel = parseInt(initialZenLevel);
+  }
+  // set the zen level on the end input
+  document.getElementById('zen-level').value=initialZenLevel;
+  // save the initial zen level to local storage
+  localStorage.setItem('initialZenLevel', initialZenLevel);
+
   // add the modal to the DOB
   addInfoModalToDOM();
   addImageModalToDOM();
@@ -585,7 +598,9 @@ function emptyAppCardHTML(id, i) {
     animalType = 'cute cat';
     compliment = 'awww-dorable';
   }
-  // string literals are awesome!
+  // classes for the favourite icon
+  favouriteClass = 'non-favourited';
+  favouriteIcon = 'far fa-heart';
 
   const imageTemplate= `<article class="app-card w3-col w3-padding" id="app-card-${id}-${i}">
   <div class="polaroid">
@@ -613,17 +628,19 @@ function emptyAppCardHTML(id, i) {
           <span class="slider-emoji strong align-center">😐</span>
           <span class="slider-emoji strong align-right">😊</span>
       </label>
-      <input type="range" id="mood-level-${id}-${i}" name="range" min="1" max="5" value="3">
+      <input type="range" id="zen-level-${id}-${i}" name="range" min="1" max="5" value="3">
   </div>
   <!-- user comment -->
   <label for="user-comment-${id}-${i}">
       <input class="user-comment w3-input w3-border w3-border-deep-purple w3-text-deep-purple w3-sans-serif" type="text" id="user-comment-${id}-${i}" name="user-comment" placeholder="comment on this ${animalType}">
     </label>
   <!-- Buttons for various functions -->
-   <a href="#" role="button" id="fav-btn-${id}-${i}" class="fav-btn w3-text-amber secondary outline w3-border-amber w3-hover-border-green favourite"><i class="fa-solid fa-bookmark"></i></a>
-   
+  <div class="button-row">
+   <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
+   summary-button secondary outline w3-border-red"><i class="fav-icon ${favouriteIcon}"></i></a>
    <a href="#" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
-</article>`;
+  </div>
+   </article>`;
 
   return imageTemplate;
 }
@@ -690,6 +707,7 @@ function goodToGoHandler() {
   document.getElementById('image-store').classList.remove('invisible-element');
   document.getElementById('nav-burger').classList.remove('invisible-element');
   document.getElementById('app-title').classList.remove('invisible-element');
+  document.getElementById('final-zen-query').classList.remove('invisible-element');
 }
 
 function signalGoodToGo() {
@@ -773,5 +791,3 @@ function closeSideBar() {
   document.getElementById('open-nav').style.display = 'inline-block';
 }
 // ===================== End W3 Schools Sidebar ===================
-
-
