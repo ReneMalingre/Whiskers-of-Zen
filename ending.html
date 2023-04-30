@@ -20,6 +20,40 @@
 </head>
 
 <body>
+
+
+    <!-- Sidebar -->
+    <aside>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">Close &times;</button> 
+
+            <div class="w3-dropdown-click">
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+                    <span class="music-on-off align-right"><label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label></span></button>
+                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                  <a href="#" class="w3-bar-item w3-button">Music 1</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 2</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 3</a>
+                </div>
+              </div>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
+        </div>
+    </aside>
+    
+    <!-- Hamburger button for sidebar -->
+    <nav>
+        <ul>
+        <div id="main">
+            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        </ul>
+    </nav>
+
     
    
     <!-- Nav bar with achievement details -->
@@ -27,11 +61,11 @@
         
         <div class="container">
              <!-- home & back button -->
-            <ul>
+            <!-- <ul>
                 <li><a href="./index.html" role="button" class="secondary outline"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="./results.html" role="button" class="secondary outline"><i class="fa-solid fa-left-long"></i></a></li>
                 <li><a href="./favourites.html" role="button" class="secondary outline"><i class="fa-solid fa-star"></i></a></li>
-              </ul>
+              </ul> -->
          
         <details open>
             <summary class="summary"><span class="strong">Achievements earned this session</span></summary>
@@ -121,6 +155,7 @@
     <script src="./assets/js/classes.js"></script>
     <script src="./assets/js/images.js"></script>
     <script src="./assets/js/ending-script.js"></script> 
+    <script src="./assets/js/results.js"></script>
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
 

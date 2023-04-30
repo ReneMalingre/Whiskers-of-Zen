@@ -10,3 +10,5 @@ function submitForm() {
   const queryString = 'dogs=4&cats=4&mood=1&name=Bob';
   window.location.href = `app.html?${queryString}`;
 }
+
+
