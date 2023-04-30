@@ -14,6 +14,10 @@
 
     <!-- favourites CSS -->
     <link rel="stylesheet" href="./assets/css/favourites.css" />
+
+    <!-- music link-->
+    <audio src="path/to/music.mp3" autoplay></audio>
+
  
     <title>Whiskers of Zen - Favourites page</title>
 </head>
@@ -33,6 +37,7 @@
             <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Bookmarks</a>
         </div>
     </aside>
+
     
     <!-- Hamburger button for sidebar -->
     <nav>
@@ -40,8 +45,16 @@
         <div id="main">
             <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
         </div>
+            <!-- play and pause music button-->
+        <div>
+            <button class='button play'></button>
+            <img class="play" src="./assets/img/play-pause-button.png" alt="">
+        </div>
         </ul>
     </nav>
+    
+            
+      
     <!-- title for favourites page-->
     <main class="container">
 
