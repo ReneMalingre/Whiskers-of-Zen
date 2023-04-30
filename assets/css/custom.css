@@ -1,5 +1,32 @@
-/* additional CSS styling sheet (separate to framework) */
+/* overriding picoCSS variables */
 
+article {
+  margin: 5px;
+  padding: 20px;
+}
+
+article>header {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;;
+}
+
+h5 {
+  color: white;
+}
+
+:where(address,blockquote,dl,figure,form,ol,p,pre,table,ul)~:is(h1,h2,h3,h4,h5,h6) {
+  margin: 0.5rem;
+}
+
+p {
+  padding: 0;
+  margin: 0.2rem;
+}
+
+/* additional CSS styling sheet (separate to framework) */
 body {
   text-align: center;
   background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
@@ -7,6 +34,7 @@ body {
   padding: 0;
 
 }
+
 
 /* party popper gif */
 .party-popper {
