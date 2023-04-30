@@ -1,8 +1,26 @@
 /* additional CSS styling sheet (separate to framework) */
 
+.root{
+  --non-favourited: #808080;
+  --favourited: #ff0000;
+  --favourited-bg: #ffaaaa;
+  --light-bg:#fff;
+  --purplish: #515ada;
+  --deep-purple:#6a5acd;
+  --light-purple:#efd5ff;
+  --box-shadow-light:1px 3px 6px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
+  --box-shadow-dark:1px 2px 4px rgb(0 0 0 / 50%);
+  --polaroid-border:#f8f8f6;
+  --slider-bg:#ccc;
+  --slider-blue:#2196F3;
+  --background-gradient:linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  --img-border:#aeb3eb;
+  --pulse-colour:#b8daf0;
+}
+
 body {
   text-align: center;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
   margin: 0;
   padding: 0;
 }
@@ -14,16 +32,8 @@ body {
 
 #app-loading {
   min-height: 100vh;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
-  color: white;
-}
-
-.img-scale {
-  border-radius: 50%;
-  border: 10px solid #aeb3eb;
-  width: 80%;
-  margin-top: 30px;
-  max-width: 400px;
+  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  color: var(--light-bg);
 }
 
 select {
@@ -51,13 +61,14 @@ select {
 
 /* results cards */
 .app-card-row {
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  background: linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
   padding-top: 0.25rem;
 }
 
 .affirmation {
   background: transparent;
   font-size: 1rem;
+  color:var(--light-purple);
 }
 
 .app-row {
@@ -72,8 +83,8 @@ select {
   box-sizing: border-box;
   margin-top: 1rem;
   width: 100%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
+  background-color: var(--light-bg);
+  box-shadow: var(--box-shadow-light);
 }
 
 .polaroid {
@@ -84,8 +95,8 @@ select {
   box-sizing: border-box;
   padding: 0;
   width: 100%;
-  background-color: #f8f8f6;
-  box-shadow: 0 5px 10px rgb(0 0 0 / 50%);
+  background-color: var(--polaroid-border);
+  box-shadow: var(--box-shadow-dark);
   border-radius: 5px;
   margin: 10px 0;
   transition: transform 0.3s ease;
@@ -102,11 +113,11 @@ select {
 .animal-caption {
   font-size: 1rem;
   margin: 2px;
-  color: #515ada;
+  color: var(--purplish);
 }
 
 .animal-info-url {
-  color: #6a5acd;
+  color: var(--deep-purple);
   font-size: 1.1rem;
   margin-top: 0.3rem;
 }
@@ -144,7 +155,7 @@ a:hover {
 
 /* Sidebar */
 aside {
-  background-color: white;
+  background-color: var(--light-bg);
 }
 
 #app-sidebar {
@@ -198,7 +209,7 @@ aside {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: #ccc;
+  background-color: var(--slider-bg);
   transition: 0.4s;
 }
 
@@ -209,16 +220,16 @@ aside {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--light-bg);
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--slider-blue);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--slider-blue);
 }
 
 input:checked + .slider::before {
@@ -226,13 +237,13 @@ input:checked + .slider::before {
 }
 
 .pulsing-button {
-  background-color: #fff;
+  background-color: var(--light-bg);
   animation: pulse-animation 2s infinite;
 }
 
 @keyframes pulse-animation {
   0% {
-    background-color: #fff;
+    background-color: var(--light-bg);
   }
 
   50% {
@@ -240,7 +251,7 @@ input:checked + .slider::before {
   }
 
   100% {
-    background-color: #fff;
+    background-color: var(--light-bg);
   }
 }
 

@@ -54,7 +54,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       const affirmation = randomAffirmation();
       // add a div to contain the affirmation
       const affirmationDiv = document.createElement('div');
-      affirmationDiv.innerHTML = `<h3 class="w3-cursive w3-text-white affirmation">${affirmation}</h4>`;
+      affirmationDiv.innerHTML = `<h3 class="w3-sans-serif affirmation">${affirmation}</h4>`;
       newRow.appendChild(affirmationDiv);
       // add a div to contain the images
       appCardRow = document.createElement('div');

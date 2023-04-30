@@ -4,13 +4,31 @@
   box-sizing: border-box;
 }
 
+.root {
+  --non-favourited: #808080;
+  --favourited: #ff0000;
+  --favourited-bg: #ffaaaa;
+  --light-bg:#fff;
+  --purplish: #515ada;
+  --deep-purple:#6a5acd;
+  --light-purple:#efd5ff;
+  --box-shadow-light:1px 3px 6px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
+  --box-shadow-dark:1px 2px 4px rgb(0 0 0 / 50%);
+  --polaroid-border:#f8f8f6;
+  --slider-bg:#ccc;
+  --slider-blue:#2196F3;
+  --background-gradient:linear-gradient(0deg, var(--light-purple) 0%, var(--purplish) 100%);
+  --img-border:#aeb3eb;
+  --pulse-colour:#b8daf0;
+}
+
 nav {
-  background-color: white;
+  background-color: var(--light-bg);
   padding: 2px 1rem !important;
 }
 
 body {
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  background: var(--background-gradient);
 }
 
 .invisible-element {
@@ -62,8 +80,8 @@ a {
   margin: 0.2rem;
   padding: 2px;
   width: 95%;
-  background-color: white;
-  box-shadow: 1px 3px 6px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
+  background-color: var(--light-bg);
+  box-shadow: var(--box-shadow-light);
 }
 
 .polaroid {
@@ -75,8 +93,8 @@ a {
   padding: 3px 0;
   width: 95%;
   height: 100%;
-  background-color: #f8f8f6;
-  box-shadow: 1px 2px 4px rgb(0 0 0 / 50%);
+  background-color: var(--polaroid-border);
+  box-shadow: var(--box-shadow-dark);
   border-radius: 5px;
   margin: 2px 0;
   transition: transform 0.3s ease;
@@ -94,19 +112,19 @@ a {
 .animal-caption {
   font-size: 0.8rem;
   margin: 2px;
-  color: #515ada;
+  color: var(--purplish);
 }
 
 .animal-info-url {
-  color: #6a5acd;
+  color: var(--deep-purple);
   font-size: 0.9rem;
   margin-top: 0.3rem;
 }
 
 .favourited {
-  color: #ff0000;
-  background-color: #ffaaaa;
-  border-color: red;
+  color: var(--favourited);
+  background-color: var(--favourited-bg);
+  border-color: var(--favourited);
 }
 
 .fav-icon-favourited {
@@ -114,9 +132,9 @@ a {
 }
 
 .non-favourited {
-  color: #808080;
-  background-color: #fff;
-  border-color: #808080;
+  color: var(--non-favourited);
+  background-color: var(--light-bg);
+  border-color: var(--non-favourited);
 }
 
 .summary-comment {
