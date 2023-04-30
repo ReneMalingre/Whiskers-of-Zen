@@ -23,7 +23,7 @@
     <main class="container">
         <hgroup>
             <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
-            <h4>A Dog & Cat Web Image Generator</h4>
+            <h4>Improve your mood by rating images of cute dogs & cats</h4>
             <h5>Which furry friends would you like to meet today?</h5>
         </hgroup>
 
@@ -37,13 +37,13 @@
 
         <article>
 
-            <header>
-                <h3>Select your buddies to meet today</h3>
-            </header>
+            <h3>Select your buddies to meet today</h3>
+            <p>Choose the number of dog and cat images you would like to see.</p>
+            <p>Rate how cute they are and how they make you feel.</p>
+            <p>You can add images to your favourites & share them with your friends on your socials. Enjoy the serotonin rush!</p>
             <!-- pico grid for responsiveness -->
             <div class="grid">
             <!-- Dog - selection (card within a card)-->
-
             <article>
                 <div class="dogs">
                     <label for="image-number-dogs"></label>
@@ -77,28 +77,30 @@
             </article>
 
             </div>
-                
-                <h6>Your current mood level:</h6>
+                <h6>Dogs and cats are guaranteed to improve your mood.</h6>
+                <h4>What is your current Level of Zen right now?</h4>
+                <!-- <h6>Your current mood level:</h6> -->
                 <label for="aww-level">
-                    <span class="strong align-left">No Aww</span>
-                    <span class="strong align-right">Lots of Awws</span>
+                    <span class="slider-emoji strong align-left">😕</span>
+                    <span class="slider-emoji strong align-center">😍</span>
+                    <span class="slider-emoji strong align-right">🥰</span>
                 </label>
                 <input type="range" id="user-level" name="user-level"
-                       min="0" max="5">
+                       min="1" max="5" value="3">
     
             <!-- submit button -->
-            <input id="submit-button" type="submit" value="Generate!">
+            <input id="submit-button" type="submit" value="Load your furry friends!">
     
-           
-            
         </article>
     </section>
-
-    </main>
 
     <footer>
         <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
     </footer>
+
+    </main>
+
+
     
     <script src="./assets/js/index-script.js"></script>
 
