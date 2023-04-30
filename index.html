@@ -5,21 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- W3 schools CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <!-- pico CSS -->
     <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css">
     <html data-theme="light"></html>
 
     <!-- custom CSS -->
     <link rel="stylesheet" href="./assets/css/custom.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
  
     <title>Whiskers of Zen - Landing Page</title>
 </head>
 
+
 <body>
+
+    <!-- Sidebar -->
+    <aside>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">Close &times;</button> 
+
+            <div class="w3-dropdown-click">
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+                    <span class="music-on-off align-right"><label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label></span></button>
+                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                  <a href="#" class="w3-bar-item w3-button">Music 1</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 2</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 3</a>
+                </div>
+              </div>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
+        </div>
+    </aside>
+    
+    <!-- Hamburger button for sidebar -->
+    <nav>
+        <ul>
+        <div id="main">
+            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        </ul>
+    </nav>
+
     <main class="container">
         <hgroup>
             <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
@@ -81,9 +114,9 @@
                 <h4>What is your current Level of Zen right now?</h4>
                 <!-- <h6>Your current mood level:</h6> -->
                 <label for="aww-level">
-                    <span class="slider-emoji strong align-left">😕</span>
-                    <span class="slider-emoji strong align-center">😍</span>
-                    <span class="slider-emoji strong align-right">🥰</span>
+                    <span class="slider-emoji strong align-left">😩</span>
+                    <span class="slider-emoji strong align-center">😐</span>
+                    <span class="slider-emoji strong align-right">😊</span>
                 </label>
                 <input type="range" id="user-level" name="user-level"
                        min="1" max="5" value="3">
@@ -100,9 +133,10 @@
 
     </main>
 
-
-    
     <script src="./assets/js/index-script.js"></script>
+    <script src="./assets/js/results.js"></script>
+      <!-- font awesome kit-->
+  <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

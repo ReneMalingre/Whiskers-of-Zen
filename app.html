@@ -41,9 +41,18 @@
         <button class="w3-bar-item w3-button w3-large" onclick="closeSideBar()">
           Close &times;
         </button>
-        <a href="#" class="w3-bar-item w3-button"
-          ><i class="fa-brands fa-spotify"></i> Spotify</a
-        >
+        <div class="w3-dropdown-click">
+          <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+              <span class="music-on-off align-right"><label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label></span></button>
+          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+            <a href="#" class="w3-bar-item w3-button">Music 1</a>
+            <a href="#" class="w3-bar-item w3-button">Music 2</a>
+            <a href="#" class="w3-bar-item w3-button">Music 3</a>
+          </div>
+        </div>
         <a href="#" class="w3-bar-item w3-button"
           ><i class="fa-solid fa-trophy"></i> Achievements</a
         >
@@ -52,6 +61,8 @@
         >
       </div>
     </aside>
+
+    
 
     <div id="app-loading">
       <h1 class="w3-text-white">
@@ -92,7 +103,7 @@
     <script src="./assets/js/dog-breeds.js"></script>
     <script src="./assets/js/images.js"></script>
     <script src="./assets/js/app-script.js"></script>
-
+    <script src="./assets/js/results.js"></script>
     <!-- font awesome kit-->
     <script
       src="https://kit.fontawesome.com/cea607b6d1.js"
