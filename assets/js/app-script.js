@@ -4,9 +4,10 @@ let totalImagesLoaded; // total number of images loaded, recorded by the load ev
 let totalImagesFailed; // total number of images that failed to load
 let loadingPlaceholders = false; // flag to indicate if the placeholders are being loaded
 let loadingImages = false; // flag to indicate if the images are being loaded
+let appRowMax = 0;
 const polaroidImageHeight = 360; // height of the polaroid image in pixels
 const imageLoadTimer = new LoadTimer; // timer to check if all the images have loaded
-
+let initialZenLevel = 0; // initial zen level from the loading screen
 // set standards for acceptable image size and aspect ratio
 const minimumImageHeight = 200;
 const minimumImageAspectRatio = 0.95;
@@ -20,9 +21,22 @@ window.addEventListener('load', () => {
   const searchParams = new URLSearchParams(queryString);
   dogImageCount = parseInt(searchParams.get('dogs')); // Output: value1
   catImageCount = parseInt(searchParams.get('cats')); // Output: value2
-  // console.log(searchParams.get('mood')); // Output: value3
-  // console.log(searchParams.get('name')); // Output: value4
-  createAppElements();
+  // get the initial zen level from the query string and set it to 3 if it is not present
+  initialZenLevel = searchParams.get('mood'); // Output: value2
+  if (!initialZenLevel) {
+    initialZenLevel = 3;
+  } else {
+    initialZenLevel = parseInt(initialZenLevel);
+  }
+  // set the zen level on the end input
+  document.getElementById('zen-level').value=initialZenLevel;
+  // save the initial zen level to local storage
+  localStorage.setItem('initialZenLevel', initialZenLevel);
+
+  // add the modal to the DOB
+  addInfoModalToDOM();
+  addImageModalToDOM();
+  createAndPopulateAppElements();
 });
 
 // add the empty img to the DOM to prepare for the image to be added later
@@ -42,18 +56,21 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
+  let appRow = -1;
   for (let i=0; i < combinedArray.length; i++) {
-    // every even image, add a new row div
-    // TODO set the first row to be visible and subsequent rows to be hidden
-    // TODO by adding the .invisible-element class to the row div
     if (i % 2 === 0) {
+      appRow++;
       newRow = document.createElement('div');
       newRow.classList.add('app-card-row');
+      newRow.id = 'app-card-row-'+ appRow;
+      if (appRow !== 0) {
+        newRow.classList.add('invisible-element');
+      }
       // add an affirmation to the row
       const affirmation = randomAffirmation();
       // add a div to contain the affirmation
       const affirmationDiv = document.createElement('div');
-      affirmationDiv.innerHTML = `<h3 class="w3-cursive w3-text-white affirmation">${affirmation}</h4>`;
+      affirmationDiv.innerHTML = `<h3 class="w3-sans-serif affirmation">${affirmation}</h4>`;
       newRow.appendChild(affirmationDiv);
       // add a div to contain the images
       appCardRow = document.createElement('div');
@@ -71,7 +88,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       catIndex++;
     }
     // construct the image template
-    const imageTemplate= emptyAppCardHTML(id, index);
+    const imageTemplate= emptyAppCardHTML(id, index, appRow, appRow);
     // create a temporary div element to contain the image
     const newDiv = document.createElement('div');
     newDiv.innerHTML = imageTemplate;
@@ -85,7 +102,9 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       parentElement.appendChild(newRow);
     }
   }
+  appRowMax = appRow;
 }
+
 
 async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   if (loadingImages) {
@@ -104,8 +123,6 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
     parentElement.removeChild(parentElement.firstChild);
   }
   // get dog breed info
-  // alert('getDogBreeds');
-
   await getDogBreeds();
 
   // create a div to contain the new images
@@ -119,11 +136,12 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   parentElement.appendChild(newDiv);
   randomlyRotatePolaroids();
 
-  // add event listener to the UI elements
+  // add event listeners to the UI elements
   addImageLoadedEventListener(parentElement);
   addPulsingButtonEventListener(parentElement);
   addAnimalInfoURLEventListener(parentElement);
-
+  addEventListenerToDOMBranch(parentElement, 'polaroid-img', 'click', animalImageClicked);
+  addEventListenerToDOMBranch(parentElement, 'favourite-button', 'click', handleFavouriteButtonClicked);
   // call function to get images from APIs
   // and add them to the dogImages and catImages arrays
   await getFreshCatImages(catImagesTally, catImageStore);
@@ -199,7 +217,7 @@ async function getFreshDogImages(imageCount, dogImageStore) {
   } else {
     // if API call was not successful
     // display error message
-    alert(`Could not retrieve dog url collection data: ${returnData.apiReturn.errorMessage}`);
+    showCustomAlert(`Could not retrieve dog url collection data: ${returnData.apiReturn.errorMessage}`);
     return;
   }
   for (let i = 0; i < newDogs.length; i++) {
@@ -273,8 +291,7 @@ async function getFreshCatImages(imageCount, catImageStore) {
   } else {
     // if API call was not successful
     // display error message
-    // TODO - use a modal to display the error message, not inbuilt alert due to project requirements
-    alert(`Could not retrieve cat url collection data: ${returnData.apiReturn.errorMessage}`);
+    showCustomAlert(`Could not retrieve cat url collection data: ${returnData.apiReturn.errorMessage}`);
     return;
   }
   for (let i = 0; i < newCats.length; i++) {
@@ -302,7 +319,6 @@ async function getFreshCatImages(imageCount, catImageStore) {
       newCats[i].description = randomAffirmation();
     }
     // console.log('🚀 ~ file: images.js:373 ~ getFreshCatImages ~ newCats:', newCats[i]);
-
     catImageStore.push(newCats[i]);
 
     // check if we have enough images
@@ -344,26 +360,75 @@ function addPulsingButtonEventListener(parentElement) {
   if (parentElement.classList && parentElement.classList.contains('pulsing-button')) {
     // Add the event listener to the pulsing-button element
     parentElement.addEventListener('click', function(event) {
-      // console.log('pulsing-button clicked');
+      console.log('pulsing-button clicked');
       event.preventDefault();
+      console.log('pulsing button click id: ' + event.target.id);
       parentElement.classList.remove('pulsing-button');
-      // TODO - get the user selections and add them to the right dogImage or catImage object
-      // get the id of the button that was clicked
-      // this will be 'submit-dog-image-0 or submit-cat-image-0
+      parentElement.classList.add('invisible-element');
+
+      // Button variables reference utility code
       const buttonClicked= event.target;
+      // get the id of the button
       const idValue = buttonClicked.id;
-      // ! For Iggy - this is where you need to get the slider value etc and add it to the dogImage or catImage object
-//       if(idValue.includes('dog')) {
-//       dogImage[i].isFavourite=true;
-//       dogImage[i].cuteRating = sliderElement.value;
-//       } else {
-// catImage[i].isFavourite=true;
-//       }
+      // convert the id into animal type and array index
+      const animalType = getAnimalImageTypeFromID(idValue);
+      const arrayIndex = getAnimalImageIndexFromID(idValue);
+      // see which row we are currently on
+      let appRow = buttonClicked.getAttribute('data-approw');
+      // choose all buttons on this row to see if they have been clicked yet
+      const selectorQuery = `[data-approw = "${appRow}"]`;
+      const allMatchingPulsatingButtons = document.querySelectorAll(selectorQuery);
+      let allHaveBeenPressed=true;
+      // test the buttons to see if they have been clicked
+      console.log(allMatchingPulsatingButtons.length);
+      for (let i=0; i < allMatchingPulsatingButtons.length; i++) {
+        const buttonElement = allMatchingPulsatingButtons[i];
+        console.log(buttonElement.classList);
+        if (buttonElement.classList.contains('pulsing-button')) {
+          allHaveBeenPressed=false;
+          break;
+        }
+      }
+      // if all of the buttons have been pressed, either show the end elements,
+      // or show the next row of images
+      if (allHaveBeenPressed) {
+        if (parseInt(appRow) === parseInt(appRowMax)) {
+        // Flag hidden submit button and show
+          const nextRow = document.getElementById('final-zen-query');
+          // remove the css class that makes the row invisible
+          nextRow.classList.remove('invisible-element');
+        } else {
+        // show the next row of cute animals
+        // first add 1 to the row that we are currently on
+          appRow = parseInt(appRow)+1;
+          // now get the div element that holds the next images
+          const nextRow = document.getElementById('app-card-row-' + appRow);
+          // remove the css class that makes the row invisible
+          nextRow.classList.remove('invisible-element');
+        }
+      }
 
+      // Poll for if dog vs cat and pull appropriate array info
+      if (animalType === 'dog-image') {
+        dogImages[arrayIndex].zenRating = document.getElementById('zen-level-dog-image-'+ arrayIndex).value;
+        console.log('zen level dog ' + dogImages[arrayIndex].zenRating);
+        dogImages[arrayIndex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayIndex).value;
+        dogImages[arrayIndex].userComment = document.getElementById('user-comment-dog-image-'+ arrayIndex).value.trim();
+        if (dogImages[arrayIndex].userComment !== '') {
+          console.log(dogImages[arrayIndex].userComment);
+        }
+        dogImages[arrayIndex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayIndex).classList.contains('favourited');
+      } else if (animalType === 'cat-image') {
+        console.log('zen level cat ' + catImages[arrayIndex].zenRating);
+        catImages[arrayIndex].zenRating = document.getElementById('zen-level-cat-image-'+ arrayIndex).value;
+        catImages[arrayIndex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayIndex).value;
+        catImages[arrayIndex].userComment = document.getElementById('user-comment-cat-image-'+ arrayIndex).value.trim();
 
+        catImages[arrayIndex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayIndex).classList.contains('favourited');
+        console.log('catImages[' + arrayIndex +'].isFavourite: ' + catImages[arrayIndex].isFavourite);
+      }
     });
   }
-
   // Traverse the child elements recursively
   if (parentElement.children && parentElement.children.length > 0) {
     for (const child of parentElement.children) {
@@ -372,53 +437,6 @@ function addPulsingButtonEventListener(parentElement) {
   }
 }
 
-function addAnimalInfoURLEventListener(parentElement) {
-  // Check if the current element has the class animal-info-url
-  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
-    // Add the event listener to the info link element
-    parentElement.addEventListener('click', function(event) {
-      console.log('info link clicked');
-      event.preventDefault();
-      // display the modal
-      const uiElement = event.target;
-      const idValue = uiElement.id;
-      // console.log('🚀 ~ file: images.js:445 ~ parentElement.addEventListener ~ idValue:', idValue);
-
-      const imageType = idValue.substring(16, 25);
-      // console.log('🚀 ~ file: images.js:448 ~ parentElement.addEventListener ~ imageType:', imageType);
-
-      const idNumber = parseInt(idValue.substring(26));
-      // console.log('🚀 ~ file: images.js:451 ~ parentElement.addEventListener ~ idNumber:', idNumber);
-
-      let infoURL;
-      let modalTitle;
-      let modalInfoText='';
-      if (imageType === 'cat-image') {
-        let catImage = new CatImage;
-        catImage = catImages[parseInt(idNumber)];
-        infoURL = catImage.infoURL;
-        modalTitle = catImage.description;
-      } else {
-        let dogImage = new DogImage;
-        dogImage = dogImages[parseInt(idNumber)];
-        infoURL = dogImage.infoURL;
-        modalTitle = dogImage.description;
-        modalInfoText = getDogBreedInfo(dogImage.subBreed, dogImage.dogBreed);
-      }
-      if (infoURL === '') {
-        return;
-      }
-      openModal(infoURL, modalTitle, modalInfoText);
-    });
-  }
-
-  // Traverse the child elements recursively
-  if (parentElement.children && parentElement.children.length > 0) {
-    for (const child of parentElement.children) {
-      addAnimalInfoURLEventListener(child);
-    }
-  }
-}
 
 // get event handler that recognises that an image has loaded
 function imageLoadedHandler(event) {
@@ -588,7 +606,7 @@ function addImageToLoadingRow(imageUrl) {
 }
 
 // function to get fresh dog and cat images
-async function createAppElements() {
+async function createAndPopulateAppElements() {
   // get the dog and cat images
   // and create the UI Cards and pair divs
 
@@ -605,8 +623,8 @@ async function createAppElements() {
 
   // if both zero, default to 10 of each
   if (dogImageCount === 0 && catImageCount === 0) {
-    dogImageCount = 10;
-    catImageCount = 10;
+    dogImageCount = 2;
+    catImageCount = 2;
   }
 
   // call function to call dog and cat APIs
@@ -621,7 +639,7 @@ async function createAppElements() {
 }
 
 // create the HTML for an empty animal card
-function emptyAppCardHTML(id, i) {
+function emptyAppCardHTML(id, i, appRow, appRow) {
   // construct the image template
   let placeHolder;
   let animalType;
@@ -635,7 +653,9 @@ function emptyAppCardHTML(id, i) {
     animalType = 'cute cat';
     compliment = 'awww-dorable';
   }
-  // string literals are awesome!
+  // classes for the favourite icon
+  favouriteClass = 'non-favourited';
+  favouriteIcon = 'far fa-heart';
 
   const imageTemplate= `<article class="app-card w3-col w3-padding" id="app-card-${id}-${i}">
   <div class="polaroid">
@@ -653,7 +673,7 @@ function emptyAppCardHTML(id, i) {
           <span class="slider-emoji strong align-right">🥰</span>
       </label>
       </div>
-      <input type="range" id="aww-level-${id}-${i}" name="range" min="1" max="5" value="3">
+      <input type="range" id="aww-level-${id}-${i}" name="aww-level" min="1" max="5" value="3">
   </div>
   <!-- Mood slider -->
   <div class="app-slider">
@@ -663,19 +683,18 @@ function emptyAppCardHTML(id, i) {
           <span class="slider-emoji strong align-center">😐</span>
           <span class="slider-emoji strong align-right">😊</span>
       </label>
-      <input type="range" id="mood-level-${id}-${i}" name="range" min="1" max="5" value="3">
+      <input type="range" id="zen-level-${id}-${i}" name="zen-level" min="1" max="5" value="3">
   </div>
   <!-- user comment -->
   <label for="user-comment-${id}-${i}">
       <input class="user-comment w3-input w3-border w3-border-deep-purple w3-text-deep-purple w3-sans-serif" type="text" id="user-comment-${id}-${i}" name="user-comment" placeholder="comment on this ${animalType}">
     </label>
   <!-- Buttons for various functions -->
-   <a href="#" role="button" id="fav-btn-${id}-${i}" class="w3-text-amber secondary outline w3-border-amber w3-hover-border-green favourite"><i class="fa-solid fa-bookmark"></i></a>
-   <a href="#" role="button" id="download-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-solid fa-download"></i></a>
-   <a href="#" role="button" id="facebook-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-square-facebook"></i></a>
-   <a href="#" role="button" id="twitter-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-twitter"></i></a>
-   <a href="#" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
-</article>`;
+  <div class="button-row">
+   <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} summary-button secondary outline w3-border-red"><i class="fav-icon ${favouriteIcon}"></i></a>
+   <a href="#" data-approw = "${appRow}" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
+  </div>
+   </article>`;
 
   return imageTemplate;
 }
@@ -722,61 +741,11 @@ async function checkImageLoadStatus() {
 // ===================== End Check if images have loaded =====================
 
 // ===================== Save Data to Local Storage =====================
-function tempSaveAnimals() {
+function saveAnimals() {
   // save the dog and cat images to local storage
-  // TODO add filters to decide which images to keep
-  saveDogsToLocalStorage('temp-dogs', dogImages);
-  saveCatsToLocalStorage('temp-cats', catImages);
+  saveAnimalsToLocalStorage('dog-images', '-app-run', dogImages);
+  saveAnimalsToLocalStorage('cat-images', '-app-run', catImages);
 }
-// TODO add filters to decide which images to keep
-// save images to local storage, pass null to wipe out local storage
-function saveDogsToLocalStorage(storeName, dogImagesToSave=null) {
-  if (dogImagesToSave !== null) {
-    const serialized = {
-      dogs: [],
-    };
-    for (let i = 0; i < dogImages.length; i++) {
-      let oDogImage = new DogImage();
-      oDogImage = dogImagesToSave[i];
-      oDogImage.cuteRating = 5;
-      oDogImage.zenRating = 5;
-      oDogImage.userComment = 'This is a cute dog';
-      oDogImage.isFavourite = true;
-      const dog = oDogImage.serialize();
-      serialized.dogs.push({
-        dog,
-      });
-    }
-    localStorage.setItem(storeName, JSON.stringify(serialized));
-  } else {
-    localStorage.setItem(storeName, '' );
-  }
-}
-// TODO add filters to decide which images to keep
-// save images to local storage, pass null to wipe out local storage
-function saveCatsToLocalStorage(storeName, catImagesToSave = null) {
-  if (catImagesToSave !== null) {
-    const serialized = {
-      cats: [],
-    };
-    for (let i = 0; i < catImagesToSave.length; i++) {
-      let oCatImage = new CatImage();
-      oCatImage = catImagesToSave[i];
-      oCatImage.cuteRating = 5;
-      oCatImage.zenRating = 5;
-      oCatImage.userComment = 'This is a snugglicious cat';
-      oCatImage.isFavourite = true;
-      const cat = oCatImage.serialize();
-      serialized.cats.push({
-        cat,
-      });
-    }
-    localStorage.setItem(storeName, JSON.stringify(serialized));
-  } else {
-    localStorage.setItem(storeName, '' );
-  }
-}
-// ===================== End Save Data to Local Storage =====================
 
 // ===================== Event Handlers =====================
 // custom event handlers
@@ -792,13 +761,6 @@ function goodToGoHandler() {
   document.getElementById('image-store').classList.remove('invisible-element');
   document.getElementById('nav-burger').classList.remove('invisible-element');
   document.getElementById('app-title').classList.remove('invisible-element');
-  // ! temp, display the dog breeds
-  // const dogBreedDiv = document.getElementById('temp-breeds');
-  // for (let i=0; i < dogBreedInformation.length; i++) {
-  //   const dogBreed = document.createElement('p');
-  //   dogBreed.innerHTML = `${dogBreedInformation[i].dogBreed}<br>&nbsp;&nbsp;&nbsp;${dogBreedInformation[i].description}`;
-  //   dogBreedDiv.appendChild(dogBreed);
-  // };
 }
 
 function signalGoodToGo() {
@@ -808,15 +770,93 @@ function signalGoodToGo() {
 }
 
 // event handler for the button to save images
-document.getElementById('save-images').addEventListener('click', () => {
+document.getElementById('save-images').addEventListener('click', (event) => {
+  event.preventDefault();
+  // save the final zen level to local storage
+  localStorage.setItem('finalZenLevel', document.getElementById('zen-level').value);
   // save the images to local storage
-  tempSaveAnimals();
+  saveAnimals();
+  // go to the ending page
+  window.location.href = 'ending.html';
 });
 
-function closeInfoModal() {
-  document.getElementById('modal-info').style.display='none';
-  document.getElementById('modal-info-iframe').src = '';
+function addAnimalInfoURLEventListener(parentElement) {
+  // Check if the current element has the class animal-info-url
+  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
+    // Add the event listener to the info link element
+    parentElement.addEventListener('click', showInfoModal);
+  }
+
+  // Traverse the child elements recursively
+  if (parentElement.children && parentElement.children.length > 0) {
+    for (const child of parentElement.children) {
+      addAnimalInfoURLEventListener(child);
+    }
+  }
 }
+
+// toggle the favourite button
+function handleFavouriteButtonClicked(event) {
+  event.preventDefault();
+
+  // NB event bubbling from icon to button, so may have to check parent element if no id
+  let clickedElement = event.target;
+  let id = clickedElement.id;
+  if (!id) {
+    clickedElement = clickedElement.parentElement;
+    id = clickedElement.id;
+  }
+
+  if (id) {
+    console.log(id);
+    const animalType = getAnimalImageTypeFromID(id);
+    console.log('🚀 ~ file: ending-script.js:437 ~ handleFavouriteButtonClick ~ animalType:', animalType);
+
+    const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
+    console.log('🚀 ~ file: ending-script.js:440 ~ handleFavouriteButtonClick ~ arrayIndex:', arrayIndex);
+
+    const favButton = document.getElementById('fav-btn-' + animalType + '-' + arrayIndex);
+    favButton.classList.toggle('favourited');
+    favButton.classList.toggle('non-favourited');
+    if (animalType === 'cat-image') {
+      catImages[arrayIndex].isFavourite = !catImages[arrayIndex].isFavourite;
+    } else if (animalType === 'dog-image') {
+      dogImages[arrayIndex].isFavourite = !dogImages[arrayIndex].isFavourite;
+    }
+  }
+}
+
+// event handler to show the info modal
+function showInfoModal(event) {
+  console.log('info link clicked');
+  event.preventDefault();
+  // display the modal
+  const uiElement = event.target;
+  const idValue = uiElement.id;
+  const imageType = idValue.substring(16, 25);
+  const idNumber = parseInt(idValue.substring(26));
+
+  let infoURL;
+  let modalTitle;
+  let modalInfoText='';
+  if (imageType === 'cat-image') {
+    let catImage = new CatImage;
+    catImage = catImages[parseInt(idNumber)];
+    infoURL = catImage.infoURL;
+    modalTitle = catImage.description;
+  } else {
+    let dogImage = new DogImage;
+    dogImage = dogImages[parseInt(idNumber)];
+    infoURL = dogImage.infoURL;
+    modalTitle = dogImage.description;
+    modalInfoText = getDogBreedInfo(dogImage.subBreed, dogImage.dogBreed);
+  }
+  if (infoURL === '') {
+    return;
+  }
+  openModal(infoURL, modalTitle, modalInfoText);
+}
+
 // ===================== End Event Handlers =====================
 
 // ===================== W3 Schools Sidebar =====================
@@ -833,13 +873,3 @@ function closeSideBar() {
   document.getElementById('open-nav').style.display = 'inline-block';
 }
 // ===================== End W3 Schools Sidebar ===================
-function openModal(url, title, infoText) {
-  document.getElementById('modal-info-iframe').src = '';
-  document.getElementById('modal-info-iframe').src = url;
-  document.getElementById('modal-info-link').setAttribute('href', url);
-  document.getElementById('modal-info-title').textContent = toTitleCase(title);
-  document.getElementById('modal-info-description').textContent = infoText;
-  document.getElementById('modal-info').style.display = 'block';
-}
-
-
