@@ -89,18 +89,7 @@ body {
     position: fixed;
     left: 0;
   }
-
-  /* play and pause button*/
-  .play{  
-    position: fixed;
-    right: 0%;
-    width: 40px;
-    height: 40px;
-  
-  }
-
-
-  /* text item formatting */
+ /* text item formatting */
   
   .align-left {
     float: left;

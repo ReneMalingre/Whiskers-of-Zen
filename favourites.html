@@ -16,25 +16,39 @@
     <link rel="stylesheet" href="./assets/css/favourites.css" />
 
     <!-- music link-->
-    <audio src="path/to/music.mp3" autoplay></audio>
+    <audio src="./assets/music/one.mp3" autoplay></audio>
+
+    
+
 
  
     <title>Whiskers of Zen - Favourites page</title>
 </head>
 
 <body>
-    <aside>
-        <nav></nav>
-    </aside>
-
     <!-- Sidebar -->
     <aside>
         <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large"
             onclick="w3_close()">Close &times;</button> 
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-spotify"></i>  Spotify</a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Bookmarks</a>
+
+            <div class="w3-dropdown-click">
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+                    <span class="music-on-off align-right"><label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label></span></button>
+                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                  <a href="#" class="w3-bar-item w3-button">Music 1</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 2</a>
+                  <a href="#" class="w3-bar-item w3-button">Music 3</a>
+                </div>
+              </div>
+              <div><audio controls autoplay muted loop id="toggle-music">
+                <source src=".assets/music/Mandeville.mp3"id= "musik">
+             </audio></div>
+            <a href="#" id="achievements-selector" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
         </div>
     </aside>
 
@@ -44,11 +58,6 @@
         <ul>
         <div id="main">
             <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
-        </div>
-            <!-- play and pause music button-->
-        <div>
-            <button class='button play'></button>
-            <img class="play" src="./assets/img/play-pause-button.png" alt="">
         </div>
         </ul>
     </nav>
@@ -104,11 +113,13 @@
              
 
           </div>
-
     </main>
   
 
-  <script src="./assets/js/results.js"></script> 
+  <!--js link-->
+  <script src="./assets/js/index-script.js"></script>
+
+  <!-- <script src="./assets/js/results.js"></script> -->
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
   <footer>
