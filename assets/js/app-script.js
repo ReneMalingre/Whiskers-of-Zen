@@ -4,6 +4,7 @@ let totalImagesLoaded; // total number of images loaded, recorded by the load ev
 let totalImagesFailed; // total number of images that failed to load
 let loadingPlaceholders = false; // flag to indicate if the placeholders are being loaded
 let loadingImages = false; // flag to indicate if the images are being loaded
+let appRowMax = 0; 
 const polaroidImageHeight = 360; // height of the polaroid image in pixels
 const imageLoadTimer = new LoadTimer; // timer to check if all the images have loaded
 
@@ -42,13 +43,18 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
+  let appRow = -1;
   for (let i=0; i < combinedArray.length; i++) {
-    // every even image, add a new row div
-    // TODO set the first row to be visible and subsequent rows to be hidden
+        // TODO set the first row to be visible and subsequent rows to be hidden
     // TODO by adding the .invisible-element class to the row div
     if (i % 2 === 0) {
+      appRow++;
       newRow = document.createElement('div');
       newRow.classList.add('app-card-row');
+      newRow.id = 'app-card-row-'+ appRow;
+      if (appRow !== 0) {
+      newRow.classList.add('invisible-element')  
+      }
       // add an affirmation to the row
       const affirmation = randomAffirmation();
       // add a div to contain the affirmation
@@ -71,7 +77,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       catIndex++;
     }
     // construct the image template
-    const imageTemplate= emptyAppCardHTML(id, index);
+    const imageTemplate= emptyAppCardHTML(id, index, appRow);
     // create a temporary div element to contain the image
     const newDiv = document.createElement('div');
     newDiv.innerHTML = imageTemplate;
@@ -85,7 +91,11 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       parentElement.appendChild(newRow);
     }
   }
+appRowMax = appRow; 
+
 }
+
+
 
 async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   if (loadingImages) {
@@ -302,7 +312,6 @@ async function getFreshCatImages(imageCount, catImageStore) {
       newCats[i].description = randomAffirmation();
     }
     // console.log('🚀 ~ file: images.js:373 ~ getFreshCatImages ~ newCats:', newCats[i]);
-
     catImageStore.push(newCats[i]);
 
     // check if we have enough images
@@ -344,32 +353,72 @@ function addPulsingButtonEventListener(parentElement) {
   if (parentElement.classList && parentElement.classList.contains('pulsing-button')) {
     // Add the event listener to the pulsing-button element
     parentElement.addEventListener('click', function(event) {
-      // console.log('pulsing-button clicked');
+      console.log('pulsing-button clicked');
       event.preventDefault();
       parentElement.classList.remove('pulsing-button');
-      // TODO - get the user selections and add them to the right dogImage or catImage object
-      // get the id of the button that was clicked
-      // this will be 'submit-dog-image-0 or submit-cat-image-0
+      //Button variables reference utility code
       const buttonClicked= event.target;
+      // get the id of the buttong
       const idValue = buttonClicked.id;
-      // ! For Iggy - this is where you need to get the slider value etc and add it to the dogImage or catImage object
-//       if(idValue.includes('dog')) {
-//       dogImage[i].isFavourite=true;
-//       dogImage[i].cuteRating = sliderElement.value;
-//       } else {
-// catImage[i].isFavourite=true;
-//       }
-
-
-    });
-  }
-
-  // Traverse the child elements recursively
-  if (parentElement.children && parentElement.children.length > 0) {
-    for (const child of parentElement.children) {
-      addPulsingButtonEventListener(child);
+      // convert the id into animal type and array index
+      const animalType = getAnimalImageTypeFromID(idValue);
+      const arrayindex = getAnimalImageIndexFromID(idValue);
+      // see which row we are currently on
+      let appRow = buttonClicked.getAttribute('data-approw');
+      // choose all buttons on this row to see if they have been clicked yet
+      const selectorQuery = `[data-approw = "${appRow}"]`;
+      const allMatchingPulsatingButtons = document.querySelectorAll(selectorQuery);
+      let allHaveBeenPressed=true;
+      // test the buttons to see if they have been clicked
+      console.log(allMatchingPulsatingButtons.length);
+      for (let i=0; i < allMatchingPulsatingButtons.length;i++) {
+          const buttonElement = allMatchingPulsatingButtons[i];
+          console.log(buttonElement.classList);
+          if (buttonElement.classList.contains('pulsing-button')) {
+            allHaveBeenPressed=false;
+            break;
+          }
+      }
+      // if all of the buttons have been pressed, either show the end elements,
+      // or show the next row of images
+      if (allHaveBeenPressed) {
+        if (parseInt(appRow) === parseInt(appRowMax)) { 
+        //Flag hidden submit button and show
+      }
+      else {
+        // show the next row of cute animals
+        // first add 1 to the row that we are currently on
+        appRow = parseInt(appRow)+1;
+        // now get the div element that holds the next images
+        const nextRow = document.getElementById('app-card-row-' + appRow);
+        // remove the css class that makes the row invisible
+        nextRow.classList.remove('invisible-element');
+      }
     }
+
+      //Poll for if dog vs cat and pull appropriate array info
+      if(animalType === "dog-image") {
+        dogImages[arrayindex].zenLevel = document.getElementById('zen-level-dog-image-'+ arrayindex).value;
+        dogImages[arrayindex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayindex).value;
+        dogImages[arrayindex].userComment = document.getElementById('user-comment-dog-image-'+ arrayindex).value.trim();
+        dogImages[arrayindex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayindex).classList.contains('is-favourite');
+      } else if(animalType === "cat-image") {
+        catImages[arrayindex].zenLevel = document.getElementById('zen-level-cat-image-'+ arrayindex).value;
+        catImages[arrayindex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayindex).value;
+        catImages[arrayindex].userComment = document.getElementById('user-comment-cat-image-'+ arrayindex).value.trim();
+        catImages[arrayindex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayindex).classList.contains('is-favourite');
+      }
+
+   });
+ 
+  
+}
+// Traverse the child elements recursively
+if (parentElement.children && parentElement.children.length > 0) {
+  for (const child of parentElement.children) {
+    addPulsingButtonEventListener(child);
   }
+}
 }
 
 function addAnimalInfoURLEventListener(parentElement) {
@@ -621,7 +670,7 @@ async function createAppElements() {
 }
 
 // create the HTML for an empty animal card
-function emptyAppCardHTML(id, i) {
+function emptyAppCardHTML(id, i, appRow) {
   // construct the image template
   let placeHolder;
   let animalType;
@@ -653,7 +702,7 @@ function emptyAppCardHTML(id, i) {
           <span class="slider-emoji strong align-right">🥰</span>
       </label>
       </div>
-      <input type="range" id="aww-level-${id}-${i}" name="range" min="1" max="5" value="3">
+      <input type="range" id="aww-level-${id}-${i}" name="aww-level" min="1" max="5" value="3">
   </div>
   <!-- Mood slider -->
   <div class="app-slider">
@@ -663,7 +712,7 @@ function emptyAppCardHTML(id, i) {
           <span class="slider-emoji strong align-center">😐</span>
           <span class="slider-emoji strong align-right">😊</span>
       </label>
-      <input type="range" id="mood-level-${id}-${i}" name="range" min="1" max="5" value="3">
+      <input type="range" id="zen-level-${id}-${i}" name="zen-level" min="1" max="5" value="3">
   </div>
   <!-- user comment -->
   <label for="user-comment-${id}-${i}">
@@ -674,7 +723,7 @@ function emptyAppCardHTML(id, i) {
    <a href="#" role="button" id="download-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-solid fa-download"></i></a>
    <a href="#" role="button" id="facebook-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-square-facebook"></i></a>
    <a href="#" role="button" id="twitter-${id}-${i}" class="secondary outline w3-text-blue"><i class="fa-brands fa-twitter"></i></a>
-   <a href="#" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
+   <a href="#" role="button" data-approw ="${appRow}" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
 </article>`;
 
   return imageTemplate;
