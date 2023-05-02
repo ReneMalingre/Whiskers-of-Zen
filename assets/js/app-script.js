@@ -57,11 +57,8 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
-  let appRow=-1;
   let appRow = -1;
   for (let i=0; i < combinedArray.length; i++) {
-        // TODO set the first row to be visible and subsequent rows to be hidden
-    // TODO by adding the .invisible-element class to the row div
     if (i % 2 === 0) {
       appRow++;
       newRow = document.createElement('div');
