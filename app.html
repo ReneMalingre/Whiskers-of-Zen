@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" >
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
+    <html data-theme="light"></html>
 
-    <!-- W3 schools CSS Framework -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" >
-
-    <!-- customising W3 modal CSS -->
-    <link rel="stylesheet" href="./assets/css/w3-modal.css" >
+    <!-- W3 schools CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/app-style.css" >
+    <link rel="stylesheet" href="./assets/css/app-style.css" />
 
     <title>Whiskers of Zen - Results page</title>
   </head>
@@ -32,11 +30,7 @@
     </div>
     <div class="invisible-element w3-container w3-center" id="app-title">
       <h1 class="w3-text-white w3-center">Whiskers of Zen</h1>
-      <h5 class="w3-text-white">
-        Please say hi (rate) the pair of furry friends before you can meet your
-        next pair!<br />Select how much better the cuddly creature makes you
-        feel.
-      </h5>
+      <h5>Please say hi (rate) the pair of furry friends before you can meet your next pair!</h5>
     </div>
 
     <!-- Sidebar -->
@@ -47,21 +41,9 @@
         <button class="w3-bar-item w3-button w3-large" onclick="closeSideBar()">
           Close &times;
         </button>
-        <div class="w3-dropdown-click">
-          <button onclick="myFunction()" class="w3-button">
-            <i class="fa-solid fa-headphones"></i> Music
-            <span class="music-on-off align-right"
-              ><label class="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span> </label
-            ></span>
-          </button>
-          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-            <a href="#" class="w3-bar-item w3-button">Music 1</a>
-            <a href="#" class="w3-bar-item w3-button">Music 2</a>
-            <a href="#" class="w3-bar-item w3-button">Music 3</a>
-          </div>
-        </div>
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-brands fa-spotify"></i> Spotify</a
+        >
         <a href="#" class="w3-bar-item w3-button"
           ><i class="fa-solid fa-trophy"></i> Achievements</a
         >
@@ -85,42 +67,32 @@
       <section id="image-store" class="invisible-element"></section>
     </main>
 
-    <!-- ending mood slider -->
-    <div class="w3-padding-16 invisible-element" id="final-zen-query">
-      <h4 class="w3-text-deep-purple strong">
-        All of those Dogs and Cats must have improved your mood.
-      </h4>
-      <h4 class="w3-text-deep-purple">
-        What is your current Level of Zen right now?
-      </h4>
-      <label for="zen-level">
-        <span class="slider-emoji strong align-left">😩</span>
-        <span class="slider-emoji strong align-center">😐</span>
-        <span class="slider-emoji strong align-right">😊</span>
-      </label>
-      <input
-        type="range"
-        id="zen-level"
-        name="zen-level"
-        min="1"
-        max="5"
-        value="3"
-        class="zen-slider">
+    <div id="modal-info" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container">
+          <span onclick="closeInfoModal()"
+                class="modal-close w3-button w3-display-topright w3-red w3-text-white">&times;</span>
+          <h3 class="w3-text-deep-purple" id="modal-info-title"></h2>
+          <p id="modal-info-description"></p>
+          <a href = "" id="modal-info-link" target="_blank">Click here to open in a new tab</a>
+          <iframe id="modal-info-iframe" src="" title="animal info from web"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
       <!-- button to save dogs to local storage -->
       <button
         id="save-images"
-        class="w3-button w3-deep-purple w3-text-white w3-hover-deep-orange w3-round-large w3-margin-bottom">
-        Save Your Results and View the Summary of Your Ratings
-      </button>
-    </div>
-
+        class="w3-button w3-cyan w3-round-large w3-margin-bottom">
+        Save Dogs
+    </footer>
     <script src="./assets/js/pet-benefits.js"></script>
     <script src="./assets/js/classes.js"></script>
-    <script src="./assets/js/utilities.js"></script>
     <script src="./assets/js/dog-breeds.js"></script>
-    <script src="./assets/js/utilities.js"></script>
+    <script src="./assets/js/images.js"></script>
     <script src="./assets/js/app-script.js"></script>
-    <script src="./assets/js/sidebar.js"></script>
+
     <!-- font awesome kit-->
     <script
       src="https://kit.fontawesome.com/cea607b6d1.js"

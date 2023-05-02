@@ -69,17 +69,16 @@ body {
 
 #app-loading {
   min-height: 100vh;
-  background: linear-gradient(
-    0deg,
-    var(--light-purple) 0%,
-    var(--purplish) 100%
-  );
-  color: var(--light-bg);
+  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  color: white;
 }
 
-article {
-  margin: 1rem 0;
-  padding: 1rem;
+.img-scale {
+  border-radius: 50%;
+  border: 10px solid #aeb3eb;
+  width: 80%;
+  margin-top: 30px;
+  max-width: 400px;
 }
 
 select {
@@ -106,20 +105,14 @@ select {
 }
 
 /* results cards */
-.app-card-row {
-  background: linear-gradient(
-    0deg,
-    var(--light-purple) 0%,
-    var(--purplish) 100%
-  );
+.app-card-row{
+  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
   padding-top: 0.25rem;
 }
 
-.affirmation {
+.affirmation{
   background: transparent;
   font-size: 1rem;
-  font-style: italic;
-  color: var(--light-purple);
 }
 
 .app-row {
@@ -130,31 +123,12 @@ select {
   gap: 4rem;
 }
 
-.summary-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0.2rem;
-  justify-content: center;
-  align-content: center;
-}
-
 .app-card {
   box-sizing: border-box;
   margin-top: 1rem;
   width: 100%;
-  background-color: var(--light-bg);
-  box-shadow: var(--box-shadow-light);
-}
-
-.app-card-ending {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  margin: 0.2rem;
-  padding: 2px;
-  width: 95%;
-  background-color: var(--light-bg);
-  box-shadow: var(--box-shadow-light);
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 18%);
 }
 
 .polaroid {
@@ -165,18 +139,11 @@ select {
   box-sizing: border-box;
   padding: 0;
   width: 100%;
-  background-color: var(--polaroid-border);
-  box-shadow: var(--box-shadow-dark);
+  background-color: #f8f8f6;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 50%);
   border-radius: 5px;
   margin: 10px 0;
   transition: transform 0.3s ease;
-}
-
-.polaroid-ending {
-  padding: 3px 0;
-  margin: 2px 0;
-  width: 95%;
-  height: 100%;
 }
 
 .polaroid-img {
@@ -187,50 +154,16 @@ select {
   transition: transform 0.3s ease;
 }
 
-.polaroid-img-ending{
-  height: 120px;
-  padding: 2px;
-  object-fit: cover !important;
-  max-width: 100%;
+.animal-caption {
+  font-size: 1rem;
+  margin: 2px;
+  color: #515ada;
 }
 
-.animal-info-url {
-  color: var(--deep-purple);
+.animal-info-url{
+  color: #6A5ACD;
   font-size: 1.1rem;
   margin-top: 0.3rem;
-}
-
-.animal-info-url-ending {
-  font-size: 0.9rem;
-}
-
-.button-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.summary-button {
-  font-size: 24px;
-  padding: 4px 10px;
-}
-
-.favourited {
-  color: var(--favourited);
-  background-color: var(--favourited-bg);
-  border-color: var(--favourited);
-}
-
-.non-favourited {
-  color: var(--non-favourited);
-  background-color: var(--light-bg);
-  border-color: var(--non-favourited);
-}
-
-.fav-icon{
-  color: var(--favourited);
-  margin: 0 2px;
 }
 
 .card-question {
@@ -246,11 +179,6 @@ select {
   padding: 2px;
 }
 
-.summary-comment {
-  font-size: 0.8rem;
-  margin: 2px;
-}
-
 .invisible-element {
   display: none;
 }
@@ -259,27 +187,15 @@ select {
   font-size: 1rem;
 }
 
+/* 
+  .favourite {
+    margin-bottom: 5px;
+  } */
+
+/* animations */
+
 .secondary {
   transition: 300ms;
-}
-
-/* favourites page */
-.favourites-board{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.polaroid-favourite {
-  margin: 5px 0;
-}
-
-.app-card-favourite {
-  margin: 1rem 0;
-  width: 100%;
 }
 
 a:hover {
@@ -290,10 +206,10 @@ a:hover {
 
 /* Sidebar */
 aside {
-  background-color: var(--light-bg);
+  background-color: white;
 }
 
-#app-sidebar {
+#app-sidebar{
   display: none;
 }
 
@@ -312,34 +228,29 @@ aside {
   float: right;
 }
 
-
-footer {
-  margin: 0;
-  padding: 1rem !important;
-}
-
-#nav-btns-footer, #nav-btns {
+/* #modal-info{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5rem;
-  list-style-type: none;
+  flex-direction: column;
+} */
+.modal-close{
+  font-size: 1.5rem;
+  padding: 0.2rem 0.8rem;
 }
 
-#nav-btns {
-  justify-content: start;
-  margin-left: 0;
+#modal-info-link{
+  margin: 3px;
+  color: #6A5ACD;
 }
 
-ul li {
-  list-style: none;
-  padding: 4px 8px;
+#modal-info-description{
+  font-size: 0.9rem;
+  color: #6A5ACD;
 }
 
-#image-modal-content {
-  box-sizing: border-box;
-  max-height: 92vh;
-  max-width: 92vh;
+#modal-info-iframe{
+  width: 100%;
+  height: 60vh;
+  border: none;
 }
 
 /* Toggle switch by W3 Schools */
@@ -348,8 +259,8 @@ ul li {
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 27px;
+  width: 60px;
+  height: 34px;
 }
 
 /* Hide default HTML checkbox */
@@ -359,128 +270,50 @@ ul li {
   height: 0;
 }
 
+/* .slider {
+    position: relative;
+  } */
+
 /* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: var(--slider-bg);
+  background-color: #ccc;
   transition: 0.4s;
 }
 
 .slider::before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
-  left: 2px;
+  height: 26px;
+  width: 26px;
+  left: 4px;
   bottom: 4px;
-  background-color: var(--light-bg);
+  background-color: white;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: var(--slider-blue);
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--slider-blue);
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider::before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round::before {
-  border-radius: 50%;
-}
-
-/* end of slider */
-
-/* ============================================================================= */
-/* Range Slider */
-/* ============================================================================= */
-#final-zen-query{
-  max-width: 80vw;
-  margin: auto;
-}
-
-/* This is for the track */
-.zen-slider::-webkit-slider-runnable-track {
-  background: var(--purplish);
-  height: 10px;
-  border: none;
-}
-
-.zen-slider::-moz-range-track {
-  background: var(--purplish);
-  height: 10px;
-  border: none;
-}
-
-/* This is for the thumb */
-.zen-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 30px;
-  width: 30px;
-  background: var(--deep-purple);
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -10px; /* You need to specify a margin for Chrome :/ */
-}
-
-.zen-slider::-moz-range-thumb {
-  height: 30px;
-  width: 30px;
-  background: var(--deep-purple);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* This is for IE */
-.zen-slider::-ms-track {
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-
-.zen-slider::-ms-thumb {
-  height: 30px;
-  width: 30px;
-  background: var(--deep-purple);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.zen-slider::-ms-fill-lower,
-.zen-slider::-ms-fill-upper {
-  background: var(--purplish);
-}
-
-#zen-level{
-  margin: 0.5rem auto 2rem;
-}
-
-
-/* ============================================================================= */
-/* End of Range Slider */
-/* ============================================================================= */
-
 .pulsing-button {
-  background-color: var(--light-bg);
+  background-color: #fff;
   animation: pulse-animation 2s infinite;
 }
 
 @keyframes pulse-animation {
   0% {
-    background-color: var(--light-bg);
+    background-color: #fff;
   }
 
   50% {
@@ -488,81 +321,17 @@ input:checked + .slider::before {
   }
 
   100% {
-    background-color: var(--light-bg);
+    background-color: #fff;
   }
 }
-/* Confirmation Dialog Styling */
-.modal-confirmation {
-  text-align: center;
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--purple-transparent);
-  }
-
-  .modal-confirmation-content {
-  font-size: 20px;
-  font-weight: bold;
-  background-color: var(--favourited-bg);
-  margin: auto;
-  padding: 20px;
-  border: 1px solid var(--deep-purple);
-  width: 80%;
-  }
-
-  .close-modal-confirmation {
-  color:  var(--favourited);
-  float: right;
-  font-size: 40px;
-  font-weight: bold;
-  }
-
-  .close-modal-confirmation:hover,
-  .close-modal-confirmation:focus {
-  color: var(--favourited);
-  cursor: pointer;
-  }
-
-  .modal-confirmation-content button {
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  }
-
-  .yes-confirmation {
-  background-color: var(--favourited);
-  }
-
-  .yes-confirmation:hover {
-  background-color: var(--favourited-bg);
-  }
-
-  .cancel-confirmation {
-    background-color: var(--deep-purple);
-  }
-
-  .cancel-confirmation:hover {
-  background-color: var(--light-purple);
-  }
 
 @media screen and (min-width: 500px) {
-  .affirmation {
+  .affirmation{
     font-size: 1.5rem;
   }
 
   .app-card {
     width: 500px;
-  }
-
-  .app-card-favourite {
-    width: 450px;
   }
 
   .polaroid {
@@ -572,15 +341,6 @@ input:checked + .slider::before {
 
   .polaroid-img {
     height: 360px;
-  }
-
-  .polaroid-favourite {
-    width: 400px;
-    padding: 10px;
-  }
-
-  .polaroid-img-favourite {
-    height: 280px;
   }
 
   .slider-emoji {

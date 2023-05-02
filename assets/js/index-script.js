@@ -7,8 +7,6 @@ const landingData = {
 
 // Load your Furry Friends Button to take to app page
 const submitButton = document.getElementById('submit-button');
-
-
 // add event listener to submit button
 //submitButton.addEventListener('click', submitForm);
 const achievementsSelector=document.getElementById('itHadBetterWorkThisTime');
