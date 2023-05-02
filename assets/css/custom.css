@@ -3,8 +3,8 @@
   font-size: 16px;
 
   --non-favourited: #808080;
-  --favourited: #ff0000;
-  --favourited-bg: #ffaaaa;
+  --favourited: #f00;
+  --favourited-bg: #faa;
   --light-bg: #fff;
   --purplish: #515ada;
   --deep-purple: #6a5acd;
@@ -98,6 +98,10 @@ body {
   padding-top: 0.8rem;
 }
 
+.app-title{
+  padding: 0.25rem 3rem 0.5rem;
+}
+
 .img-scale {
   border-radius: 50%;
   border: 10px solid var(--img-border);
@@ -137,13 +141,6 @@ select {
   flex-wrap: wrap;
   gap: 4rem;
   background: var(--bg-gradient);
-}
-
-.app-card {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: var(--light-bg);
-  box-shadow: var(--box-shadow-light);
 }
 
 .top-right-button {
@@ -318,11 +315,78 @@ input:checked + .slider::before {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }
 
 /* end of slider */
+/* ============================================================================= */
+/* Range Slider */
+/* ============================================================================= */
+#final-zen-query,#zen-level {
+  max-width: 80vw;
+  margin: auto;
+}
+
+/* This is for the track */
+.zen-slider::-webkit-slider-runnable-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+.zen-slider::-moz-range-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+/* This is for the thumb */
+.zen-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -10px; /* You need to specify a margin for Chrome :/ */
+}
+
+.zen-slider::-moz-range-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* This is for IE */
+.zen-slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.zen-slider::-ms-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.zen-slider::-ms-fill-lower,
+.zen-slider::-ms-fill-upper {
+  background: var(--purplish);
+}
+
+#zen-level{
+  margin: 0.5rem auto 2rem;
+}
+
+/* ============================================================================= */
+/* End of Range Slider */
+/* ============================================================================= */
 
 .pulsing-button {
   background-color: var(--light-bg);

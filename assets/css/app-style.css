@@ -2,8 +2,8 @@
 
 :root {
   --non-favourited: #808080;
-  --favourited: #ff0000;
-  --favourited-bg: #ffaaaa;
+  --favourited: #f00;
+  --favourited-bg: #faa;
   --light-bg: #fff;
   --purplish: #515ada;
   --deep-purple: #6a5acd;
@@ -21,6 +21,7 @@
   );
   --img-border: #aeb3eb;
   --pulse-colour: #b8daf0;
+  --purple-transparent: #6a5acd55;
 }
 /* from ending-style.css */
 
@@ -498,21 +499,21 @@ input:checked + .slider::before {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--purple-transparent);
   }
 
   .modal-confirmation-content {
   font-size: 20px;
   font-weight: bold;
-  background-color: #fefefe;
+  background-color: var(--favourited-bg);
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid var(--deep-purple);
   width: 80%;
   }
 
   .close-modal-confirmation {
-  color: rgb(255, 65, 65);
+  color:  var(--favourited);
   float: right;
   font-size: 40px;
   font-weight: bold;
@@ -520,7 +521,7 @@ input:checked + .slider::before {
 
   .close-modal-confirmation:hover,
   .close-modal-confirmation:focus {
-  color: #ff1010;
+  color: var(--favourited);
   cursor: pointer;
   }
 
@@ -531,14 +532,21 @@ input:checked + .slider::before {
   font-weight: bold;
   padding: 10px;
   }
+
   .yes-confirmation {
-  background-color: rgb(255, 65, 65);
+  background-color: var(--favourited);
   }
-  .cancel-confirmation:hover {
-  background-color: rgb(255, 7, 7);
+
+  .yes-confirmation:hover {
+  background-color: var(--favourited-bg);
   }
+
+  .cancel-confirmation {
+    background-color: var(--deep-purple);
+  }
+
   .cancel-confirmation:hover {
-  background-color: rgb(167, 167, 167);
+  background-color: var(--light-purple);
   }
 
 @media screen and (min-width: 500px) {
