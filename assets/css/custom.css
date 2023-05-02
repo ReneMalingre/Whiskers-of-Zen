@@ -20,6 +20,10 @@
   --pulse-colour: #b8daf0;
 }
 
+html{
+  background: var(--bg-gradient) !important;
+}
+
 nav {
   display: inline;
   position: relative;
@@ -71,7 +75,6 @@ p {
 /* additional CSS styling sheet (separate to framework) */
 body {
   text-align: center;
-  background: var(--bg-gradient) !important;
   margin: 0;
   padding: 0;
 }

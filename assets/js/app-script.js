@@ -4,7 +4,7 @@ let totalImagesLoaded; // total number of images loaded, recorded by the load ev
 let totalImagesFailed; // total number of images that failed to load
 let loadingPlaceholders = false; // flag to indicate if the placeholders are being loaded
 let loadingImages = false; // flag to indicate if the images are being loaded
-let appRowMax = 0; 
+let appRowMax = 0;
 const polaroidImageHeight = 360; // height of the polaroid image in pixels
 const imageLoadTimer = new LoadTimer; // timer to check if all the images have loaded
 let initialZenLevel = 0; // initial zen level from the loading screen
@@ -25,8 +25,7 @@ window.addEventListener('load', () => {
   initialZenLevel = searchParams.get('mood'); // Output: value2
   if (!initialZenLevel) {
     initialZenLevel = 3;
-  }
-  else {
+  } else {
     initialZenLevel = parseInt(initialZenLevel);
   }
   // set the zen level on the end input
@@ -57,7 +56,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
-   let appRow = -1;
+  let appRow = -1;
   for (let i=0; i < combinedArray.length; i++) {
     if (i % 2 === 0) {
       appRow++;
@@ -65,7 +64,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       newRow.classList.add('app-card-row');
       newRow.id = 'app-card-row-'+ appRow;
       if (appRow !== 0) {
-      newRow.classList.add('invisible-element')  
+        newRow.classList.add('invisible-element');
       }
       // add an affirmation to the row
       const affirmation = randomAffirmation();
@@ -103,10 +102,8 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       parentElement.appendChild(newRow);
     }
   }
-appRowMax = appRow; 
-
+  appRowMax = appRow;
 }
-
 
 
 async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
@@ -365,14 +362,17 @@ function addPulsingButtonEventListener(parentElement) {
     parentElement.addEventListener('click', function(event) {
       console.log('pulsing-button clicked');
       event.preventDefault();
+      console.log('pulsing button click id: ' + event.target.id);
       parentElement.classList.remove('pulsing-button');
-      //Button variables reference utility code
+      parentElement.classList.add('invisible-element');
+
+      // Button variables reference utility code
       const buttonClicked= event.target;
-      // get the id of the buttong
+      // get the id of the button
       const idValue = buttonClicked.id;
       // convert the id into animal type and array index
       const animalType = getAnimalImageTypeFromID(idValue);
-      const arrayindex = getAnimalImageIndexFromID(idValue);
+      const arrayIndex = getAnimalImageIndexFromID(idValue);
       // see which row we are currently on
       let appRow = buttonClicked.getAttribute('data-approw');
       // choose all buttons on this row to see if they have been clicked yet
@@ -381,57 +381,60 @@ function addPulsingButtonEventListener(parentElement) {
       let allHaveBeenPressed=true;
       // test the buttons to see if they have been clicked
       console.log(allMatchingPulsatingButtons.length);
-      for (let i=0; i < allMatchingPulsatingButtons.length;i++) {
-          const buttonElement = allMatchingPulsatingButtons[i];
-          console.log(buttonElement.classList);
-          if (buttonElement.classList.contains('pulsing-button')) {
-            allHaveBeenPressed=false;
-            break;
-          }
+      for (let i=0; i < allMatchingPulsatingButtons.length; i++) {
+        const buttonElement = allMatchingPulsatingButtons[i];
+        console.log(buttonElement.classList);
+        if (buttonElement.classList.contains('pulsing-button')) {
+          allHaveBeenPressed=false;
+          break;
+        }
       }
       // if all of the buttons have been pressed, either show the end elements,
       // or show the next row of images
       if (allHaveBeenPressed) {
-        if (parseInt(appRow) === parseInt(appRowMax)) { 
-        //Flag hidden submit button and show
-        const nextRow = document.getElementById('final-zen-query');
-        // remove the css class that makes the row invisible
-        nextRow.classList.remove('invisible-element');
-      }
-      else {
+        if (parseInt(appRow) === parseInt(appRowMax)) {
+        // Flag hidden submit button and show
+          const nextRow = document.getElementById('final-zen-query');
+          // remove the css class that makes the row invisible
+          nextRow.classList.remove('invisible-element');
+        } else {
         // show the next row of cute animals
         // first add 1 to the row that we are currently on
-        appRow = parseInt(appRow)+1;
-        // now get the div element that holds the next images
-        const nextRow = document.getElementById('app-card-row-' + appRow);
-        // remove the css class that makes the row invisible
-        nextRow.classList.remove('invisible-element');
-      }
-    }
-
-      //Poll for if dog vs cat and pull appropriate array info
-      if(animalType === "dog-image") {
-        dogImages[arrayindex].zenLevel = document.getElementById('zen-level-dog-image-'+ arrayindex).value;
-        dogImages[arrayindex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayindex).value;
-        dogImages[arrayindex].userComment = document.getElementById('user-comment-dog-image-'+ arrayindex).value.trim();
-        dogImages[arrayindex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayindex).classList.contains('favourited');
-      } else if(animalType === "cat-image") {
-        catImages[arrayindex].zenLevel = document.getElementById('zen-level-cat-image-'+ arrayindex).value;
-        catImages[arrayindex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayindex).value;
-        catImages[arrayindex].userComment = document.getElementById('user-comment-cat-image-'+ arrayindex).value.trim();
-        catImages[arrayindex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayindex).classList.contains('favourited');
+          appRow = parseInt(appRow)+1;
+          // now get the div element that holds the next images
+          const nextRow = document.getElementById('app-card-row-' + appRow);
+          // remove the css class that makes the row invisible
+          nextRow.classList.remove('invisible-element');
+        }
       }
 
-   });
- 
-  
-}
-// Traverse the child elements recursively
-if (parentElement.children && parentElement.children.length > 0) {
-  for (const child of parentElement.children) {
-    addPulsingButtonEventListener(child);
+      // Poll for if dog vs cat and pull appropriate array info
+      if (animalType === 'dog-image') {
+        dogImages[arrayIndex].zenRating = document.getElementById('zen-level-dog-image-'+ arrayIndex).value;
+        console.log('zen level dog ' + dogImages[arrayIndex].zenRating);
+        dogImages[arrayIndex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayIndex).value;
+        dogImages[arrayIndex].userComment = document.getElementById('user-comment-dog-image-'+ arrayIndex).value.trim();
+        if (dogImages[arrayIndex].userComment !== '') {
+          console.log(dogImages[arrayIndex].userComment);
+        }
+        dogImages[arrayIndex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayIndex).classList.contains('favourited');
+      } else if (animalType === 'cat-image') {
+        console.log('zen level cat ' + catImages[arrayIndex].zenRating);
+        catImages[arrayIndex].zenRating = document.getElementById('zen-level-cat-image-'+ arrayIndex).value;
+        catImages[arrayIndex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayIndex).value;
+        catImages[arrayIndex].userComment = document.getElementById('user-comment-cat-image-'+ arrayIndex).value.trim();
+
+        catImages[arrayIndex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayIndex).classList.contains('favourited');
+        console.log('catImages[' + arrayIndex +'].isFavourite: ' + catImages[arrayIndex].isFavourite);
+      }
+    });
   }
-}
+  // Traverse the child elements recursively
+  if (parentElement.children && parentElement.children.length > 0) {
+    for (const child of parentElement.children) {
+      addPulsingButtonEventListener(child);
+    }
+  }
 }
 
 
@@ -620,8 +623,8 @@ async function createAndPopulateAppElements() {
 
   // if both zero, default to 10 of each
   if (dogImageCount === 0 && catImageCount === 0) {
-    dogImageCount = 10;
-    catImageCount = 10;
+    dogImageCount = 2;
+    catImageCount = 2;
   }
 
   // call function to call dog and cat APIs
@@ -688,8 +691,7 @@ function emptyAppCardHTML(id, i, appRow, appRow) {
     </label>
   <!-- Buttons for various functions -->
   <div class="button-row">
-   <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
-   summary-button secondary outline w3-border-red"><i class="fav-icon ${favouriteIcon}"></i></a>
+   <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} summary-button secondary outline w3-border-red"><i class="fav-icon ${favouriteIcon}"></i></a>
    <a href="#" data-approw = "${appRow}" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
   </div>
    </article>`;
@@ -759,7 +761,7 @@ function goodToGoHandler() {
   document.getElementById('image-store').classList.remove('invisible-element');
   document.getElementById('nav-burger').classList.remove('invisible-element');
   document.getElementById('app-title').classList.remove('invisible-element');
- }
+}
 
 function signalGoodToGo() {
   loadingImages = false;
@@ -767,12 +769,12 @@ function signalGoodToGo() {
   document.dispatchEvent(customEvent);
 }
 
-// ! TODO - this triggers the end of the app, but another trigger is better
-// ! like detecting when all the save buttons have been clicked
 // event handler for the button to save images
 document.getElementById('save-images').addEventListener('click', (event) => {
   event.preventDefault();
-   // save the images to local storage
+  // save the final zen level to local storage
+  localStorage.setItem('finalZenLevel', document.getElementById('zen-level').value);
+  // save the images to local storage
   saveAnimals();
   // go to the ending page
   window.location.href = 'ending.html';
@@ -796,6 +798,7 @@ function addAnimalInfoURLEventListener(parentElement) {
 // toggle the favourite button
 function handleFavouriteButtonClicked(event) {
   event.preventDefault();
+
   // NB event bubbling from icon to button, so may have to check parent element if no id
   let clickedElement = event.target;
   let id = clickedElement.id;
@@ -812,11 +815,15 @@ function handleFavouriteButtonClicked(event) {
     const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
     console.log('🚀 ~ file: ending-script.js:440 ~ handleFavouriteButtonClick ~ arrayIndex:', arrayIndex);
 
-   
-     const favButton = document.getElementById('fav-btn-' + animalType + '-' + arrayIndex);
-   favButton.classList.toggle('favourited');
-     favButton.classList.toggle('non-favourited');
-       } 
+    const favButton = document.getElementById('fav-btn-' + animalType + '-' + arrayIndex);
+    favButton.classList.toggle('favourited');
+    favButton.classList.toggle('non-favourited');
+    if (animalType === 'cat-image') {
+      catImages[arrayIndex].isFavourite = !catImages[arrayIndex].isFavourite;
+    } else if (animalType === 'dog-image') {
+      dogImages[arrayIndex].isFavourite = !dogImages[arrayIndex].isFavourite;
+    }
+  }
 }
 
 // event handler to show the info modal

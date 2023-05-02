@@ -45,7 +45,7 @@ function getRandomInt(min, max) {
 // randomize the order of an array using the Fisher-Yates (Knuth) shuffle
 function randomizeArray(arr) {
   if (!Array.isArray(arr)) {
-    return [];
+    return arr;
   }
   if (arr.length < 2) {
     return arr;
@@ -54,6 +54,7 @@ function randomizeArray(arr) {
     const j = getRandomInt(0, i);
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
+  return arr;
 }
 
 function toTitleCase(str) {
@@ -245,19 +246,53 @@ function animalImageClicked(event) {
 // ==================================================================
 // Get favourites
 function filterFavourites(originalArray) {
-  return originalArray.filter((animal) => animal.isFavourite);
+  const favouritesArray = [];
+
+  for (let i=0; i < originalArray.length; i++) {
+    console.log('checking if favourite: ' + originalArray[i].isFavourite );
+    if (originalArray[i].isFavourite == true) {
+      // console.log('favourite found');
+      favouritesArray.push(originalArray[i]);
+    }
+  }
+  return favouritesArray;
 }
 
+// get the zen animals
 function sortArrayByZenRatingDescending(originalArray) {
-  return originalArray.sort((a, b) => b.zenRating - a.zenRating);
+  const sortedArray = originalArray.sort((a, b) => parseInt(b.zenRating) - parseInt(a.zenRating));
+  const zenArray = [];
+  for (let i=0; i < sortedArray.length; i++) {
+    console.log('checking zen rating: ' + sortedArray[i].zenRating);
+    if (sortedArray[i].zenRating >=4) {
+      zenArray.push(sortedArray[i]);
+    }
+  }
+  return zenArray;
 }
 
+// get the cute animals
 function sortArrayByCuteRatingDescending(originalArray) {
-  return originalArray.sort((a, b) => b.cuteRating - a.cuteRating);
+  const sortedArray = originalArray.sort((a, b) => parseInt(b.cuteRating) - parseInt(a.cuteRating));
+  const cuteArray = [];
+  for (let i=0; i < sortedArray.length; i++) {
+    if (sortedArray[i].cuteRating >=4) {
+      cuteArray.push(sortedArray[i]);
+    }
+  }
+  return cuteArray;
 }
 
+// get the ugly animals
 function sortArrayByCuteRatingAscending(originalArray) {
-  return originalArray.sort((a, b) => a.cuteRating - b.cuteRating);
+  const sortedArray = originalArray.sort((a, b) => parseInt(a.cuteRating) - parseInt(b.cuteRating));
+  const cuteArray = [];
+  for (let i=0; i < sortedArray.length; i++) {
+    if (sortedArray[i].cuteRating <=2) {
+      cuteArray.push(sortedArray[i]);
+    }
+  }
+  return cuteArray;
 }
 
 function concatArraysIfUniqueOnURL(originalArray, newArray) {
@@ -396,5 +431,6 @@ function saveAnimalsToLocalStorage(animalType, storeFilter, animalsToSave) {
       });
     }
     localStorage.setItem(animalType + storeFilter, JSON.stringify(serialized));
+    console.log(animalType + ' saved to local storage ' + JSON.stringify(serialized));
   }
 }

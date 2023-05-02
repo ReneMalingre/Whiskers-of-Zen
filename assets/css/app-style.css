@@ -52,10 +52,12 @@ a {
 }
 
 /* end of ending-style.css */
+html{
+  background: var(--background-gradient);
+}
 
 body {
   text-align: center;
-  background: var(--background-gradient);
   margin: 0;
   padding: 0;
 }
