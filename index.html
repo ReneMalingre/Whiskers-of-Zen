@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- W3 schools CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" >
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- pico CSS Framework -->
-    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" >
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" >
+    <link rel="stylesheet" href="./assets/css/custom.css" />
 
     <title>Whiskers of Zen - Landing Page</title>
   </head>
@@ -33,7 +33,7 @@
             <i class="fa-solid fa-headphones"></i> Music
             <span class="music-on-off align-right"
               ><label class="switch">
-                <input type="checkbox" >
+                <input type="checkbox" />
                 <span class="slider round"></span> </label
             ></span>
           </button>
@@ -55,21 +55,28 @@
     <!-- Hamburger button for sidebar -->
     <nav>
       <!-- <ul> -->
-        <div id="main">
-          <button
-            id="openNav"
-            class="w3-button w3-xlarge w3-text-white"
-            onclick="w3_open()">
-            &#9776;
-          </button>
-        </div>
+      <div id="main">
+        <button
+          id="openNav"
+          class="w3-button w3-xlarge w3-text-white"
+          onclick="w3_open()">
+          &#9776;
+        </button>
+      </div>
       <!-- </ul> -->
     </nav>
 
     <main class="container slimmer-padding-top">
       <div>
-        <h1 class="text-3xl font-bold  "><span class="app-title w3-text-deep-purple w3-sand w3-border w3-border-deep-purple w3-round-xlarge">Whiskers of Zen</span></h1>
-        <h4 class="w3-text-sand">Improve your mood by rating images of cute dogs & cats</h4>
+        <h1 class="text-3xl font-bold">
+          <span
+            class="app-title w3-text-deep-purple w3-sand w3-border w3-border-deep-purple w3-round-xlarge"
+            >Whiskers of Zen</span
+          >
+        </h1>
+        <h4 class="w3-text-sand">
+          Improve your mood by rating images of cute dogs & cats
+        </h4>
         <h5>Which furry friends would you like to meet today?</h5>
       </div>
 
@@ -81,67 +88,102 @@
         <!-- removed switches & replaced with selections -->
 
         <article>
-          <h3 class = "w3-text-deep-purple">Select your buddies to meet today</h3>
-          <p  class="w3-text-purple">Choose the number of dog and cat images you would like to see.</p>
-          <p  class="w3-text-purple strong">Rate how cute they are and how they make you feel.</p>
-          <p  class="w3-text-purple">
-            You can add images to your favourites & see information about the breeds. Enjoy the serotonin rush!
+          <h3 class="w3-text-deep-purple">Select your buddies to meet today</h3>
+          <p class="w3-text-purple">
+            Choose the number of dog and cat images you would like to see.
+          </p>
+          <p class="w3-text-purple strong">
+            Rate how cute they are and how they make you feel.
+          </p>
+          <p class="w3-text-purple">
+            You can add images to your favourites & see information about the
+            breeds. Enjoy the serotonin rush!
           </p>
           <!-- pico grid for responsiveness -->
           <div class="grid">
             <!-- Dog - selection (card within a card)-->
             <article>
-                <div class="dogs">
-                    <label class="w3-text-deep-purple strong" for="image-number-dogs">Choose Number of Dogs to Rate</label>
-                    <select name="image-number-dogs" id="image-number-dogs">
-                        <option value="5">Five</option>
-                        <option value="10">Ten</option>
-                        <option value="15">Fifteen</option>
-                        <option value="20">Twenty</option>
-                        <option value="25">Twenty five</option>
-                        <option value="30">Thirty</option>
-                    </select>
-                </div>
-                <img class="img-scale" src="./assets/img/dog-sml.png" alt="A cute golden retriever">
+              <div class="dogs">
+                <label
+                  class="w3-text-deep-purple strong"
+                  for="image-number-dogs"
+                  >Choose Number of Dogs to Rate</label
+                >
+                <select name="image-number-dogs" id="image-number-dogs">
+                  <option value="2">Two</option>
+                  <option value="5">Five</option>
+                  <option value="10">Ten</option>
+                  <option value="15">Fifteen</option>
+                  <option value="20">Twenty</option>
+                  <option value="25">Twenty five</option>
+                  <option value="30">Thirty</option>
+                </select>
+              </div>
+              <img
+                class="img-scale"
+                src="./assets/img/dog-sml.png"
+                alt="A cute golden retriever" />
             </article>
 
             <!-- Cat - selection -->
 
             <article>
-                <div class="cats">
-                    <label class="w3-text-deep-purple strong" for="image-number-cats">Choose Number of Cats to Rate</label>
-                    <select name="image-number-cats" id="image-number-cats">
-                        <option value="5">Five</option>
-                        <option value="10">Ten</option>
-                        <option value="15">Fifteen</option>
-                        <option value="20">Twenty</option>
-                        <option value="25">Twenty five</option>
-                        <option value="30">Thirty</option>
-                    </select>
-                </div>
-                <img class="img-scale" src="./assets/img/cat-sml.png" alt="A cute kitten">
+              <div class="cats">
+                <label
+                  class="w3-text-deep-purple strong"
+                  for="image-number-cats"
+                  >Choose Number of Cats to Rate</label
+                >
+                <select name="image-number-cats" id="image-number-cats">
+                  <option value="2">Two</option>
+                  <option value="5">Five</option>
+                  <option value="10">Ten</option>
+                  <option value="15">Fifteen</option>
+                  <option value="20">Twenty</option>
+                  <option value="25">Twenty five</option>
+                  <option value="30">Thirty</option>
+                </select>
+              </div>
+              <img
+                class="img-scale"
+                src="./assets/img/cat-sml.png"
+                alt="A cute kitten" />
             </article>
+          </div>
+          <h6 class="w3-text-deep-purple strong">
+            Dogs and cats are guaranteed to improve your mood.
+          </h6>
+          <h4 class="w3-text-deep-purple strong">
+            What is your current Level of Zen right now?
+          </h4>
+          <!-- <h6>Your current mood level:</h6> -->
+          <label for="zen-level">
+            <span class="slider-emoji strong align-left">😩</span>
+            <span class="slider-emoji strong align-center">😐</span>
+            <span class="slider-emoji strong align-right">😊</span>
+          </label>
+          <input
+            type="range"
+            id="zen-level"
+            name="zen-level"
+            class="zen-slider"
+            min="1"
+            max="5"
+            value="3" />
 
-            </div>
-                <h6  class="w3-text-deep-purple strong">Dogs and cats are guaranteed to improve your mood.</h6>
-                <h4  class="w3-text-deep-purple strong">What is your current Level of Zen right now?</h4>
-                <!-- <h6>Your current mood level:</h6> -->
-                <label for="zen-level">
-                    <span class="slider-emoji strong align-left">😩</span>
-                    <span class="slider-emoji strong align-center">😐</span>
-                    <span class="slider-emoji strong align-right">😊</span>
-                </label>
-                <input type="range" id="zen-level" name="zen-level" class="zen-slider"
-                       min="1" max="5" value="3">
-    
-            <!-- submit button -->
-            <input class="w3-deep-purple strong w3-text-white w3-hover-deep-orange w3-round-large" id="submit-button" type="submit" value="Load your furry friends!">
-    
+          <!-- submit button -->
+          <input
+            class="w3-deep-purple strong w3-text-white w3-hover-deep-orange w3-round-large"
+            id="submit-button"
+            type="submit"
+            value="Load your furry friends!" />
         </article>
       </section>
 
       <footer>
-        <p class="w3-text-deep-purple">Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
+        <p class="w3-text-deep-purple">
+          Web app developed by Iggy, Lauren, Rene, Sebastian © 2023
+        </p>
       </footer>
     </main>
 

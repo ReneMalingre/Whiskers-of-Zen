@@ -10,21 +10,23 @@ window.addEventListener('load', () => {
 
   // display the cutest dog and cat images into the categories
   displayResultantAnimals();
-  // add event listeners to the buttons
+  // add info modal to the DOM
+  addInfoModalToDOM();
+  // add image modal to the DOM
+  addImageModalToDOM();
+});
+
+function addEventListenersToFavourites() {
   const parentElement = document.body;
   const className = 'favourite-button';
   const eventName = 'click';
   const functionToCall = handleFavouriteButtonClick;
   addEventListenerToDOMBranch(parentElement, className, eventName, functionToCall );
-  // add info modal to the DOM
-  addInfoModalToDOM();
-  // add image modal to the DOM
-  addImageModalToDOM();
   // add event listeners to the animal info URLs
   addAnimalInfoURLEventListener(parentElement);
   // add event listeners to the animal images
   addEventListenerToDOMBranch(parentElement, 'polaroid-img', 'click', animalImageClicked);
-});
+}
 
 function retrieveFavourites() {
   // get the images out of local storage from the app run
@@ -36,9 +38,11 @@ function displayResultantAnimals() {
   // display the favourite dog and cat images
   containerElement = document.getElementById('favourites-holder');
   loadEndingCardWithImages(containerElement, 'app-card-title-favourites', 'Favourites', 'fav');
+  addEventListenersToFavourites();
   // give the polaroids a jaunty angle
   randomlyRotatePolaroids(3);
 }
+
 function loadEndingCardWithImages(parentElement) {
   // remove all child elements of the parent element
   while (parentElement.firstChild) {
@@ -67,7 +71,6 @@ function loadEndingCardWithImages(parentElement) {
     catImageToDisplay.addInfoURLByID(idOfCaption);
   };
 }
-
 
 // create the HTML for an empty animal card
 function emptyEndingCardHTML(animalID, i, url, altText, comment, favourited) {
