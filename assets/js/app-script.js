@@ -57,7 +57,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
-  let appRow = -1;
+   let appRow = -1;
   for (let i=0; i < combinedArray.length; i++) {
     if (i % 2 === 0) {
       appRow++;
@@ -394,6 +394,9 @@ function addPulsingButtonEventListener(parentElement) {
       if (allHaveBeenPressed) {
         if (parseInt(appRow) === parseInt(appRowMax)) { 
         //Flag hidden submit button and show
+        const nextRow = document.getElementById('final-zen-query');
+        // remove the css class that makes the row invisible
+        nextRow.classList.remove('invisible-element');
       }
       else {
         // show the next row of cute animals
@@ -411,12 +414,12 @@ function addPulsingButtonEventListener(parentElement) {
         dogImages[arrayindex].zenLevel = document.getElementById('zen-level-dog-image-'+ arrayindex).value;
         dogImages[arrayindex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayindex).value;
         dogImages[arrayindex].userComment = document.getElementById('user-comment-dog-image-'+ arrayindex).value.trim();
-        dogImages[arrayindex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayindex).classList.contains('is-favourite');
+        dogImages[arrayindex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayindex).classList.contains('favourited');
       } else if(animalType === "cat-image") {
         catImages[arrayindex].zenLevel = document.getElementById('zen-level-cat-image-'+ arrayindex).value;
         catImages[arrayindex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayindex).value;
         catImages[arrayindex].userComment = document.getElementById('user-comment-cat-image-'+ arrayindex).value.trim();
-        catImages[arrayindex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayindex).classList.contains('is-favourite');
+        catImages[arrayindex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayindex).classList.contains('favourited');
       }
 
    });
@@ -756,8 +759,7 @@ function goodToGoHandler() {
   document.getElementById('image-store').classList.remove('invisible-element');
   document.getElementById('nav-burger').classList.remove('invisible-element');
   document.getElementById('app-title').classList.remove('invisible-element');
-  document.getElementById('final-zen-query').classList.remove('invisible-element');
-}
+ }
 
 function signalGoodToGo() {
   loadingImages = false;
@@ -770,11 +772,10 @@ function signalGoodToGo() {
 // event handler for the button to save images
 document.getElementById('save-images').addEventListener('click', (event) => {
   event.preventDefault();
-  showCustomAlert('Saving images to local storage');
-  // save the images to local storage
+   // save the images to local storage
   saveAnimals();
   // go to the ending page
-  // window.location.href = 'ending.html';
+  window.location.href = 'ending.html';
 });
 
 function addAnimalInfoURLEventListener(parentElement) {
@@ -794,11 +795,28 @@ function addAnimalInfoURLEventListener(parentElement) {
 
 // toggle the favourite button
 function handleFavouriteButtonClicked(event) {
-  // also bubble the event from the icon to the button
   event.preventDefault();
-  const uiElement = event.target;
-    
+  // NB event bubbling from icon to button, so may have to check parent element if no id
+  let clickedElement = event.target;
+  let id = clickedElement.id;
+  if (!id) {
+    clickedElement = clickedElement.parentElement;
+    id = clickedElement.id;
+  }
 
+  if (id) {
+    console.log(id);
+    const animalType = getAnimalImageTypeFromID(id);
+    console.log('🚀 ~ file: ending-script.js:437 ~ handleFavouriteButtonClick ~ animalType:', animalType);
+
+    const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
+    console.log('🚀 ~ file: ending-script.js:440 ~ handleFavouriteButtonClick ~ arrayIndex:', arrayIndex);
+
+   
+     const favButton = document.getElementById('fav-btn-' + animalType + '-' + arrayIndex);
+   favButton.classList.toggle('favourited');
+     favButton.classList.toggle('non-favourited');
+       } 
 }
 
 // event handler to show the info modal
