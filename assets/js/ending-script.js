@@ -27,7 +27,7 @@ let zenPointsAdded = 0; // total zen points added today
 window.addEventListener('load', () => {
   // get the dogs and cats out of local storage
   retrieveAppRunAnimals();
-  // get the dog breeds in case it hasn't happened yet
+  // TODO remove for production code: get the dog breeds in case it hasn't happened yet
   getDogBreeds();
 
   // display the cutest dog and cat images into the categories
@@ -642,20 +642,7 @@ function handleFavouriteButtonClick(event) {
   }
 }
 
-function addAnimalInfoURLEventListener(parentElement) {
-  // Check if the current element has the class animal-info-url
-  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
-    // Add the event listener to the info link element
-    parentElement.addEventListener('click', showInfoModal);
-  }
 
-  // Traverse the child elements recursively
-  if (parentElement.children && parentElement.children.length > 0) {
-    for (const child of parentElement.children) {
-      addAnimalInfoURLEventListener(child);
-    }
-  }
-}
 
 // event handler to show the info modal
 function showInfoModal(event) {

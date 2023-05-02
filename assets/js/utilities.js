@@ -346,6 +346,21 @@ function getAnimalsFromLocalStorage(animalType, storeFilter) {
   }
 }
 
+function addAnimalInfoURLEventListener(parentElement) {
+  // Check if the current element has the class animal-info-url
+  if (parentElement.classList && parentElement.classList.contains('animal-info-url')) {
+    // Add the event listener to the info link element
+    parentElement.addEventListener('click', showInfoModal);
+  }
+
+  // Traverse the child elements recursively
+  if (parentElement.children && parentElement.children.length > 0) {
+    for (const child of parentElement.children) {
+      addAnimalInfoURLEventListener(child);
+    }
+  }
+}
+
 // Save the animals to local storage
 // eg saveAnimalsToLocalStorage('dog-images', '-favourites', dogImages)
 function saveAnimalsToLocalStorage(animalType, storeFilter, animalsToSave) {

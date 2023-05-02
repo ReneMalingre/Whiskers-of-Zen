@@ -59,8 +59,6 @@ body {
   padding: 0;
 }
 
-
-
 #main-app {
   padding: 0;
   margin: 0;
@@ -262,6 +260,25 @@ select {
   transition: 300ms;
 }
 
+/* favourites page */
+.favourites-board{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.polaroid-favourite {
+  margin: 5px 0;
+}
+
+.app-card-favourite {
+  margin: 1rem 0;
+  width: 100%;
+}
+
 a:hover {
   transform: scale(1.2);
   transition: 100ms linear;
@@ -315,7 +332,6 @@ ul li {
   list-style: none;
   padding: 4px 8px;
 }
-
 
 #image-modal-content {
   box-sizing: border-box;
@@ -379,7 +395,7 @@ input:checked + .slider::before {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }
 
@@ -471,6 +487,59 @@ input:checked + .slider::before {
     background-color: var(--light-bg);
   }
 }
+/* Confirmation Dialog Styling */
+.modal-confirmation {
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-confirmation-content {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  }
+
+  .close-modal-confirmation {
+  color: rgb(255, 65, 65);
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+  }
+
+  .close-modal-confirmation:hover,
+  .close-modal-confirmation:focus {
+  color: #ff1010;
+  cursor: pointer;
+  }
+
+  .modal-confirmation-content button {
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  }
+  .yes-confirmation {
+  background-color: rgb(255, 65, 65);
+  }
+  .cancel-confirmation:hover {
+  background-color: rgb(255, 7, 7);
+  }
+  .cancel-confirmation:hover {
+  background-color: rgb(167, 167, 167);
+  }
 
 @media screen and (min-width: 500px) {
   .affirmation {
@@ -481,6 +550,10 @@ input:checked + .slider::before {
     width: 500px;
   }
 
+  .app-card-favourite {
+    width: 450px;
+  }
+
   .polaroid {
     width: 440px;
     padding: 10px;
@@ -488,6 +561,15 @@ input:checked + .slider::before {
 
   .polaroid-img {
     height: 360px;
+  }
+
+  .polaroid-favourite {
+    width: 400px;
+    padding: 10px;
+  }
+
+  .polaroid-img-favourite {
+    height: 280px;
   }
 
   .slider-emoji {

@@ -1,134 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css">
-    <html data-theme="light"></html>
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
 
     <!-- W3 schools CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- favourites CSS -->
     <link rel="stylesheet" href="./assets/css/favourites.css" />
-
+    <link rel="stylesheet" href="./assets/css/app-style.css" />
+    <!-- customising W3 modal CSS -->
+    <link rel="stylesheet" href="./assets/css/w3-modal.css" />
     <!-- music link-->
-    <audio src="path/to/music.mp3" autoplay></audio>
+    <!-- <audio src="path/to/music.mp3" autoplay></audio> -->
 
- 
     <title>Whiskers of Zen - Favourites page</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <aside>
-        <nav></nav>
+      <nav></nav>
     </aside>
 
     <!-- Sidebar -->
     <aside>
-        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large"
-            onclick="w3_close()">Close &times;</button> 
+      <div
+        class="w3-sidebar w3-bar-block w3-card w3-animate-left"
+        style="display: none"
+        id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+          Close &times;
+        </button>
 
-            <div class="w3-dropdown-click">
-                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
-                    <span class="music-on-off align-right"><label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label></span></button>
-                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-                  <a href="#" class="w3-bar-item w3-button">Music 1</a>
-                  <a href="#" class="w3-bar-item w3-button">Music 2</a>
-                  <a href="#" class="w3-bar-item w3-button">Music 3</a>
-                </div>
-              </div>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
+        <div class="w3-dropdown-click">
+          <button onclick="myFunction()" class="w3-button">
+            <i class="fa-solid fa-headphones"></i> Music
+            <span class="music-on-off align-right"
+              ><label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span> </label
+            ></span>
+          </button>
+          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+            <a href="#" class="w3-bar-item w3-button">Music 1</a>
+            <a href="#" class="w3-bar-item w3-button">Music 2</a>
+            <a href="#" class="w3-bar-item w3-button">Music 3</a>
+          </div>
         </div>
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-trophy"></i> Achievements</a
+        >
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-bookmark"></i> Favourites</a
+        >
+      </div>
     </aside>
 
-    
     <!-- Hamburger button for sidebar -->
     <nav>
-        <ul>
+      <ul>
         <div id="main">
-            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+          <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">
+            &#9776;
+          </button>
         </div>
-            <!-- play and pause music button-->
-        <div>
-            <button class='button play'></button>
-            <img class="play" src="./assets/img/play-pause-button.png" alt="">
-        </div>
-        </ul>
+      </ul>
     </nav>
-    
-            
-      
+
     <!-- title for favourites page-->
-    <main class="container">
+    <main">
+      <section>
+        <h1 class="title">Whiskers of Zen</h1>
+        <h2 class="subtitle">Your favourites</h2>
+        <h2 class="information">This are your favourites</h2>
+      </section>
 
-        <hgroup>
-            <h1 class="title">Whiskers of Zen</h1>
-            <h2 class="subtitle">Your favourites</h2>
-            <h2 class="information">This are your favourites</h2>
-        </hgroup>
-
-    <!-- main content -->
-    <main class="container">
-
-        <!-- Grid of 2 columns; max 4 cards display for large screens -->
-        <div class="grid">
-            <!-- example card -->
-            <article class="polaroid">
-                <!-- Favourite button delete from favourites-->
-                <img class="test" src="./assets/img/cat-sml.png" alt="">
-                <!--<a href="#" role="button" class="secondary outline favourite"><i class=""></i></a> -->
-                <!-- text align (e.g. breed) -->
-                <p><span class="strong1">Paws</span> 5 paws!!!</p>
-                <p><span class="strong2">Zen</span> Zen level went up 5 crystals</p>
-                <p><span class="strong3">This is the cutest</span> (sample breed)</p>
-
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-                 <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
-            </article>
-            <article class="polaroid">
-                <!-- Favourite button delete from favourites-->
-                
-                <img class="test" src="./assets/img/cat-sml.png" alt="">
-                <!--<a href="#" role="button" class="secondary outline favourite"><i class=""></i></a> -->
-                <!-- text align (e.g. breed) -->
-                <p><span class="strong1">Paws</span> 5 paws!!!</p>
-                <p><span class="strong2">Zen</span> Zen level went up 5 crystals</p>
-                <p><span class="strong3">This is the cutest</span> (sample breed)</p>
-
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-                 <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
-            </article> 
-             
-
-          </div>
-
+      <!-- Div to hold the favourites -->
+      <div class="favourites-board" id="favourites-holder"></div>
     </main>
-  
 
-  <script src="./assets/js/sidebar.js"></script> 
-  <!-- font awesome kit-->
-  <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
-  <footer>
-    <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
-</footer>
+    <!-- delete favourite confirmation modal -->
+    <div class="modal-confirmation">
+        <div class="modal-confirmation-content">
+            <span class="close-modal-confirmation">&times;</span>
+            <p>Are you sure you want to remove this image from your favourites?</p>
+            <button class="yes-confirmation" onclick="hideModalConfirmationYes()">Remove this Cute Animal from Favourites Forever?</button>
+            <button class="cancel-confirmation" onclick="hideModalConfirmationNo()">No! Leave this pet alone.</button>
+        </div>
+    </div>
 
-</body>
+    <footer>
+      <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
+    </footer>
 
-    
-
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/dog-breeds.js"></script>
+    <script src="./assets/js/utilities.js"></script>
+    <script src="./assets/js/favourites.js"></script>
+    <script src="./assets/js/sidebar.js"></script>
+    <!-- font awesome kit-->
+    <script
+      src="https://kit.fontawesome.com/cea607b6d1.js"
+      crossorigin="anonymous"></script>
+  </body>
 </html>

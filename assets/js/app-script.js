@@ -56,13 +56,16 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   let index;
   let newRow;
   let appCardRow;
+  let appRow=-1;
   for (let i=0; i < combinedArray.length; i++) {
+    appRow++;
     // every even image, add a new row div
     // TODO set the first row to be visible and subsequent rows to be hidden
     // TODO by adding the .invisible-element class to the row div
     if (i % 2 === 0) {
       newRow = document.createElement('div');
       newRow.classList.add('app-card-row');
+      newRow.id = 'app-row-' + appRow;
       // add an affirmation to the row
       const affirmation = randomAffirmation();
       // add a div to contain the affirmation
@@ -85,7 +88,7 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
       catIndex++;
     }
     // construct the image template
-    const imageTemplate= emptyAppCardHTML(id, index);
+    const imageTemplate= emptyAppCardHTML(id, index, appRow);
     // create a temporary div element to contain the image
     const newDiv = document.createElement('div');
     newDiv.innerHTML = imageTemplate;
@@ -136,7 +139,7 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   addPulsingButtonEventListener(parentElement);
   addAnimalInfoURLEventListener(parentElement);
   addEventListenerToDOMBranch(parentElement, 'polaroid-img', 'click', animalImageClicked);
-
+  addEventListenerToDOMBranch(parentElement, 'favourite-button', 'click', handleFavouriteButtonClicked);
   // call function to get images from APIs
   // and add them to the dogImages and catImages arrays
   await getFreshCatImages(catImagesTally, catImageStore);
@@ -356,17 +359,29 @@ function addPulsingButtonEventListener(parentElement) {
   if (parentElement.classList && parentElement.classList.contains('pulsing-button')) {
     // Add the event listener to the pulsing-button element
     parentElement.addEventListener('click', function(event) {
-      // console.log('pulsing-button clicked');
+      console.log('pulsing-button clicked');
       event.preventDefault();
       parentElement.classList.remove('pulsing-button');
+      parentElement.classList.add('invisible-element');
+
+
       // TODO - get the user selections and add them to the right dogImage or catImage object
       // get the id of the button that was clicked
       // this will be 'submit-dog-image-0 or submit-cat-image-0
       const buttonClicked= event.target;
       const idValue = buttonClicked.id;
+      console.log(`idValue: ${idValue}`);
+        // is it a dog or cat?
+        // wjat is the index of the image?
+        // what are the id's of the input elements?
+        // get the values from the input elements
+        // add the values to the dogImage or catImage object
+
+      // translate the id to the index of the dogImage or catImage object
+      
       // ! For Iggy - this is where you need to get the slider value etc and add it to the dogImage or catImage object
       //       if(idValue.includes('dog')) {
-      //       dogImage[i].isFavourite=true;
+      //       dogImage[i].isFavourite = true;
       //       dogImage[i].cuteRating = sliderElement.value;
       //       } else {
       // catImage[i].isFavourite=true;
@@ -584,7 +599,7 @@ async function createAndPopulateAppElements() {
 }
 
 // create the HTML for an empty animal card
-function emptyAppCardHTML(id, i) {
+function emptyAppCardHTML(id, i, appRow) {
   // construct the image template
   let placeHolder;
   let animalType;
@@ -638,7 +653,7 @@ function emptyAppCardHTML(id, i) {
   <div class="button-row">
    <a href="#" role="button" id="fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
    summary-button secondary outline w3-border-red"><i class="fav-icon ${favouriteIcon}"></i></a>
-   <a href="#" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
+   <a href="#" data-approw = "${appRow}" role="button" id="submit-${id}-${i}" class="pulsing-button secondary outline w3-text-blue w3-sans-serif">Save Rating</a>
   </div>
    </article>`;
 
@@ -743,6 +758,14 @@ function addAnimalInfoURLEventListener(parentElement) {
   }
 }
 
+// toggle the favourite button
+function handleFavouriteButtonClicked(event) {
+  // also bubble the event from the icon to the button
+  event.preventDefault();
+  const uiElement = event.target;
+    
+
+}
 
 // event handler to show the info modal
 function showInfoModal(event) {
