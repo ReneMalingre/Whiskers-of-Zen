@@ -62,17 +62,32 @@ function retrieveAppRunAnimals() {
 
   // get and randomise the favourite images rather than showing them by display order
   dogImagesFavourites = randomizeArray(filterFavourites(dogImages));
+  if (!dogImagesFavourites) {
+    dogImagesFavourites = [];
+  }
   catImagesFavourites = randomizeArray(filterFavourites(catImages));
+  if (!catImagesFavourites) {
+    catImagesFavourites = [];
+  }
 
   // get the past favourites and add on the new favourites if they are unique
   let pastDogFavourites = getAnimalsFromLocalStorage('dog-images', '-favourites');
+  if (!pastDogFavourites) {
+    pastDogFavourites = [];
+  }
   let pastCatFavourites = getAnimalsFromLocalStorage('cat-images', '-favourites');
-  pastDogFavourites = dogImagesFavourites.concat(pastDogFavourites, dogImagesFavourites);
-  pastCatFavourites = catImagesFavourites.concat(pastCatFavourites, catImagesFavourites);
-
-  // save the new favourites list
-  saveAnimalsToLocalStorage('dog-images', '-favourites', pastDogFavourites);
-  saveAnimalsToLocalStorage('cat-images', '-favourites', pastCatFavourites);
+  if (!pastCatFavourites) {
+    pastCatFavourites = [];
+  }
+  // add the new favourites to the stored favourites from previous runs
+  console.log('dogImagesFavourites:', dogImagesFavourites.length);
+  for (let i=0; i<dogImagesFavourites.length; i++) {
+    addDogImageToFavourites(dogImagesFavourites[i]);
+  }
+  console.log('catImagesFavourites:', catImagesFavourites.length);
+  for (let i=0; i<catImagesFavourites.length; i++) {
+    addCatImageToFavourites(catImagesFavourites[i]);
+  }
 }
 
 function checkForAchievements(dogImages, catImages) {
@@ -248,28 +263,28 @@ function achievementCountToLevel(achievementCount) {
   if (achievementCount < 10) {
     return 0;
   }
-  if (achievementCount < 50) {
+  if (achievementCount < 20) {
     return 1;
   }
-  if (achievementCount < 100) {
+  if (achievementCount < 30) {
     return 2;
   }
-  if (achievementCount < 200) {
+  if (achievementCount < 50) {
     return 3;
   }
-  if (achievementCount < 500) {
+  if (achievementCount < 100) {
     return 4;
   }
-  if (achievementCount < 1000) {
+  if (achievementCount < 200) {
     return 5;
   }
-  if (achievementCount < 2000) {
+  if (achievementCount < 500) {
     return 6;
   }
-  if (achievementCount < 5000) {
+  if (achievementCount < 1000) {
     return 7;
   }
-  if (achievementCount < 10000) {
+  if (achievementCount < 2000) {
     return 8;
   }
   return 9;
@@ -305,23 +320,23 @@ function achievementLevelToDescription(achievementLevel, animalType) {
     case 0:
       return '< 10 ' + animalType + '. Keep going!';
     case 1:
-      return '10 - 50 ' + animalType + '. A great start!';
+      return '10 - 20 ' + animalType + '. A great start!';
     case 2:
-      return '50 - 100 ' + animalType + '. You\'re a natural!';
+      return '20 - 30 ' + animalType + '. You\'re a natural!';
     case 3:
-      return '100 - 200 ' + animalType + '. You\'re a pro!';
+      return '30 - 50 ' + animalType + '. You\'re a pro!';
     case 4:
-      return '200 - 500 ' + animalType + '. You\'re a master!';
+      return '50 - 100 ' + animalType + '. You\'re a master!';
     case 5:
-      return '500 - 1,000 ' + animalType + '. You\'re a legend!';
+      return '100 - 200 ' + animalType + '. You\'re a legend!';
     case 6:
-      return '1,000 - 2,000 ' + animalType + '. You\'re a hero!';
+      return '200 - 500 ' + animalType + '. You\'re a hero!';
     case 7:
-      return '2,000 - 5,000+ ' + animalType + '. You\'re a god!';
+      return '500 - 1,000+ ' + animalType + '. You\'re a god!';
     case 8:
-      return '5,000 - 10,000+ ' + animalType + '. You\'re a deity!';
+      return '1,000 - 2,000+ ' + animalType + '. You\'re a deity!';
     case 9:
-      return '> 10,000 You\'ve seen all the ' + animalType + '! You\'re a legend!';
+      return '> 2,000 You\'ve seen all the ' + animalType + '! You\'re a legend!';
   }
 }
 
@@ -400,16 +415,15 @@ function loadEndingCardWithImages(parentElement, dogImagesToDisplay, catImagesTo
   // update the card title
   const totalDisplayed = dogsToDisplay + catsToDisplay;
   if (totalDisplayed === 0) {
-    document.getElementById(titleElementID).innerHTML = 'No ' + title + '! Really?';
+    document.getElementById(titleElementID).innerHTML = 'No ' + title + '! Oh, maybe next time.';
   } else {
     if (totalAvailable > 4) {
-      document.getElementById(titleElementID).innerHTML = totalDisplayed + ' of the ' + totalAvailable + ' ' + title;
+      document.getElementById(titleElementID).innerHTML = title;
     } else {
       document.getElementById(titleElementID).innerHTML = title;
     }
   }
 }
-
 
 // create the HTML for an empty animal card
 function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited) {
@@ -432,8 +446,8 @@ function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited)
       <a href="" class="animal-info-url animal-info-url-ending w3-cursive" id="${listType}-animal-info-url-${id}-${i}">${altText}</a>
     </div>
     <!-- user comment -->
+    <p class="summary-comment w3-text-deep-purple w3-sans-serif" type="text" id="${listType}-user-comment-${id}-${i}">${comment}</p>
     <div class="w3-row w3-center">
-      <p class="summary-comment w3-text-deep-purple w3-sans-serif" type="text" id="${listType}-user-comment-${id}-${i}">${comment}</p>
       <!-- Buttons for various functions -->
       <a href="#" role="button" id="${listType}-fav-btn-${id}-${i}" class="favourite-button ${favouriteClass} 
       summary-button secondary outline w3-border-amber w3-hover-border-green">
@@ -473,20 +487,29 @@ function handleFavouriteButtonClick(event) {
           dogImagesMostZen[arrayIndex].isFavourite = !dogImagesMostZen[arrayIndex].isFavourite;
           isFavourite = dogImagesMostZen[arrayIndex].isFavourite;
           imageURL = dogImagesMostZen[arrayIndex].url;
+          if (isFavourite) {
+            dogImagesFavourites.push(dogImagesMostZen[arrayIndex]);
+          }
           break;
         case 'ugly':
           dogImagesUgliest[arrayIndex].isFavourite = !dogImagesUgliest[arrayIndex].isFavourite;
           isFavourite = dogImagesUgliest[arrayIndex].isFavourite;
           imageURL = dogImagesUgliest[arrayIndex].url;
+          if (isFavourite) {
+            dogImagesFavourites.push(dogImagesUgliest[arrayIndex]);
+          }
           break;
         case 'cute':
           dogImagesCutest[arrayIndex].isFavourite = !dogImagesCutest[arrayIndex].isFavourite;
           isFavourite = dogImagesCutest[arrayIndex].isFavourite;
           imageURL = dogImagesCutest[arrayIndex].url;
+          if (isFavourite) {
+            dogImagesFavourites.push(dogImagesCutest[arrayIndex]);
+          }
           break;
         case 'fav':
           // if it is already a favourite, then remove it
-          console.log("clicked favourite button");
+          console.log('clicked favourite button');
           isFavourite = false;
           imageURL = dogImagesFavourites[arrayIndex].url;
           // remove from object from favourites at this array index
@@ -560,16 +583,25 @@ function handleFavouriteButtonClick(event) {
           catImagesMostZen[arrayIndex].isFavourite = !catImagesMostZen[arrayIndex].isFavourite;
           isFavourite = catImagesMostZen[arrayIndex].isFavourite;
           imageURL = catImagesMostZen[arrayIndex].url;
+          if (isFavourite) {
+            catImagesFavourites.push(catImagesMostZen[arrayIndex]);
+          }
           break;
         case 'ugly':
           catImagesUgliest[arrayIndex].isFavourite = !catImagesUgliest[arrayIndex].isFavourite;
           isFavourite = catImagesUgliest[arrayIndex].isFavourite;
           imageURL = catImagesUgliest[arrayIndex].url;
+          if (isFavourite) {
+            catImagesFavourites.push(catImagesUgliest[arrayIndex]);
+          }
           break;
         case 'cute':
           catImagesCutest[arrayIndex].isFavourite = !catImagesCutest[arrayIndex].isFavourite;
           isFavourite = catImagesCutest[arrayIndex].isFavourite;
           imageURL = catImagesCutest[arrayIndex].url;
+          if (isFavourite) {
+            catImagesFavourites.push(catImagesCutest[arrayIndex]);
+          }
           break;
         case 'fav':
           // if it is already a favourite, then remove it
@@ -579,7 +611,6 @@ function handleFavouriteButtonClick(event) {
           catImagesFavourites.splice(arrayIndex, 1);
           // save favourites to local storage
           saveAnimalsToLocalStorage('cat-images', '-favourites', catImagesFavourites);
-          reloadFavourites();
           break;
         default:
           return;
@@ -639,9 +670,9 @@ function handleFavouriteButtonClick(event) {
         }
       }
     }
+    reloadFavourites();
   }
 }
-
 
 
 // event handler to show the info modal
@@ -708,56 +739,59 @@ function showInfoModal(event) {
 }
 
 function addDogImageToFavourites(dogImage) {
-  console.log('adding to favourite ' + dogImage.url);
+  const favouriteDogs = getAnimalsFromLocalStorage('dog-images', '-favourites');
   // only push this to the favourites array if the image is not already in the array - test by the url property
-  if (dogImagesFavourites.find((dog) => dog.url === dogImage.url)) {
+  if (favouriteDogs.find((dog) => dog.url.toLowerCase() === dogImage.url.toLowerCase())) {
     return;
   }
-  console.log('pre-push: ' + dogImagesFavourites.length);
+  console.log('pre-push: ' + favouriteDogs.length);
   dogImage.isFavourite = true;
-  dogImagesFavourites.push(dogImage);
-  console.log('post-push: ' + dogImagesFavourites.length);
+  favouriteDogs.push(dogImage);
+  console.log('post-push: ' + favouriteDogs.length);
 
   // save the favourites array to local storage
-  saveAnimalsToLocalStorage('dog-images', '-favourites', dogImagesFavourites);
+  saveAnimalsToLocalStorage('dog-images', '-favourites', favouriteDogs);
   reloadFavourites();
 }
 
 function removeDogImageFromFavourites(dogImage) {
+  const favouriteDogs = getAnimalsFromLocalStorage('dog-images', '-favourites');
   // only remove this from the favourites array if the image is in the array - test by the url property
-  if (!dogImagesFavourites.find((dog) => dog.url === dogImage.url)) {
+  if (!favouriteDogs.find((dog) => dog.url.toLowerCase() === dogImage.url.toLowerCase())) {
     return;
   }
   dogImage.isFavourite = false;
-  dogImagesFavourites = dogImagesFavourites.filter((dog) => dog.url !== dogImage.url);
+  favouriteDogs = favouriteDogs.filter((dog) => dog.url.toLowerCase() !== dogImage.url.toLowerCase());
   // save the favourites array to local storage
-  saveAnimalsToLocalStorage('dog-images', '-favourites', dogImagesFavourites);
+  saveAnimalsToLocalStorage('dog-images', '-favourites', favouriteDogs);
   reloadFavourites();
 }
 
 
 function addCatImageToFavourites(catImage) {
   // only push this to the favourites array if the image is not already in the array - test by the url property
-  if (catImagesFavourites.find((cat) => cat.url === catImage.url)) {
+  const favouriteCats = getAnimalsFromLocalStorage('cat-images', '-favourites');
+  if (favouriteCats.find((cat) => cat.url.toLowerCase() === catImage.url.toLowerCase())) {
     return;
   }
   catImage.isFavourite = true;
-  catImagesFavourites.push(catImage);
+  favouriteCats.push(catImage);
 
   // save the favourites array to local storage
-  saveAnimalsToLocalStorage('cat-images', '-favourites', catImagesFavourites);
+  saveAnimalsToLocalStorage('cat-images', '-favourites', favouriteCats);
   reloadFavourites();
 }
 
 function removeCatImageFromFavourites(catImage) {
   // only remove this from the favourites array if the image is in the array - test by the url property
-  if (!catImagesFavourites.find((cat) => cat.url === catImage.url)) {
+  const favouriteCats = getAnimalsFromLocalStorage('cat-images', '-favourites');
+  if (!favouriteCats.find((cat) => cat.url === catImage.url)) {
     return;
   }
   catImage.isFavourite = false;
-  catImagesFavourites = catImagesFavourites.filter((cat) => cat.url !== catImage.url);
+  favouriteCats = favouriteCats.filter((cat) => cat.url !== catImage.url);
   // save the favourites array to local storage
-  saveAnimalsToLocalStorage('cat-images', '-favourites', catImagesFavourites);
+  saveAnimalsToLocalStorage('cat-images', '-favourites', favouriteCats);
   reloadFavourites();
 }
 
