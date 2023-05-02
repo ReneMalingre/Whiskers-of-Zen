@@ -372,7 +372,7 @@ function addPulsingButtonEventListener(parentElement) {
       const idValue = buttonClicked.id;
       console.log(`idValue: ${idValue}`);
         // is it a dog or cat?
-        // wjat is the index of the image?
+        // what is the index of the image?
         // what are the id's of the input elements?
         // get the values from the input elements
         // add the values to the dogImage or catImage object
