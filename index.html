@@ -1,59 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
-    <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css">
-    <html data-theme="light"></html>
+    <!-- W3 schools CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" >
+
+    <!-- pico CSS Framework -->
+    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" >
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
- 
     <title>Whiskers of Zen - Landing Page</title>
-</head>
+  </head>
 
-<body>
-    <main class="container">
-        <hgroup>
-            <h1 class="text-3xl font-bold">Whiskers of Zen</h1>
-            <h4>A Dog & Cat Web Image Generator</h4>
-            <h5>Which furry friends would you like to meet today?</h5>
-        </hgroup>
+  <body>
+    <!-- Sidebar -->
+    <aside>
+      <div
+        class="w3-sidebar w3-bar-block w3-card w3-animate-left"
+        style="display: none"
+        id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
+          Close &times;
+        </button>
 
-    <!-- TODO: add functionality to select the chosen species for image generation (can be both) -->
-    <!-- :checked when selected-->
-    
-    <section class="container">
+        <div class="w3-dropdown-click">
+          <button onclick="myFunction()" class="w3-button">
+            <i class="fa-solid fa-headphones"></i> Music
+            <span class="music-on-off align-right"
+              ><label class="switch">
+                <input type="checkbox" >
+                <span class="slider round"></span> </label
+            ></span>
+          </button>
+          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+            <a href="#" class="w3-bar-item w3-button">Music 1</a>
+            <a href="#" class="w3-bar-item w3-button">Music 2</a>
+            <a href="#" class="w3-bar-item w3-button">Music 3</a>
+          </div>
+        </div>
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-trophy"></i> Achievements</a
+        >
+        <a href="#" class="w3-bar-item w3-button"
+          ><i class="fa-solid fa-bookmark"></i> Favourites</a
+        >
+      </div>
+    </aside>
 
+    <!-- Hamburger button for sidebar -->
+    <nav>
+      <!-- <ul> -->
+        <div id="main">
+          <button
+            id="openNav"
+            class="w3-button w3-xlarge w3-text-white"
+            onclick="w3_open()">
+            &#9776;
+          </button>
+        </div>
+      <!-- </ul> -->
+    </nav>
+
+    <main class="container slimmer-padding-top">
+      <div>
+        <h1 class="text-3xl font-bold  "><span class="app-title w3-text-deep-purple w3-sand w3-border w3-border-deep-purple w3-round-xlarge">Whiskers of Zen</span></h1>
+        <h4 class="w3-text-sand">Improve your mood by rating images of cute dogs & cats</h4>
+        <h5>Which furry friends would you like to meet today?</h5>
+      </div>
+
+      <!-- TODO: add functionality to select the chosen species for image generation (can be both) -->
+      <!-- :checked when selected-->
+
+      <section class="container">
         <!-- Merged functions into one box -->
         <!-- removed switches & replaced with selections -->
 
         <article>
-
-            <header>
-                <h3>Select your buddies to meet today</h3>
-            </header>
-            <!-- pico grid for responsiveness -->
-            <div class="grid">
+          <h3 class = "w3-text-deep-purple">Select your buddies to meet today</h3>
+          <p  class="w3-text-purple">Choose the number of dog and cat images you would like to see.</p>
+          <p  class="w3-text-purple strong">Rate how cute they are and how they make you feel.</p>
+          <p  class="w3-text-purple">
+            You can add images to your favourites & see information about the breeds. Enjoy the serotonin rush!
+          </p>
+          <!-- pico grid for responsiveness -->
+          <div class="grid">
             <!-- Dog - selection (card within a card)-->
-
             <article>
                 <div class="dogs">
-                    <label for="image-number-dogs"></label>
+                    <label class="w3-text-deep-purple strong" for="image-number-dogs">Choose Number of Dogs to Rate</label>
                     <select name="image-number-dogs" id="image-number-dogs">
-                        <option value="five">5</option>
-                        <option value="ten">10</option>
-                        <option value="fifteen">15</option>
-                        <option value="twenty">20</option>
-                        <option value="twenty-five">25</option>
-                        <option value="thirty">30</option>
+                        <option value="5">Five</option>
+                        <option value="10">Ten</option>
+                        <option value="15">Fifteen</option>
+                        <option value="20">Twenty</option>
+                        <option value="25">Twenty five</option>
+                        <option value="30">Thirty</option>
                     </select>
                 </div>
                 <img class="img-scale" src="./assets/img/dog-sml.png" alt="A cute golden retriever">
@@ -63,44 +109,48 @@
 
             <article>
                 <div class="cats">
-                    <label for="image-number-cats"></label>
+                    <label class="w3-text-deep-purple strong" for="image-number-cats">Choose Number of Cats to Rate</label>
                     <select name="image-number-cats" id="image-number-cats">
-                        <option value="five">5</option>
-                        <option value="ten">10</option>
-                        <option value="fifteen">15</option>
-                        <option value="twenty">20</option>
-                        <option value="twenty-five">25</option>
-                        <option value="thirty">30</option>
+                        <option value="5">Five</option>
+                        <option value="10">Ten</option>
+                        <option value="15">Fifteen</option>
+                        <option value="20">Twenty</option>
+                        <option value="25">Twenty five</option>
+                        <option value="30">Thirty</option>
                     </select>
                 </div>
                 <img class="img-scale" src="./assets/img/cat-sml.png" alt="A cute kitten">
             </article>
 
             </div>
-                
-                <h6>Your current mood level:</h6>
-                <label for="aww-level">
-                    <span class="strong align-left">No Aww</span>
-                    <span class="strong align-right">Lots of Awws</span>
+                <h6  class="w3-text-deep-purple strong">Dogs and cats are guaranteed to improve your mood.</h6>
+                <h4  class="w3-text-deep-purple strong">What is your current Level of Zen right now?</h4>
+                <!-- <h6>Your current mood level:</h6> -->
+                <label for="zen-level">
+                    <span class="slider-emoji strong align-left">😩</span>
+                    <span class="slider-emoji strong align-center">😐</span>
+                    <span class="slider-emoji strong align-right">😊</span>
                 </label>
-                <input type="range" id="user-level" name="user-level"
-                       min="0" max="5">
+                <input type="range" id="zen-level" name="zen-level" class="zen-slider"
+                       min="1" max="5" value="3">
     
             <!-- submit button -->
-            <input id="submit-button" type="submit" value="Generate!">
+            <input class="w3-deep-purple strong w3-text-white w3-hover-deep-orange w3-round-large" id="submit-button" type="submit" value="Load your furry friends!">
     
-           
-            
         </article>
-    </section>
+      </section>
 
+      <footer>
+        <p class="w3-text-deep-purple">Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
+      </footer>
     </main>
 
-    <footer>
-        <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
-    </footer>
-    
     <script src="./assets/js/index-script.js"></script>
-
-</body>
+    <script src="./assets/js/sidebar.js"></script>
+    <!-- <script src="./assets/js/results.js"></script> -->
+    <!-- font awesome kit-->
+    <script
+      src="https://kit.fontawesome.com/cea607b6d1.js"
+      crossorigin="anonymous"></script>
+  </body>
 </html>

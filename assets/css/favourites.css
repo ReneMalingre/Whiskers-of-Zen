@@ -1,72 +1,78 @@
 /* additional CSS styling sheet (separate to framework) */
 
+html {
+  background: linear-gradient(0, #efd5ff 0%, #515ada 100%);
+}
+
 body {
-    background: linear-gradient(0, #efd5ff 0%, #515ada 100%);
-    text-align: center;
-  }
-  .title {
-    font-weight:100;
-    font-size: 80px;
-    font-style: serif;
-    
-  } 
-  .subtitle {
-    font-weight: bold;
-    font-size: 40px; 
-    font-style:oblique;
-  } 
-  .information {
-    font-weight: bold;
-    font-size: 60px;
-    font-style: oblique;
-    background-color: pink;
+  text-align: center;
+}
 
-  }
-  
-  
-  .img-scale {
-    border-radius: 80%;
-    border: 10px solid #aeb3eb;
-    width: 80%;
-    margin-top: 30px;
-    max-width: 400px;
-  }
-  
-  select {
-    max-width: 50%;
-    text-align: center;
-  }
-  
-  .strong1{
-    font-weight: bold;
-    font-style: italic;
+.title {
+  font-weight: 100;
+  font-size: 80px;
+  font-style: serif;
+}
 
-  }
-  .strong2{
-    font-weight: bold;
-    text-align: start;
-    font-style: italic;
-  }.strong3{
-    font-weight: bold;
-    font-style: italic;
-  }
-  /* results cards */
-  .polaroid {
-    width: 80%;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    align-items: center;
-    align-content: space-between;
-  }
-  
-  .btn {
-    margin-bottom: 15px;
-    float: right;
-  }
-  
-  /* animations */
-  
-  .close {
+.subtitle {
+  font-weight: bold;
+  font-size: 40px;
+  font-style: oblique;
+}
+
+.information {
+  font-weight: bold;
+  font-size: 60px;
+  font-style: oblique;
+  background-color: pink;
+}
+
+.img-scale {
+  border-radius: 80%;
+  border: 10px solid #aeb3eb;
+  width: 80%;
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+select {
+  max-width: 50%;
+  text-align: center;
+}
+
+.strong1 {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.strong2 {
+  font-weight: bold;
+  text-align: start;
+  font-style: italic;
+}
+
+.strong3 {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* results cards */
+.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  align-items: center;
+  align-content: space-between;
+}
+
+.btn {
+  margin-bottom: 15px;
+  float: right;
+}
+
+/* animations */
+
+/* .close {
     transition: 300ms;
   }
   
@@ -76,14 +82,8 @@ body {
     transition-duration: 100ms;
   }
   
-  
-  /* Sidebar */
-  
-  aside {
-    background-color: white;
-  }
-  
-  /* main button */
+   */
+/* Sidebar */
 
   .main {
     position: fixed;
@@ -95,8 +95,6 @@ body {
     float: left;
   }
   
-  
-  
   .align-right {
     float: right;
   }
@@ -106,6 +104,40 @@ body {
   .test {
     width: 300px;
   }
-
-  /* Toggle switch by W3 Schools */
   
+=======
+aside {
+  background-color: white;
+}
+
+/* main button */
+
+.main {
+  position: fixed;
+  left: 0;
+}
+
+/* play and pause button*/
+.play {
+  position: fixed;
+  right: 0%;
+  width: 40px;
+  height: 40px;
+}
+
+/* text item formatting */
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+
+/* for testing only */
+
+.test {
+  width: 300px;
+}
+
