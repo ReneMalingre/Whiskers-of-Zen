@@ -92,66 +92,52 @@
           <div class="grid">
             <!-- Dog - selection (card within a card)-->
             <article>
-              <div class="dogs">
-                <label for="image-number-dogs"></label>
-                <select name="image-number-dogs" id="image-number-dogs">
-                  <option value="five">5</option>
-                  <option value="ten">10</option>
-                  <option value="fifteen">15</option>
-                  <option value="twenty">20</option>
-                  <option value="twenty-five">25</option>
-                  <option value="thirty">30</option>
-                </select>
-              </div>
-              <img
-                class="img-scale"
-                src="./assets/img/dog-sml.png"
-                alt="A cute golden retriever">
+                <div class="dogs">
+                    <label for="image-number-dogs"></label>
+                    <select name="image-number-dogs" id="image-number-dogs">
+                        <option value="5">Five</option>
+                        <option value="10">Ten</option>
+                        <option value="15">Fifteen</option>
+                        <option value="20">Twenty</option>
+                        <option value="25">Twentyfive</option>
+                        <option value="30">Thirty</option>
+                    </select>
+                </div>
+                <img class="img-scale" src="./assets/img/dog-sml.png" alt="A cute golden retriever">
             </article>
 
             <!-- Cat - selection -->
 
             <article>
-              <div class="cats">
-                <label for="image-number-cats"></label>
-                <select name="image-number-cats" id="image-number-cats">
-                  <option value="five">5</option>
-                  <option value="ten">10</option>
-                  <option value="fifteen">15</option>
-                  <option value="twenty">20</option>
-                  <option value="twenty-five">25</option>
-                  <option value="thirty">30</option>
-                </select>
-              </div>
-              <img
-                class="img-scale"
-                src="./assets/img/cat-sml.png"
-                alt="A cute kitten" >
+                <div class="cats">
+                    <label for="image-number-cats"></label>
+                    <select name="image-number-cats" id="image-number-cats">
+                        <option value="5">Five</option>
+                        <option value="10">Ten</option>
+                        <option value="15">Fifteen</option>
+                        <option value="20">Twenty</option>
+                        <option value="25">Twentyfive</option>
+                        <option value="30">Thirty</option>
+                    </select>
+                </div>
+                <img class="img-scale" src="./assets/img/cat-sml.png" alt="A cute kitten">
             </article>
-          </div>
-          <div>
-            <h6>Dogs and cats are guaranteed to improve your mood.</h6>
-            <h4>What is your current Level of Zen right now?</h4>
-            <!-- <h6>Your current mood level:</h6> -->
-            <label for="zen-level">
-              <span class="slider-emoji strong align-left">😩</span>
-              <span class="slider-emoji strong align-center">😐</span>
-              <span class="slider-emoji strong align-right">😊</span>
-            </label>
-            <input
-              type="range"
-              id="zen-level"
-              name="user-level"
-              min="1"
-              max="5"
-              value="3"
-              class="zen-slider" >
-          </div>
-          <!-- submit button -->
-          <input
-            id="submit-button"
-            type="submit"
-            value="Load your furry friends!" >
+
+            </div>
+                <h6>Dogs and cats are guaranteed to improve your mood.</h6>
+                <h4>What is your current Level of Zen right now?</h4>
+                <!-- <h6>Your current mood level:</h6> -->
+                <label for="zen-level">
+                    <span class="slider-emoji strong align-left">😩</span>
+                    <span class="slider-emoji strong align-center">😐</span>
+                    <span class="slider-emoji strong align-right">😊</span>
+                </label>
+                <input type="range" id="zen-level" name="zen-level"
+                       min="1" max="5" value="3">
+    
+            <!-- submit button -->
+            <input id="submit-button" type="submit" value="Load your furry friends!">
+    
         </article>
       </section>
 
