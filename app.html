@@ -48,24 +48,17 @@
           Close &times;
         </button>
         <div class="w3-dropdown-click">
-          <button onclick="myFunction()" class="w3-button">
-            <i class="fa-solid fa-headphones"></i> Music
-            <span class="music-on-off align-right"
-              ><label class="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span> </label
-            ></span>
-          </button>
+          <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music</button>
           <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-            <a href="#" class="w3-bar-item w3-button">Music 1</a>
-            <a href="#" class="w3-bar-item w3-button">Music 2</a>
-            <a href="#" class="w3-bar-item w3-button">Music 3</a>
+              <div class="w3-bar-item">
+                  <button id="play-button">Play</button>
+                  <button id="pause-button">Pause</button>
+                  <button id="next-button">next</button>
+                </div>
           </div>
         </div>
         <a href="./index.html" class="w3-bar-item w3-button"><i class="fa-solid fa-house"></i>  Home</a>
-        <a href="./favourites.html" class="w3-bar-item w3-button"
-          ><i class="fa-solid fa-heart"></i> Favourites</a
-        >
+        <a href="./favourites.html" class="w3-bar-item w3-button"><i class="fa-solid fa-heart"></i> Favourites</a>
       </div>
     </aside>
 
