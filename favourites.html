@@ -15,8 +15,14 @@
     <!-- favourites CSS -->
     <link rel="stylesheet" href="./assets/css/favourites.css" />
 
-    <!-- music link-->
+    <!-- music link in case music wants to be autoplay--> 
+    <!--<audio src="./assets/music/Del Rio Bravo.mp3" autoplay></audio>
+    <audio src="./assets/music/Ethereal Relaxation.mp3" autoplay></audio>
+    <audio src="./assets/music/Maccary Bay.mp3" autoplay></audio>
+    <audio src="./assets/music/Mandeville.mp3" autoplay></audio>
+    <audio src="./assets/music/No Frills Salsa - Alternate.mp3" autoplay></audio>
     <audio src="./assets/music/one.mp3" autoplay></audio>
+    <audio src="./assets/music/Thief in the Night.mp3" autoplay></audio>-->
 
     
 
@@ -44,9 +50,15 @@
                   <a href="#" class="w3-bar-item w3-button">Music 3</a>
                 </div>
               </div>
-              <div><audio controls autoplay muted loop id="toggle-music">
-                <source src=".assets/music/Mandeville.mp3"id= "musik">
-             </audio></div>
+              <div>
+                <button id="play-button">Play</button>
+                <button id="pause-button">Pause</button>
+                <button id="next-button">next</button>
+              </div>
+    
+             <!-- <div>
+                <audio id="music-control" controls autoplay next muted loop id="toggle-music">
+             </audio></div>-->
             <a href="#" id="achievements-selector" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
             <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
         </div>
@@ -119,7 +131,7 @@
   <!--js link-->
   <script src="./assets/js/index-script.js"></script>
 
-  <!-- <script src="./assets/js/results.js"></script> -->
+  <script src="./assets/js/results.js"></script>
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
   <footer>
