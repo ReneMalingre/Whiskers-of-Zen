@@ -1,29 +1,66 @@
-/* overriding picoCSS / W3 variables */
+/* overriding picoCSS variables */
+:root {
+  font-size: 16px;
+
+  --non-favourited: #808080;
+  --favourited: #f00;
+  --favourited-bg: #faa;
+  --light-bg: #fff;
+  --purplish: #515ada;
+  --deep-purple: #6a5acd;
+  --light-purple: #efd5ff;
+  --box-shadow-light: 1px 3px 6px 0 rgb(0 0 0 / 20%),
+    0 6px 20px 0 rgb(0 0 0 / 18%);
+  --box-shadow-dark: 1px 2px 4px rgb(0 0 0 / 50%);
+  --polaroid-border: #f8f8f6;
+  --slider-bg: #ccc;
+  --slider-blue: #2196f3;
+  --bg-gradient: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  --img-border: #aeb3eb;
+  --pulse-colour: #b8daf0;
+}
+
+nav {
+  display: inline;
+  position: relative;
+}
+
+.slimmer-padding-top {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 article {
   margin: 5px;
-  padding: 20px;
+  padding: 16px;
 }
 
-article>header {
+article > header {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 0.5rem;;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
 }
 
 h5 {
-  color: white;
+  color: var(--light-bg);
 }
 
-:where(address,blockquote,dl,figure,form,ol,p,pre,table,ul)~:is(h1,h2,h3,h4,h5,h6) {
+:where(address, blockquote, dl, figure, form, ol, p, pre, table, ul)
+  ~ :is(h1, h2, h3, h4, h5, h6) {
   margin: 0.5rem;
 }
 
 p {
   padding: 0;
   margin: 0.2rem;
+  font-size: 1rem;
 }
 
 .w3-bar-block .w3-bar-item {
@@ -31,23 +68,19 @@ p {
   padding-bottom: 30px;
 }
 
-
 /* additional CSS styling sheet (separate to framework) */
 body {
   text-align: center;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+  background: var(--bg-gradient) !important;
   margin: 0;
   padding: 0;
-
 }
-
 
 /* party popper gif */
 .party-popper {
   z-index: 1;
   top: 5px;
 }
-
 
 #main-app {
   padding: 0;
@@ -56,8 +89,8 @@ body {
 
 #app-loading {
   min-height: 100vh;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
-  color: white;
+  background: var(--bg-gradient);
+  color: var(--light-bg);
 }
 
 .small-text {
@@ -65,12 +98,15 @@ body {
   padding-top: 0.8rem;
 }
 
+.app-title{
+  padding: 0.25rem 3rem 0.5rem;
+}
 
 .img-scale {
   border-radius: 50%;
-  border: 10px solid #aeb3eb;
+  border: 10px solid var(--img-border);
   width: 50%;
-  margin-top: 30px;
+  margin-top: 1rem;
   max-width: 400px;
 }
 
@@ -104,20 +140,20 @@ select {
   justify-content: center;
   flex-wrap: wrap;
   gap: 4rem;
-  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
-}
-
-.app-card {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: var(--bg-gradient);
 }
 
 .top-right-button {
   margin-bottom: 15px;
   float: right;
-  
+}
+
+.app-card {
+  box-sizing: border-box;
+  margin-top: 1rem;
+  width: 100%;
+  background-color: var(--light-bg);
+  box-shadow: var(--box-shadow-light);
 }
 
 .polaroid {
@@ -128,8 +164,8 @@ select {
   box-sizing: border-box;
   padding: 0;
   width: 100%;
-  background-color: #f8f8f6;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--polaroid-border);
+  box-shadow: var(--box-shadow-dark);
   border-radius: 5px;
   margin: 10px 0;
   transition: transform 0.3s ease;
@@ -146,7 +182,13 @@ select {
 .animal-caption {
   font-size: 1rem;
   margin: 2px;
-  color: #515ada;
+  color: var(--purplish);
+}
+
+.animal-info-url {
+  color: var(--deep-purple);
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
 }
 
 .card-question {
@@ -170,48 +212,25 @@ select {
   font-size: 1rem;
 }
 
-/* 
-.favourite {
-  margin-bottom: 5px;
-} */
-
-/* animations */
-
-/* .secondary {
-  transition: 300ms;
-}
-
-a:hover {
-  transform: scale(1.2);
-  transition: 100ms linear;
-  transition-duration: 100ms;
-} */
-
 /* Sidebar */
-
 aside {
-  background-color: white;
-}
-
-#nav-burger {
-  position: fixed;
-  left: 0;
+  background-color: var(--light-bg);
 }
 
 .ending-results {
-  background-color: white;
-  padding: 20px;
+  background-color: var(--light-bg);
+  padding: 16px;
 }
 
 #sidebar2 {
-  float:right;
+  float: right;
   width: 25%;
   margin: 2%;
   padding: 5px;
   padding-left: 50px;
   top: 0;
-  margin-top: 20px;
-  }
+  margin-top: 16px;
+}
 
 /* formatting */
 
@@ -231,18 +250,12 @@ aside {
   margin-top: 15px;
 }
 
-
 /* for testing only */
 
 .test {
   width: 300px;
   margin-bottom: 10px;
 }
-
-.slider {
-  position: relative;
-}
-
 
 /* Toggle switch by W3 Schools */
 
@@ -265,11 +278,8 @@ aside {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
+  inset:0;
+  background-color: var(--slider-bg);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -281,17 +291,17 @@ aside {
   width: 20px;
   left: 2px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--light-bg);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--slider-blue);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--slider-blue);
 }
 
 input:checked + .slider::before {
@@ -305,28 +315,95 @@ input:checked + .slider::before {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }
 
 /* end of slider */
+/* ============================================================================= */
+/* Range Slider */
+/* ============================================================================= */
+#final-zen-query,#zen-level {
+  max-width: 80vw;
+  margin: auto;
+}
+
+/* This is for the track */
+.zen-slider::-webkit-slider-runnable-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+.zen-slider::-moz-range-track {
+  background: var(--purplish);
+  height: 10px;
+  border: none;
+}
+
+/* This is for the thumb */
+.zen-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -10px; /* You need to specify a margin for Chrome :/ */
+}
+
+.zen-slider::-moz-range-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* This is for IE */
+.zen-slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.zen-slider::-ms-thumb {
+  height: 30px;
+  width: 30px;
+  background: var(--deep-purple);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.zen-slider::-ms-fill-lower,
+.zen-slider::-ms-fill-upper {
+  background: var(--purplish);
+}
+
+#zen-level{
+  margin: 0.5rem auto 2rem;
+}
+
+/* ============================================================================= */
+/* End of Range Slider */
+/* ============================================================================= */
 
 .pulsing-button {
-  background-color: #fff;
+  background-color: var(--light-bg);
   animation: pulse-animation 2s infinite;
 }
 
 @keyframes pulse-animation {
   0% {
-    background-color: #fff;
+    background-color: var(--light-bg);
   }
 
   50% {
-    background-color: #b8daf0;
+    background-color: var(--pulse-colour);
   }
 
   100% {
-    background-color: #fff;
+    background-color: var(--light-bg);
   }
 }
 
@@ -339,7 +416,7 @@ input:checked + .slider::before {
     width: 440px;
     padding: 10px;
   }
-  
+
   .polaroid-img {
     height: 360px;
   }
@@ -359,3 +436,12 @@ input:checked + .slider::before {
     margin: 5px;
   }
 }
+
+@media screen and (min-width: 500px) {
+  nav {
+    position: fixed;
+    left: 0;
+  }
+}
+  
+/* from app-style.css */
