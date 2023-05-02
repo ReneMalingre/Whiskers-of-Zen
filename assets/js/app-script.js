@@ -47,7 +47,6 @@ function addEmptyAppCardsToDom(dogImagesTally, catImagesTally, parentElement) {
   const combinedArray = dogsArray.concat(Array(catImagesTally).fill(2));
   // shuffle the array
   randomizeArray(combinedArray);
-  //   console.log(combinedArray);
 
   // create the empty App cards
   let dogIndex = 0;
@@ -153,7 +152,6 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
   loadingPlaceholders = false; // set the flag to indicate that the placeholders are no longer being loaded
 
   // replace the placeholders with the candidate images
-  //   console.log('catImages tally', catImages.length);
   for (let i = 0; i < catImages.length; i++) {
     // add them to the DOM in the img elements via the AnimalImage class
     catImages[i].addURLAndAltToImgByID(`cat-image-${i}`);
@@ -161,7 +159,6 @@ async function getFreshImages(dogImagesTally, catImagesTally, parentElement) {
     catImages[i].addInfoURLByID(`animal-info-url-cat-image-${i}`);
     addImageToLoadingRow(catImages[i].url);
   };
-  //   console.log('dogImages tally', dogImages.length);
   for (let i = 0; i < dogImages.length; i++) {
     // add them to the DOM in the img elements via the AnimalImage class
     dogImages[i].addURLAndAltToImgByID(`dog-image-${i}`);
@@ -224,7 +221,6 @@ async function getFreshDogImages(imageCount, dogImageStore) {
     const url = newDogs[i].url;
     // ensure they are jpg or png
     if (!isValidImageType(url)) {
-    //   console.log(`Invalid image type: ${url}`);
       continue;
     }
 
@@ -285,7 +281,7 @@ async function getFreshCatImages(imageCount, catImageStore) {
   const apiCall = new CatAPICall(currentImagesRequest, getCatBreed);
   const returnData = new CatData(await apiCall.callAPI()); // this is an APIReturn object with response status, error message and JSON data
   // if API call was successful
-  if (returnData.apiReturn.responseStatus === 200) { // TODO see if other codes are ok here??
+  if (returnData.apiReturn.responseStatus === 200) { 
     // save cat images object to array
     newCats=returnData.dataToArray(); // this returns an array of CatImage objects
   } else {
@@ -298,7 +294,6 @@ async function getFreshCatImages(imageCount, catImageStore) {
     const url = newCats[i].url;
     // ensure they are jpg or png
     if (!isValidImageType(url)) {
-    //   console.log(`Invalid image type: ${url}`);
       continue;
     }
 
@@ -318,7 +313,6 @@ async function getFreshCatImages(imageCount, catImageStore) {
     if (!newCats[i].hasBreed) {
       newCats[i].description = randomAffirmation();
     }
-    // console.log('🚀 ~ file: images.js:373 ~ getFreshCatImages ~ newCats:', newCats[i]);
     catImageStore.push(newCats[i]);
 
     // check if we have enough images
@@ -344,7 +338,6 @@ function addImageLoadedEventListener(parentElement) {
     // Add the event listener to the img element
     parentElement.addEventListener('load', imageLoadedHandler);
     parentElement.addEventListener('error', imageErrorHandler);
-    // console.log('added event listener to img element');
   }
 
   // Traverse the child elements recursively
@@ -360,9 +353,7 @@ function addPulsingButtonEventListener(parentElement) {
   if (parentElement.classList && parentElement.classList.contains('pulsing-button')) {
     // Add the event listener to the pulsing-button element
     parentElement.addEventListener('click', function(event) {
-      console.log('pulsing-button clicked');
       event.preventDefault();
-      console.log('pulsing button click id: ' + event.target.id);
       parentElement.classList.remove('pulsing-button');
       parentElement.classList.add('invisible-element');
 
@@ -380,10 +371,8 @@ function addPulsingButtonEventListener(parentElement) {
       const allMatchingPulsatingButtons = document.querySelectorAll(selectorQuery);
       let allHaveBeenPressed=true;
       // test the buttons to see if they have been clicked
-      console.log(allMatchingPulsatingButtons.length);
       for (let i=0; i < allMatchingPulsatingButtons.length; i++) {
         const buttonElement = allMatchingPulsatingButtons[i];
-        console.log(buttonElement.classList);
         if (buttonElement.classList.contains('pulsing-button')) {
           allHaveBeenPressed=false;
           break;
@@ -411,21 +400,14 @@ function addPulsingButtonEventListener(parentElement) {
       // Poll for if dog vs cat and pull appropriate array info
       if (animalType === 'dog-image') {
         dogImages[arrayIndex].zenRating = document.getElementById('zen-level-dog-image-'+ arrayIndex).value;
-        console.log('zen level dog ' + dogImages[arrayIndex].zenRating);
         dogImages[arrayIndex].cuteRating = document.getElementById('aww-level-dog-image-'+ arrayIndex).value;
         dogImages[arrayIndex].userComment = document.getElementById('user-comment-dog-image-'+ arrayIndex).value.trim();
-        if (dogImages[arrayIndex].userComment !== '') {
-          console.log(dogImages[arrayIndex].userComment);
-        }
         dogImages[arrayIndex].isFavourite = document.getElementById('fav-btn-dog-image-'+ arrayIndex).classList.contains('favourited');
       } else if (animalType === 'cat-image') {
-        console.log('zen level cat ' + catImages[arrayIndex].zenRating);
         catImages[arrayIndex].zenRating = document.getElementById('zen-level-cat-image-'+ arrayIndex).value;
         catImages[arrayIndex].cuteRating = document.getElementById('aww-level-cat-image-'+ arrayIndex).value;
         catImages[arrayIndex].userComment = document.getElementById('user-comment-cat-image-'+ arrayIndex).value.trim();
-
         catImages[arrayIndex].isFavourite = document.getElementById('fav-btn-cat-image-'+ arrayIndex).classList.contains('favourited');
-        console.log('catImages[' + arrayIndex +'].isFavourite: ' + catImages[arrayIndex].isFavourite);
       }
     });
   }
@@ -440,18 +422,14 @@ function addPulsingButtonEventListener(parentElement) {
 
 // get event handler that recognises that an image has loaded
 function imageLoadedHandler(event) {
-//   console.log(`image loaded ${loadingPlaceholders}`);
   if (loadingPlaceholders) return;
-  //   console.log('image loaded');
   const imageOfConcern = event.target;
   const imageAltText = imageOfConcern.alt;
-  // console.log(`imageAltText: ${imageAltText}` );
   if (imageAltText === 'placeholder') return;
   const idValue = imageOfConcern.id;
 
   if (idValue === undefined || idValue.length === 0) return;
   totalImagesLoaded++;
-  // console.log(`totalImagesLoaded by event: ${totalImagesLoaded}`);
   const width = imageOfConcern.naturalWidth;
   const height = imageOfConcern.naturalHeight;
   const imageType = idValue.substring(0, 10);
@@ -485,9 +463,7 @@ function imageLoadedHandler(event) {
 
 // get event handler that recognises that an image has not loaded due to error
 function imageErrorHandler(event) {
-  // console.log(`image error ${loadingPlaceholders}`);
   if (loadingPlaceholders) return;
-  // console.log('image error');
   const imageOfConcern = event.target;
   const imageAltText = imageOfConcern.alt;
   if (imageAltText === 'placeholder') return;
@@ -546,7 +522,6 @@ async function replaceInvalidImages() {
       addImageToLoadingRow(dogImageStore[i].url);
     };
     let dogImageIndex = 0;
-    // console.log('loading new dog images ' + dogImages.length);
     for (let i = 0; i < dogImages.length; i++) {
       if (dogImages[i].invalidImage) {
         dogImages[i] = dogImageStore[dogImageIndex];
@@ -554,7 +529,6 @@ async function replaceInvalidImages() {
         dogImages[i].invalidImage = false;
         dogImages[i].description = dogImageStore[dogImageIndex].description;
         dogImages[i].addURLAndAltToImgByID(`dog-image-${i}`);
-        // dogImages[i].addCaptionToImgByID(`animal-caption-dog-image-${i}`);
         dogImages[i].addInfoURLByID(`animal-info-url-dog-image-${i}`);
         dogImageIndex++;
         if (dogImageIndex > invalidDogImages - 1) {
@@ -567,7 +541,6 @@ async function replaceInvalidImages() {
   if (invalidCatImages > 0) {
     await getFreshCatImages(invalidCatImages, catImageStore);
     let catImageIndex = 0;
-    // console.log('loading new cat images ' + catImages.length);
     for (let i=0; i < catImageStore.length; i++) {
       addImageToLoadingRow(catImageStore[i].url);
     };
@@ -581,7 +554,6 @@ async function replaceInvalidImages() {
         catImages[i].width = catImageStore[catImageIndex].width;
         catImages[i].height = catImageStore[catImageIndex].height;
         catImages[i].addURLAndAltToImgByID(`cat-image-${i}`);
-        // catImages[i].addCaptionToImgByID(`animal-caption-cat-image-${i}`);
         catImages[i].addInfoURLByID(`animal-info-url-cat-image-${i}`);
         catImageIndex++;
         if (catImageIndex > invalidCatImages - 1) {
@@ -632,7 +604,6 @@ async function createAndPopulateAppElements() {
   const parentElement= document.getElementById('image-store');
   parentElement.classList.add('invisible-element');
 
-  // console.log('dogImageCount: ' + dogImageCount + ' catImageCount: ' + catImageCount);
   // dog and cat image count is valid, go to the remote servers and get the images!
   // most of this code is in the images.js file
   await getFreshImages(dogImageCount, catImageCount, parentElement);
@@ -722,7 +693,6 @@ function isValidImageType(url) {
 // are not valid images (e.g. 404 error, or bad aspect ratio or resolution)
 async function checkImageLoadStatus() {
   // check if all images have loaded
-  // console.log(`Checking image load status: ${totalImagesLoaded} of ${dogImageCount + catImageCount} images loaded`);
   if (parseInt(totalImagesLoaded) === dogImageCount + catImageCount || imageLoadTimer.totalTime >= 15000) {
     // all images have loaded or 15 seconds has passed
     // stop timer
@@ -808,13 +778,8 @@ function handleFavouriteButtonClicked(event) {
   }
 
   if (id) {
-    console.log(id);
     const animalType = getAnimalImageTypeFromID(id);
-    console.log('🚀 ~ file: ending-script.js:437 ~ handleFavouriteButtonClick ~ animalType:', animalType);
-
     const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
-    console.log('🚀 ~ file: ending-script.js:440 ~ handleFavouriteButtonClick ~ arrayIndex:', arrayIndex);
-
     const favButton = document.getElementById('fav-btn-' + animalType + '-' + arrayIndex);
     favButton.classList.toggle('favourited');
     favButton.classList.toggle('non-favourited');
@@ -828,7 +793,6 @@ function handleFavouriteButtonClicked(event) {
 
 // event handler to show the info modal
 function showInfoModal(event) {
-  console.log('info link clicked');
   event.preventDefault();
   // display the modal
   const uiElement = event.target;

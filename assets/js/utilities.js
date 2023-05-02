@@ -88,7 +88,6 @@ function addEventListenerToDOMBranch(parentElement, className, eventName, functi
 function toggleFavourite(elementID, newFavoriteState) {
   const favButton = document.getElementById(elementID);
   if (!favButton) {
-    // console.log(elementID + ' not found');
     return;
   }
 
@@ -249,9 +248,7 @@ function filterFavourites(originalArray) {
   const favouritesArray = [];
 
   for (let i=0; i < originalArray.length; i++) {
-    console.log('checking if favourite: ' + originalArray[i].isFavourite );
     if (originalArray[i].isFavourite == true) {
-      // console.log('favourite found');
       favouritesArray.push(originalArray[i]);
     }
   }
@@ -263,7 +260,6 @@ function sortArrayByZenRatingDescending(originalArray) {
   const sortedArray = originalArray.sort((a, b) => parseInt(b.zenRating) - parseInt(a.zenRating));
   const zenArray = [];
   for (let i=0; i < sortedArray.length; i++) {
-    console.log('checking zen rating: ' + sortedArray[i].zenRating);
     if (sortedArray[i].zenRating >=4) {
       zenArray.push(sortedArray[i]);
     }
@@ -372,7 +368,6 @@ function getAnimalsFromLocalStorage(animalType, storeFilter) {
     // create an array of cat images
     const savedCats = [];
     for (let i = 0; i < animalStore.cats.length; i++) {
-      //   console.log(i + ' ' + catImagesFromStorage.cats[i].cat);
       const catImage =new CatImage();
       catImage.deserialize(animalStore.cats[i].cat);
       savedCats.push(catImage);
@@ -431,6 +426,5 @@ function saveAnimalsToLocalStorage(animalType, storeFilter, animalsToSave) {
       });
     }
     localStorage.setItem(animalType + storeFilter, JSON.stringify(serialized));
-    console.log(animalType + ' saved to local storage ' + JSON.stringify(serialized));
   }
 }

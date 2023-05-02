@@ -1,6 +1,6 @@
 const petAffirmationsArray = [
   'A little bundle of fur, a whole lot of love.',
-  'When life gets ruff, hug a cat.',
+  'When life gets ruff, hug a dog.',
   'Pawsitive vibes only!',
   'The road to happiness is paved with paw prints.',
   'A dog\'s love can brighten even the darkest day.',

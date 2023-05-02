@@ -1,245 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- pico CSS -->
-    <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
-    <html data-theme="light"></html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- W3 schools CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <!-- pico CSS -->
+  <link rel="stylesheet" href="./assets/css/pico-1.5.10/css/pico.min.css" />
+  <html data-theme="light">
 
-    <!-- customising W3 modal CSS -->
-    <link rel="stylesheet" href="./assets/css/w3-modal.css" />
-    
-    <!-- custom CSS -->
-    <!-- <link rel="stylesheet" href="./assets/css/custom.css" /> -->
+  </html>
 
-    <link rel="stylesheet" href="./assets/css/ending-style.css" />
-    <!-- <link rel="stylesheet" href="./assets/css/app-style.css" /> -->
+  <!-- W3 schools CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
-    <title>Whiskers of Zen - Ending page</title>
-  </head>
+  <!-- customising W3 modal CSS -->
+  <link rel="stylesheet" href="./assets/css/w3-modal.css" />
+
+  <!-- custom CSS -->
+  <!-- <link rel="stylesheet" href="./assets/css/custom.css" /> -->
+
+  <link rel="stylesheet" href="./assets/css/ending-style.css" />
+  <!-- <link rel="stylesheet" href="./assets/css/app-style.css" /> -->
+
+  <title>Whiskers of Zen - Ending page</title>
+</head>
 
 <body>
-    <!-- Sidebar -->
-    <aside>
-        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large"
-            onclick="w3_close()">Close &times;</button> 
+  <!-- Sidebar -->
+  <aside>
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+      <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
 
-            <div class="w3-dropdown-click">
-                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
-                    <span class="music-on-off align-right"><label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label></span></button>
-                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-                  <a href="#" class="w3-bar-item w3-button">Music 1</a>
-                  <a href="#" class="w3-bar-item w3-button">Music 2</a>
-                  <a href="#" class="w3-bar-item w3-button">Music 3</a>
-                </div>
-              </div>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
+      <div class="w3-dropdown-click">
+        <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+          <span class="music-on-off align-right"><label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label></span></button>
+        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+          <a href="#" class="w3-bar-item w3-button">Music 1</a>
+          <a href="#" class="w3-bar-item w3-button">Music 2</a>
+          <a href="#" class="w3-bar-item w3-button">Music 3</a>
         </div>
-    </aside>
-    
-    <!-- Hamburger button for sidebar -->
-    <nav>
-        <!-- <ul> -->
-        <div id="main">
-            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+      </div>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i> Achievements</a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i> Favourites</a>
+    </div>
+  </aside>
+
+  <!-- Hamburger button for sidebar -->
+  <nav>
+    <!-- <ul> -->
+    <div id="main">
+      <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+    </div>
+    <!-- </ul> -->
+  </nav>
+
+  <!-- Nav bar with achievement details -->
+  <section class="ending-results">
+    <div class="container">
+      <!-- home & back button -->
+      <ul id="nav-btns">
+        <li>
+          <a href="./index.html" role="button"
+            class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
+              class="fa-solid fa-house"></i> Play Again</a>
+        </li>
+        <li>
+          <a href="./favourites.html" role="button"
+            class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
+              class="fa-solid fa-star"></i> View your Favourites</a>
+        </li>
+      </ul>
+
+      <details open>
+        <summary class="summary">
+          <h4 class="strong w3-text-deep-purple w3-hover-text-deep-orange">Achievements Earned this Session</h4>
+        </summary>
+        <div class="w3-cell-row">
+          <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
+            <p class=" w3-text-white">
+              You just viewed <span id="user-number" class="strong">X</span> fluffy
+              animals!
+            </p>
+            <p class="w3-text-white" id="super-cute"></p>
+            <p class="w3-text-white" id="totally-zen"></p>
+            <p class="w3-text-white invisible-element" id="let-down-gently"></p>
+          </div>
+          <div
+            class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
+            <img class="party-popper" src="./assets/img/party-popper-joypixels.gif" alt="a party popper animation" />
+          </div>
         </div>
-        <!-- </ul> -->
-    </nav>
-   
-    <!-- Nav bar with achievement details -->
-    <section class="ending-results">
-      <div class="container">
-        <!-- home & back button -->
-        <ul id="nav-btns">
-          <li>
-            <a
-              href="./index.html"
-              role="button"
-              class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
-              ><i class="fa-solid fa-house"></i> Play Again</a
-            >
-          </li>
-          <li>
-            <a
-              href="./favourites.html"
-              role="button"
-              class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
-              ><i class="fa-solid fa-star"></i> View your Favourites</a
-            >
-          </li>
-        </ul>
+      </details>
 
-        <details open>
-          <summary class="summary">
-            <h4 class="strong w3-text-deep-purple w3-hover-text-deep-orange"
-              >Achievements Earned this Session</h4
-            >
-          </summary>
-          <div class="w3-cell-row">
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
-              <p class=" w3-text-white">
-                You just viewed <span id="user-number" class="strong">X</span> fluffy
-                animals!
-              </p>
-              <p class="w3-text-white" id="super-cute"></p>
-              <p class="w3-text-white" id="totally-zen"></p>
-              <p class="w3-text-white invisible-element" id="let-down-gently"></p>
-            </div>
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
-              <img
-                class="party-popper"
-                src="./assets/img/party-popper-joypixels.gif"
-                alt="a party popper animation"/>
-            </div>
+      <details>
+        <summary>
+          <h4 class="strong w3-text-deep-purple w3-hover-text-deep-orange">Your Lifetime Achievements</h4>
+        </summary>
+        <div class="w3-cell-row">
+          <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
+            <p id="achievement-1" class="achievement w3-text-white"></p>
+            <p id="achievement-1-sub" class="achievement-sub w3-text-sand"></p>
+            <p id="achievement-2" class="achievement w3-text-white"></p>
+            <p id="achievement-2-sub" class="achievement-sub w3-text-sand"></p>
+            <p id="achievement-3" class="achievement w3-text-light-blue"></p>
+            <p id="achievement-3-sub" class="achievement-sub w3-text-sand"></p>
+            <p id="achievement-4" class="achievement w3-text-light-blue"></p>
+            <p id="achievement-4-sub" class="achievement-sub w3-text-sand"></p>
+            <p id="achievement-5" class="achievement w3-text-white"></p>
+            <p id="achievement-5-sub" class="achievement-sub w3-text-sand"></p>
+            <p id="achievement-6" class="achievement w3-text-white"></p>
+            <p id="achievement-6-sub" class="achievement-sub w3-text-sand"></p>
+            </p>
           </div>
-        </details>
+          <div
+            class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
+            <img class="party-popper" src="./assets/img/badge.gif" alt="achievement badge animation" />
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
 
-        <details>
-          <summary>
-            <h4 class="strong w3-text-deep-purple w3-hover-text-deep-orange"
-              >Your Lifetime Achievements</h4
-            >
-          </summary>
-          <div class="w3-cell-row">
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-deep-purple w3-round-xlarge w3-center">
-              <p id="achievement-1" class="achievement w3-text-white"></p>
-              <p id="achievement-1-sub" class="achievement-sub w3-text-sand"></p>
-              <p id="achievement-2" class="achievement w3-text-white"></p>
-              <p id="achievement-2-sub" class="achievement-sub w3-text-sand"></p>
-              <p id="achievement-3" class="achievement w3-text-light-blue"></p>
-              <p id="achievement-3-sub" class="achievement-sub w3-text-sand"></p>
-              <p id="achievement-4" class="achievement w3-text-light-blue"></p>
-              <p id="achievement-4-sub" class="achievement-sub w3-text-sand"></p>
-              <p id="achievement-5" class="achievement w3-text-white"></p>
-              <p id="achievement-5-sub" class="achievement-sub w3-text-sand"></p>
-              <p id="achievement-6" class="achievement w3-text-white"></p>
-              <p id="achievement-6-sub" class="achievement-sub w3-text-sand"></p>
-              </p>
-            </div>
-            <div class="w3-container w3-cell w3-cell-middle w3-mobile popper w3-border w3-border-deep-purple w3-round-xlarge w3-center">
-              <img
-                class="party-popper"
-                src="./assets/img/badge.gif"
-                alt="achievement badge animation" />
-            </div>
+  <main class="container">
+    <!-- displays user results numbers -->
+    <section>
+      <header>
+        <h2 class="w3-text-deep-purple w3-center strong">
+          How was meeting your fluffy friends today?
+        </h2>
+      </header>
+      <p class="w3-text-sand w3-center">
+        Your Zen Level before you looked at the animals was:
+        <span id="user-zen-before" class="strong"></span>
+      </p>
+      <p class="w3-text-sand w3-center">
+        You added <span id="zen-points-total" class="strong"></span> Zen points
+        from rating the Fluffy Overlords and the Very Good Boys.
+      </p>
+      <p class="w3-text-sand w3-center">
+        Your Zen Level now is:
+        <span id="zen-level-current" class="strong"></span>
+      </p>
+    </section>
+
+    <section>
+      <!--photos from user's results  -->
+      <div class="grid w3-center">
+        <!-- Cutest -->
+        <article>
+          <div>
+            <h3 id="app-card-title-cutest" class="ending-card-title strong w3-text-deep-purple">
+              Cutest
+            </h3>
           </div>
-        </details>
+          <div class="summary-card" id="cutest-holder"></div>
+        </article>
+
+        <!-- Most basic (ugly)-->
+        <article>
+          <div>
+            <h3 id="app-card-title-ugliest" class="ending-card-title strong w3-text-deep-orange">
+              Most Basic
+            </h3>
+          </div>
+          <!-- cat and dog images put in this div by JS -->
+          <div class="summary-card" id="ugliest-holder"></div>
+        </article>
+      </div>
+      <div class="grid w3-center">
+        <!-- Most Zen -->
+        <article>
+          <div>
+            <h3 id="app-card-title-most-zen" class="ending-card-title strong w3-text-deep-purple">
+              Most Zen
+            </h3>
+          </div>
+          <!-- cat and dog images put in this div by JS -->
+          <div class="summary-card" id="most-zen-holder"></div>
+        </article>
+
+        <!-- Favourites-->
+        <article>
+          <div>
+            <h3 id="app-card-title-favourites" class="ending-card-title strong w3-text-deep-orange">
+              Favourites
+            </h3>
+          </div>
+          <div class="summary-card" id="favourites-holder"></div>
+        </article>
       </div>
     </section>
 
-    <main class="container">
-      <!-- displays user results numbers -->
-      <section>
-        <header>
-          <h2 class="w3-text-deep-purple w3-center strong">
-            How was meeting your fluffy friends today?
-          </h2>
-        </header>
-        <p class="w3-text-sand w3-center">
-          Your Zen Level before you looked at the animals was:
-          <span id="user-zen-before" class="strong"></span>
-        </p>
-        <p class="w3-text-sand w3-center">
-          You added <span id="zen-points-total" class="strong"></span> Zen points
-          from rating the Fluffy Overlords and the Very Good Boys.
-        </p>
-        <p class="w3-text-sand w3-center">
-          Your Zen Level now is:
-          <span id="zen-level-current" class="strong"></span>
-        </p>
-      </section>
-
-      <section>
-        <!--photos from user's results  -->
-        <div class="grid w3-center">
-          <!-- Cutest -->
-          <article>
-            <div>
-              <h3 id="app-card-title-cutest" class="ending-card-title strong w3-text-deep-purple">
-                Cutest
-              </h3>
-            </div>
-            <div class="summary-card" id="cutest-holder"></div>
-          </article>
-
-          <!-- Most basic (ugly)-->
-          <article>
-            <div>
-              <h3 id="app-card-title-ugliest" class="ending-card-title strong w3-text-deep-orange">
-                Most Basic
-              </h3>
-            </div>
-            <!-- cat and dog images put in this div by JS -->
-            <div class="summary-card" id="ugliest-holder"></div>
-          </article>
-        </div>
-        <div class="grid w3-center">
-          <!-- Most Zen -->
-          <article>
-            <div>
-              <h3 id="app-card-title-most-zen" class="ending-card-title strong w3-text-deep-purple">
-                Most Zen
-              </h3>
-            </div>
-            <!-- cat and dog images put in this div by JS -->
-            <div class="summary-card" id="most-zen-holder"></div>
-          </article>
-
-          <!-- Favourites-->
-          <article>
-            <div>
-              <h3
-                id="app-card-title-favourites"
-                class="ending-card-title strong w3-text-deep-orange">
-                Favourites
-              </h3>
-            </div>
-            <div class="summary-card" id="favourites-holder"></div>
-          </article>
-        </div>
-      </section>
-      
-    </main>
-    <footer>
-        <!-- home & back button -->
-        <ul id="nav-btns-footer">
-            <li>
-              <a
-                href="./index.html"
-                role="button"
-                class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
-                ><i class="fa-solid fa-house"></i> Play Again</a
-              >
-            </li>
-            <li>
-              <a
-                href="./favourites.html"
-                role="button"
-                class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
-                ><i class="fa-solid fa-star"></i> View your Favourites</a
-              >
-            </li>
-          </ul>
-    </footer>
-    <script src="./assets/js/classes.js"></script>
-    <script src="./assets/js/dog-breeds.js"></script>
-    <script src="./assets/js/utilities.js"></script>
-    <script src="./assets/js/ending-script.js"></script>
-      <script src="./assets/js/sidebar.js"></script>
+  </main>
+  <footer>
+    <!-- home & back button -->
+    <ul id="nav-btns-footer">
+      <li>
+        <a href="./index.html" role="button"
+          class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
+            class="fa-solid fa-house"></i> Play Again</a>
+      </li>
+      <li>
+        <a href="./favourites.html" role="button"
+          class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
+            class="fa-solid fa-star"></i> View your Favourites</a>
+      </li>
+    </ul>
+  </footer>
+  <script src="./assets/js/classes.js"></script>
+  <script src="./assets/js/dog-breeds.js"></script>
+  <script src="./assets/js/utilities.js"></script>
+  <script src="./assets/js/ending-script.js"></script>
+  <script src="./assets/js/sidebar.js"></script>
   <!-- font awesome kit-->
-    <script
-      src="https://kit.fontawesome.com/cea607b6d1.js"
-      crossorigin="anonymous"></script>
-  </body>
+  <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
+</body>
+
 </html>
