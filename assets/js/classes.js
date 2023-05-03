@@ -47,8 +47,6 @@ class AnimalImage {
   }
 
   addURLAndAltToImgByID(id) {
-    // console.log(id);
-
     const imageElement = document.getElementById(id);
     if (!this.url) {
       imageElement.setAttribute('src', 'assets/images/dog-sml.png');
@@ -159,7 +157,6 @@ class DogImage extends AnimalImage {
     const pathSegments = url.split('/');
 
     const breedInfo = pathSegments[4]; // "spaniel-welsh" in the example
-    // console.log(breedInfo);
     const breedParts = breedInfo.split('-');
     const dogBreed = breedParts[0];
     let subBreed = breedParts[1];
@@ -291,7 +288,6 @@ class CatData {
   dataToArray() {
     const returnArray = [];
     if (this.apiReturn.jsonData !== null) {
-      //   console.log(this.apiReturn.jsonData);
       for (let i=0; i<this.apiReturn.jsonData.length; i++) {
         returnArray.push(CatImage.fromJSON(this.apiReturn.jsonData[i]));
       };
@@ -333,10 +329,8 @@ class DogBreedData {
   dataToArray() {
     const returnArray = [];
     // get the data from the JSON data
-    // // console.log('🚀 ~ file: classes.js:223 ~ DogBreedData ~ dataToArray ~ data:', this.apiReturn.jsonData.data);
     for (let i=0; i<this.apiReturn.jsonData.data.length; i++) {
       const newDogBreed = DogBreed.fromJSON(this.apiReturn.jsonData.data[i]);
-      // // console.log('🚀 ~ file: classes.js:225 ~ DogBreedData ~ dataToArray ~ newDogBreed', newDogBreed);
       if (newDogBreed.dogBreed && newDogBreed.breedInfo) {
         returnArray.push(DogBreed.fromJSON(this.apiReturn.jsonData.data[i]));
       }
@@ -374,13 +368,11 @@ class AnimalAPICall {
         }
         // get the json data from the response
         const data = await response.json();
-        // console.log('🚀 ~ file: classes.js:226 ~ AnimalAPICall ~ callAPI ~ data:', data);
 
         // put the data into the newAPIReturn object
         newAPIReturn.jsonData = data;
         newAPIReturn.errorMessage = '';
       } catch (error) {
-        // console.error(`Failed to fetch data: ${error.message}`);
         // store the error message in the newAPIReturn object
         newAPIReturn.errorMessage = error.message;
         // set the jsonData to null

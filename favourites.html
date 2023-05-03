@@ -17,10 +17,7 @@
     <!-- customising W3 modal CSS -->
     <link rel="stylesheet" href="./assets/css/w3-modal.css" />
     <!-- music link-->
-
-    <!-- <audio src="./assets/music/one.mp3"></audio> -->
-    <audio src="./assets/music/one.mp3" autoplay></audio>
-    <!-- <audio src="path/to/music.mp3" autoplay></audio> -->
+     <!--<audio src="path/to/music.mp3" autoplay></audio>-->
 
     <title>Whiskers of Zen - Favourites page</title>
   </head>
@@ -34,19 +31,14 @@
             <div class="w3-dropdown-click">
                 <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music</button>
                 <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-                    <div class="w3-bar-item">
-                        <button id="play-button">Play</button>
-                        <button id="pause-button">Pause</button>
-                        <button id="next-button">next</button>
-                      </div>
+                  <div class="w3-bar-item">
+                      <button id="play-button" class="outline">Play</button>
+                      <button id="pause-button" class="outline">Pause</button>
+                      <button id="next-button" class="outline">Next</button>
+                    </div>
                 </div>
               </div>
             <a href="./index.html" class="w3-bar-item w3-button"><i class="fa-solid fa-house"></i>  Home</a>
-
-             <!-- <div>
-                <audio id="music-control" controls autoplay next muted loop id="toggle-music">
-             </audio></div>-->
-        </div>
       </div>
     </aside>
 
@@ -106,6 +98,7 @@
     <script src="./assets/js/utilities.js"></script>
     <script src="./assets/js/favourites.js"></script>
     <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/js/music.js"></script>
     <!-- font awesome kit-->
     <script
       src="https://kit.fontawesome.com/cea607b6d1.js"

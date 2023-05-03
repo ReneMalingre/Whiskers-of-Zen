@@ -6,8 +6,8 @@
 
 :root {
   --non-favourited: #808080;
-  --favourited: #ff0000;
-  --favourited-bg: #ffaaaa;
+  --favourited: #f00;
+  --favourited-bg: #faa;
   --light-bg:#fff;
   --purplish: #515ada;
   --deep-purple:#6a5acd;
