@@ -4,7 +4,7 @@ const songs = [
     new Audio('./assets/music/Ethereal Relaxation.mp3'),
     new Audio('./assets/music/Maccary Bay.mp3'),
     new Audio('./assets/music/Mandeville.mp3'),
-    new Audio('./assets/music/No Frills Salsa.mp3'),
+    new Audio('./assets/music/No Frills Salsa - Alternate.mp3'),
     new Audio('./assets/music/one.mp3'),
     new Audio('./assets/music/Thief in the Night.mp3'),
    ]; 
