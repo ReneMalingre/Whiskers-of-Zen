@@ -13,31 +13,19 @@
 
     <!-- favourites CSS -->
     <link rel="stylesheet" href="./assets/css/favourites.css" />
-
-    <!-- music link in case music wants to be autoplay--> 
-    <!--<audio src="./assets/music/Del Rio Bravo.mp3" autoplay></audio>
-    <audio src="./assets/music/Ethereal Relaxation.mp3" autoplay></audio>
-    <audio src="./assets/music/Maccary Bay.mp3" autoplay></audio>
-    <audio src="./assets/music/Mandeville.mp3" autoplay></audio>
-    <audio src="./assets/music/No Frills Salsa - Alternate.mp3" autoplay></audio>
-    <audio src="./assets/music/one.mp3" autoplay></audio>
-    <audio src="./assets/music/Thief in the Night.mp3" autoplay></audio>-->
-
-    
     <link rel="stylesheet" href="./assets/css/app-style.css" />
     <!-- customising W3 modal CSS -->
     <link rel="stylesheet" href="./assets/css/w3-modal.css" />
     <!-- music link-->
 
-    <audio src="./assets/music/one.mp3"></audio>
-    <!-- <audio src="./assets/music/one.mp3" autoplay></audio> -->
+    <!-- <audio src="./assets/music/one.mp3"></audio> -->
+    <audio src="./assets/music/one.mp3" autoplay></audio>
     <!-- <audio src="path/to/music.mp3" autoplay></audio> -->
 
     <title>Whiskers of Zen - Favourites page</title>
   </head>
 
-<body>
-    <!-- Sidebar -->
+  <body>
     <aside>
         <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large"
@@ -59,6 +47,7 @@
                 <audio id="music-control" controls autoplay next muted loop id="toggle-music">
              </audio></div>-->
         </div>
+      </div>
     </aside>
 
               <!-- <div><audio controls autoplay muted loop id="toggle-music">
@@ -73,72 +62,19 @@
             &#9776;
           </button>
         </div>
-        </ul>
+      </ul>
     </nav>
-    
-      
+
     <!-- title for favourites page-->
-    <main class="container">
+    <main">
+      <section>
+        <h1 class="title w3-text-deep-purple">Whiskers of Zen</h1>
+        <h2 class="information w3-text-purple">These are your favourites</h2>
+      </section>
 
-        <hgroup>
-            <h1 class="title">Whiskers of Zen</h1>
-            <h2 class="subtitle">Your favourites</h2>
-            <h2 class="information">This are your favourites</h2>
-        </hgroup>
-
-    <!-- main content -->
-    <main class="container">
-
-        <!-- Grid of 2 columns; max 4 cards display for large screens -->
-        <div class="grid">
-            <!-- example card -->
-            <article class="polaroid">
-                <!-- Favourite button delete from favourites-->
-                <img class="test" src="./assets/img/cat-sml.png" alt="">
-                <!--<a href="#" role="button" class="secondary outline favourite"><i class=""></i></a> -->
-                <!-- text align (e.g. breed) -->
-                <p><span class="strong1">Paws</span> 5 paws!!!</p>
-                <p><span class="strong2">Zen</span> Zen level went up 5 crystals</p>
-                <p><span class="strong3">This is the cutest</span> (sample breed)</p>
-
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-                 <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
-            </article>
-            <article class="polaroid">
-                <!-- Favourite button delete from favourites-->
-                
-                <img class="test" src="./assets/img/cat-sml.png" alt="">
-                <!--<a href="#" role="button" class="secondary outline favourite"><i class=""></i></a> -->
-                <!-- text align (e.g. breed) -->
-                <p><span class="strong1">Paws</span> 5 paws!!!</p>
-                <p><span class="strong2">Zen</span> Zen level went up 5 crystals</p>
-                <p><span class="strong3">This is the cutest</span> (sample breed)</p>
-
-                <!-- Buttons for various functions -->
-                 <a href="#" role="button" class="secondary outline"><i class="fa-solid fa-download"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-square-facebook"></i></a>
-                 <a href="#" role="button" class="secondary outline"><i class="fa-brands fa-twitter"></i></a>
-                 <a href="#" role="button" class="secondary outline favourite"><i class="fa-solid fa-bookmark"></i></a>
-            </article> 
-   
-          </div>
+      <!-- Div to hold the favourites -->
+      <div class="favourites-board" id="favourites-holder"></div>
     </main>
-  
-
-  <!--js link-->
-  <script src="./assets/js/index-script.js"></script>
-
-  <script src="./assets/js/results.js"></script>
-  <!-- font awesome kit-->
-  <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
-  <footer>
-    <p>Web app developed by Iggy, Lauren, Rene, Sebastian © 2023</p>
-</footer>
-
-</body>
 
     <!-- delete favourite confirmation modal -->
     <div class="modal-confirmation">
