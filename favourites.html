@@ -24,41 +24,27 @@
 
   <body>
     <aside>
-      <nav></nav>
-    </aside>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">Close &times;</button> 
 
-    <!-- Sidebar -->
-    <aside>
-      <div
-        class="w3-sidebar w3-bar-block w3-card w3-animate-left"
-        style="display: none"
-        id="mySidebar">
-        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">
-          Close &times;
-        </button>
-
-        <div class="w3-dropdown-click">
-          <button onclick="myFunction()" class="w3-button">
-            <i class="fa-solid fa-headphones"></i> Music
-            
-          </button>
-          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-           
-            <div>
-              <button id="play-button">Play</button>
-              <button id="pause-button">Pause</button>
-              <button id="next-button">next</button>
-            </div>
-          </div>
-        </div>
-        <a href="#" class="w3-bar-item w3-button"
-          ><i class="fa-solid fa-trophy"></i> Achievements</a
-        >
-        <a href="#" class="w3-bar-item w3-button"
-          ><i class="fa-solid fa-bookmark"></i> Favourites</a
-        >
+            <div class="w3-dropdown-click">
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music</button>
+                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                  <div class="w3-bar-item">
+                      <button id="play-button" class="outline">Play</button>
+                      <button id="pause-button" class="outline">Pause</button>
+                      <button id="next-button" class="outline">Next</button>
+                    </div>
+                </div>
+              </div>
+            <a href="./index.html" class="w3-bar-item w3-button"><i class="fa-solid fa-house"></i>  Home</a>
       </div>
     </aside>
+
+              <!-- <div><audio controls autoplay muted loop id="toggle-music">
+                <source src=".assets/music/Mandeville.mp3"id= "musik">
+             </audio></div> -->
 
     <!-- Hamburger button for sidebar -->
     <nav>

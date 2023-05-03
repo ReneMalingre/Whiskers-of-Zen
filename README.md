@@ -1,49 +1,117 @@
-# Group-2-Whiskers-of-Zen
-Improve your mood with pictures of cute dogs and cats
+# Whiskers of Zen
+Improve your mood with pictures of cute dogs and cats!
+
+[Application Link]()
+<!-- TODO: insert deployment link -->
 
 
 ## Description
 
-<!-- Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Whiskers of Zen is a unique digital oasis designed to whisk you away from your daily stress and immerse you in a world of cute, cuddly companions. 
+Try this free web app today to improve your mood by viewing pictures of cute dogs and cats (yes, it actually [works](https://edition.cnn.com/2020/09/27/us/watching-cute-animals-study-scn-trnd/index.html) for stress)!
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn? -->
+Features of this web app include:
+- Generating random images of dogs and cats (user can select the number of images to generate for each).
+- Keeping track of the user's stress level (via the 'Zen' level) - before and after using this app
+- Rate each image for their 'Aww (cuteness) level', impact on the user's stress level - and earn achievement points along the way!
+- Learn about different dog and cat breeds
+- Favourite images - to look back later
+- Relaxing background music (if desired)
 
-## Table of Contents (Optional)
-
-<!-- If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license) -->
-
+On top of providing an avenue for users to view cute companion images and lower their stress, this app was also created in mind for its developers to put their web development knowledge and skills into practice, including (but not limited to) HTML, CSS frameworks, JavaScript, API integration, DOM manipulation... etc.
 
 ## Usage
 
-<!-- Provide instructions and examples for use. Include screenshots as needed.
+- [Home screen](#home-screen)
+- [App screen](#app-screen)
+- [Ending screen](#ending-screen)
+- [Favourites page](#favourites) 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+### Home-screen ###
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ``` -->
+![Sample screenshot of the home screen](assets/img/app-demonstration/home-screen.png)
+
+- Select the numbers of images of dogs and cats to generate (for each separately) via the dropdown.
+- Move the slider based on your current mood (level of 'Zen'). This will be used to compare your stress level before & after the use of this app.
+- Click on the button below to generate your pictures!
+
+![Sample screenshot of the sidebar](assets/img/app-demonstration/sidebar-demo.png)
+
+The sidebar can be accessed by the button on the top left of the page (appearance and functionality will vary across pages).
+
+- Relaxing music feature - if you want to add some extra 'zen' to your experience
+- Move to the favourites screen (where you can access your favourited pictures later)
+
+### App-screen ###
+
+After the loading screen, two images will appear at one time as cards with information on the breed of the dog/cat (and a bonus comfy quote).
+
+<!-- insert final screenshot -->
+![Sample screenshot of the app screen](assets/img/app-demonstration/app-demo.png)
+
+- Rate each image for their cuteness & the impact on your stress level using the two sliders. The next pair of images will display once this is done.
+- (optional) Favourite an image using the favourite (heart) button, and leave a comment for you to look back in the 'favourites' page later.
+- Click on a photo to view the full resolution image (resolution will vary for each photo)
+- Click on a breed name to learn more about that breed (will pop up as a modal). 
+
+![Sample screenshot of a breed information modal](assets/img/app-demonstration/breed-info.png)
+
+Once you finish rating all the images, you will be taken to the ending screen with your results!
+
+The sidebar can be used to access:
+- Relaxing music
+- Home screen (can also be accessed using the browser's back button)
+- Favourites page
+
+### Ending-screen ###
+
+The ending screen will display how much images you rated, how much 'Zen' (stress reduction) you've achieved and how cute you found the images.
+
+![Sample screenshot of the achievements tab](assets/img/app-demonstration/achievements-demo.png)
+
+Open the achievements tab to see what achievements you unlocked (based on how many & how you rated the images). Highlighted achievements indicate that you've earned that achievement!
+
+Based on the ratings, images of various categories (e.g. the images that you rated the 'cutest') will be loaded. You can also favourite those images using the heart button if desired.
+
+![Sample screenshot of the 'best of' photos](assets/img/app-demonstration/best-demo.png)
+
+From here, you can:
+- Go back to the home screen to generate more images
+- Go to the favourites page to look back on images you've favourited
+
+### Favourites ###
+
+Images you've favourited will be saved on this page for your enjoyment.
+
+You can unfavourite the image(s) also.
+
+![Sample screenshot of the favourites page](assets/img/app-demonstration/favourites-demo.png)
 
 ## Credits
 
-<!-- TODO: update with full names -->
 Web app developed by:
-- Iggy
+- Ignazio Gaudio
 - Lauren Cho
 - Rene Malingre
-- Sebastian 
+- Sebastian Rodriguez
 
-CSS framework by [pico.css](https://picocss.com/)
+CSS frameworks used:
 
+[pico.css](https://picocss.com/)
+
+[W3 CSS](https://www.w3schools.com/w3css/defaulT.asp)
+
+Elements used: 
 [CSS Sidebar](https://www.w3schools.com/w3css/w3css_sidebar.asp) by W3 Schools
+
 [Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp) by W3 Schools
+
+Third-party API:
+[The Cat API](https://thecatapi.com/)
+
+[Dog API (images)](https://dog.ceo/dog-api/)
+
+[Dog API (dog information)](https://dogapi.dog/)
 
 ## License
 
@@ -54,8 +122,5 @@ Image assets under [Creative Commons (CC BY-NC 4.0)](https://creativecommons.org
 MIT Licensed unless otherwise indicated.
 
 
-
-## Features
-
-<!-- If your project has a lot of features, list them here. -->
+<!-- ## Features -->
 

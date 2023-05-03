@@ -73,6 +73,11 @@ p {
 }
 
 /* additional CSS styling sheet (separate to framework) */
+
+html {
+  background: linear-gradient(0deg, #efd5ff 0%, #515ada 100%);
+}
+
 body {
   text-align: center;
   margin: 0;

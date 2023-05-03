@@ -34,35 +34,26 @@
       <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
 
             <div class="w3-dropdown-click">
-                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
-                    <span class="music-on-off align-right"><label class="switch">
-                    <input type="checkbox">
-                  </label></span></button>
-                  <div>
-                    <button id="play-button">Play</button>
-                    <button id="pause-button">Pause</button>
-                    <button id="next-button">next</button>
-                  </div>
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music</button>
+                <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                  <div class="w3-bar-item">
+                      <button id="play-button" class="outline">Play</button>
+                      <button id="pause-button" class="outline">Pause</button>
+                      <button id="next-button" class="outline">Next</button>
+                    </div>
+                </div>
               </div>
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
-            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
+            <a href="./index.html" class="w3-bar-item w3-button"><i class="fa-solid fa-house"></i>  Home</a>
+            <a href="./favourites.html" class="w3-bar-item w3-button"><i class="fa-solid fa-heart"></i>  Favourites</a>
         </div>
     </aside>
     
-    <!-- Hamburger button for sidebar -->
-    <nav>
-        <!-- <ul> -->
-        <div id="main">
-            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
-        </div>
-        <!-- </ul> -->
-    </nav>
-   
+ 
     <!-- Nav bar with achievement details -->
     <section class="ending-results">
       <div class="container">
         <!-- home & back button -->
-        <ul id="nav-btns">
+        <!-- <ul id="nav-btns">
           <li>
             <a
               href="./index.html"
@@ -79,7 +70,7 @@
               ><i class="fa-solid fa-star"></i> View your Favourites</a
             >
           </li>
-        </ul>
+        </ul> -->
 
       <details open>
         <summary class="summary">
@@ -131,27 +122,36 @@
     </div>
   </section>
 
-  <main class="container">
-    <!-- displays user results numbers -->
-    <section>
-      <header>
-        <h2 class="w3-text-deep-purple w3-center strong">
-          How was meeting your fluffy friends today?
-        </h2>
-      </header>
-      <p class="w3-text-sand w3-center">
-        Your Zen Level before you looked at the animals was:
-        <span id="user-zen-before" class="strong"></span>
-      </p>
-      <p class="w3-text-sand w3-center">
-        You added <span id="zen-points-total" class="strong"></span> Zen points
-        from rating the Fluffy Overlords and the Very Good Boys.
-      </p>
-      <p class="w3-text-sand w3-center">
-        Your Zen Level now is:
-        <span id="zen-level-current" class="strong"></span>
-      </p>
-    </section>
+       <!-- Hamburger button for sidebar -->
+       <nav>
+        <ul>
+        <div id="main">
+            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        </ul>
+    </nav>
+   
+    <main class="container">
+      <!-- displays user results numbers -->
+      <section>
+        <header>
+          <h2 class="w3-text-deep-purple w3-center strong">
+            How was meeting your fluffy friends today?
+          </h2>
+        </header>
+        <p class="w3-text-sand w3-center">
+          Your Zen Level before you looked at the animals was:
+          <span id="user-zen-before" class="strong"></span>
+        </p>
+        <p class="w3-text-sand w3-center">
+          You added <span id="zen-points-total" class="strong"></span> Zen points
+          from rating the Fluffy Overlords and the Very Good Boys.
+        </p>
+        <p class="w3-text-sand w3-center">
+          Your Zen Level now is:
+          <span id="zen-level-current" class="strong"></span>
+        </p>
+      </section>
 
     <section>
       <!--photos from user's results  -->
@@ -220,7 +220,7 @@
                 href="./favourites.html"
                 role="button"
                 class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
-                ><i class="fa-solid fa-star"></i> View your Favourites</a
+                ><i class="fa-solid fa-heart"></i></i> View your Favourites</a
               >
             </li>
           </ul>
