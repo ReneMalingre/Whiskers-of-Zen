@@ -29,14 +29,4 @@ const songs = [
      songs[currentSong].play();
    });
    
-   playButton.addEventListener('click', () => {
-     //audio.play()
-     if (playButton.checked) {
-       console.log('checked = true');
-       audioClass.play();
-     } else {
-       console.log('checked = false');
-       audioClass.pause();
-     }
-   });
    
