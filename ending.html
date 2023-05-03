@@ -33,48 +33,53 @@
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
       <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
 
-      <div class="w3-dropdown-click">
-        <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
-          <span class="music-on-off align-right"><label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label></span></button>
-        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Music 1</a>
-          <a href="#" class="w3-bar-item w3-button">Music 2</a>
-          <a href="#" class="w3-bar-item w3-button">Music 3</a>
+            <div class="w3-dropdown-click">
+                <button onclick="myFunction()" class="w3-button"><i class="fa-solid fa-headphones"></i> Music
+                    <span class="music-on-off align-right"><label class="switch">
+                    <input type="checkbox">
+                  </label></span></button>
+                  <div>
+                    <button id="play-button">Play</button>
+                    <button id="pause-button">Pause</button>
+                    <button id="next-button">next</button>
+                  </div>
+              </div>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i>  Achievements</a> 
+            <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i>  Favourites</a>
         </div>
-      </div>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-trophy"></i> Achievements</a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa-solid fa-bookmark"></i> Favourites</a>
-    </div>
-  </aside>
-
-  <!-- Hamburger button for sidebar -->
-  <nav>
-    <!-- <ul> -->
-    <div id="main">
-      <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
-    </div>
-    <!-- </ul> -->
-  </nav>
-
-  <!-- Nav bar with achievement details -->
-  <section class="ending-results">
-    <div class="container">
-      <!-- home & back button -->
-      <ul id="nav-btns">
-        <li>
-          <a href="./index.html" role="button"
-            class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
-              class="fa-solid fa-house"></i> Play Again</a>
-        </li>
-        <li>
-          <a href="./favourites.html" role="button"
-            class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
-              class="fa-solid fa-star"></i> View your Favourites</a>
-        </li>
-      </ul>
+    </aside>
+    
+    <!-- Hamburger button for sidebar -->
+    <nav>
+        <!-- <ul> -->
+        <div id="main">
+            <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        <!-- </ul> -->
+    </nav>
+   
+    <!-- Nav bar with achievement details -->
+    <section class="ending-results">
+      <div class="container">
+        <!-- home & back button -->
+        <ul id="nav-btns">
+          <li>
+            <a
+              href="./index.html"
+              role="button"
+              class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
+              ><i class="fa-solid fa-house"></i> Play Again</a
+            >
+          </li>
+          <li>
+            <a
+              href="./favourites.html"
+              role="button"
+              class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
+              ><i class="fa-solid fa-star"></i> View your Favourites</a
+            >
+          </li>
+        </ul>
 
       <details open>
         <summary class="summary">
@@ -184,39 +189,48 @@
           <div class="summary-card" id="most-zen-holder"></div>
         </article>
 
-        <!-- Favourites-->
-        <article>
-          <div>
-            <h3 id="app-card-title-favourites" class="ending-card-title strong w3-text-deep-orange">
-              Favourites
-            </h3>
-          </div>
-          <div class="summary-card" id="favourites-holder"></div>
-        </article>
-      </div>
-    </section>
-
-  </main>
-  <footer>
-    <!-- home & back button -->
-    <ul id="nav-btns-footer">
-      <li>
-        <a href="./index.html" role="button"
-          class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
-            class="fa-solid fa-house"></i> Play Again</a>
-      </li>
-      <li>
-        <a href="./favourites.html" role="button"
-          class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"><i
-            class="fa-solid fa-star"></i> View your Favourites</a>
-      </li>
-    </ul>
-  </footer>
-  <script src="./assets/js/classes.js"></script>
-  <script src="./assets/js/dog-breeds.js"></script>
-  <script src="./assets/js/utilities.js"></script>
-  <script src="./assets/js/ending-script.js"></script>
-  <script src="./assets/js/sidebar.js"></script>
+          <!-- Favourites-->
+          <article>
+            <div>
+              <h3
+                id="app-card-title-favourites"
+                class="ending-card-title strong w3-text-deep-orange">
+                Favourites
+              </h3>
+            </div>
+            <div class="summary-card" id="favourites-holder"></div>
+          </article>
+        </div>
+      </section>
+      
+    </main>
+    <footer>
+        <!-- home & back button -->
+        <ul id="nav-btns-footer">
+            <li>
+              <a
+                href="./index.html"
+                role="button"
+                class="play-again-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
+                ><i class="fa-solid fa-house"></i> Play Again</a
+              >
+            </li>
+            <li>
+              <a
+                href="./favourites.html"
+                role="button"
+                class="view-favourites-btn secondary outline w3-text-deep-purple w3-hover-text-deep-orange"
+                ><i class="fa-solid fa-star"></i> View your Favourites</a
+              >
+            </li>
+          </ul>
+    </footer>
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/dog-breeds.js"></script>
+    <script src="./assets/js/utilities.js"></script>
+    <script src="./assets/js/ending-script.js"></script>
+      <script src="./assets/js/sidebar.js"></script>
+      <script src="./assets/js/music.js"></script>
   <!-- font awesome kit-->
   <script src="https://kit.fontawesome.com/cea607b6d1.js" crossorigin="anonymous"></script>
 </body>
