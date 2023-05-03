@@ -67,14 +67,12 @@ The sidebar can be used to access:
 
 The ending screen will display how much images you rated, how much 'Zen' (stress reduction) you've achieved and how cute you found the images.
 
-<!-- insert final screenshot -->
 ![Sample screenshot of the achievements tab](assets/img/app-demonstration/achievements-demo.png)
 
 Open the achievements tab to see what achievements you unlocked (based on how many & how you rated the images). Highlighted achievements indicate that you've earned that achievement!
 
 Based on the ratings, images of various categories (e.g. the images that you rated the 'cutest') will be loaded. You can also favourite those images using the heart button if desired.
 
-<!-- insert final screenshot -->
 ![Sample screenshot of the 'best of' photos](assets/img/app-demonstration/best-demo.png)
 
 From here, you can:
@@ -87,7 +85,7 @@ Images you've favourited will be saved on this page for your enjoyment.
 
 You can unfavourite the image(s) also.
 
-<!-- insert final screenshot -->
+![Sample screenshot of the favourites page](assets/img/app-demonstration/favourites-demo.png)
 
 ## Credits
 
