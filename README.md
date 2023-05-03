@@ -1,9 +1,7 @@
 # Whiskers of Zen
 Improve your mood with pictures of cute dogs and cats!
 
-[Application Link]()
-<!-- TODO: insert deployment link -->
-
+[Application Link](https://renemalingre.github.io/Whiskers-of-Zen/)
 
 ## Description
 
@@ -46,7 +44,6 @@ The sidebar can be accessed by the button on the top left of the page (appearanc
 
 After the loading screen, two images will appear at one time as cards with information on the breed of the dog/cat (and a bonus comfy quote).
 
-<!-- insert final screenshot -->
 ![Sample screenshot of the app screen](assets/img/app-demonstration/app-demo.png)
 
 - Rate each image for their cuteness & the impact on your stress level using the two sliders. The next pair of images will display once this is done.
@@ -102,6 +99,7 @@ CSS frameworks used:
 [W3 CSS](https://www.w3schools.com/w3css/defaulT.asp)
 
 Elements used: 
+
 [CSS Sidebar](https://www.w3schools.com/w3css/w3css_sidebar.asp) by W3 Schools
 
 [Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp) by W3 Schools
