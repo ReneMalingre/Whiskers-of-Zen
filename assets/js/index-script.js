@@ -13,6 +13,5 @@ submitButton.addEventListener('click', () => {
   landingData.dogs=document.getElementById('image-number-dogs').value;
   landingData.mood=document.getElementById('zen-level').value;
   const queryString = new URLSearchParams(landingData).toString();
-  console.log(queryString);
   window.location.href = 'app.html?' + queryString;
 });

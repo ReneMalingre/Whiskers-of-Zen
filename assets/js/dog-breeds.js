@@ -13,24 +13,16 @@ async function getDogBreeds() {
     // if API call was successful
     if (returnData.apiReturn.responseStatus === 200) {
       // save dog breed info object to array
-    //   console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ currentPage:', returnData.currentPageURL);
-    //   console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ lastPage:', returnData.lastPageURL);
-
       newBreeds = returnData.dataToArray();
       // the API returns a link url to the next page of data
       let moreData = true;
       while (moreData) {
         if (returnData.nextPageURL !== null && !(typeof returnData.nextPageURL === 'undefined') && returnData.nextPageURL != '' ) {
-          // console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ nextPage:', returnData.nextPageURL);
           apiCall = new DogBreedInfoAPICall(returnData.nextPageURL); // pass in the next page url
           returnData = new DogBreedData(await apiCall.callAPI());
           if (returnData.apiReturn.responseStatus === 200) {
             newBreeds = newBreeds.concat(returnData.dataToArray());
-            // console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ currentPage:', returnData.currentPageURL);
-            // console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ lastPage:', returnData.lastPageURL);
-            // console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ nextPage:', returnData.nextPageURL);
           } else {
-            // console.log('🚀 ~ file: dog-breeds.js:20 ~ getDogBreeds ~ nextPage:', returnData.nextPageURL);
             moreData = false;
           }
         } else {
@@ -58,17 +50,14 @@ async function getDogBreeds() {
         });
       }
       localStorage.setItem('dog-breeds', JSON.stringify(serialized));
-      // console.log('🚀 ~ file: dog-breeds.js:36 ~ getDogBreeds ~ serialized:', serialized);
     }
   } else {
     // deserialize the dog breeds
-    // console.log("🚀 ~ file: dog-breeds.js:65 ~ getDogBreeds ~ dogBreeds:", JSON.stringify(dogBreeds));
     for (let i = 0; i < dogBreeds.breeds.length; i++) {
       const dogBreed =new DogBreed();
       dogBreed.deserialize(dogBreeds.breeds[i].dogBreed);
       dogBreedInformation.push(dogBreed);
     }
-    // console.log('🚀 ~ file: dog-breeds.js:46 ~ getDogBreeds ~ dogBreedInformation:', dogBreedInformation);
   }
 }
 

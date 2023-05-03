@@ -40,7 +40,7 @@ function displayResultantAnimals() {
   loadEndingCardWithImages(containerElement, 'app-card-title-favourites', 'Favourites', 'fav');
   addEventListenersToFavourites();
   // give the polaroids a jaunty angle
-  randomlyRotatePolaroids(3);
+  randomlyRotatePolaroids(5);
 }
 
 function loadEndingCardWithImages(parentElement) {
@@ -75,8 +75,6 @@ function loadEndingCardWithImages(parentElement) {
 // create the HTML for an empty animal card
 function emptyEndingCardHTML(animalID, i, url, altText, comment, favourited) {
   // construct the image template
-  // console.log(`animal-info-url-${animalID}-${i}`);
-
   let favouriteClass;
   let favouriteIcon;
   if (favourited) {
@@ -101,7 +99,6 @@ function emptyEndingCardHTML(animalID, i, url, altText, comment, favourited) {
         <i class="fav-icon ${favouriteIcon}"></i></a>
       </div>
     </div>`;
-    // console.log(imageTemplate);
   return imageTemplate;
 }
 
@@ -115,7 +112,6 @@ function handleFavouriteButtonClick(event) {
   }
   if (id) {
     // get user approval to permanently delete the image from the favourites
-    console.log(id);
     const animalType = getAnimalImageTypeFromID(id);
     const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
     itemToDelete = animalType + '-' + arrayIndex;
@@ -131,7 +127,6 @@ function deleteFavouriteAfterModal() {
     const arrayIndex = parseInt( getAnimalImageIndexFromID(itemToDelete));
     if (animalType === 'dog-image') {
       // if it is already a favourite, then remove it
-      console.log('clicked favourite button');
       // remove from object from favourites at this array index
       dogImages.splice(arrayIndex, 1);
       // save favourites to local storage
@@ -150,7 +145,6 @@ function deleteFavouriteAfterModal() {
 
 // event handler to show the info modal
 function showInfoModal(event) {
-  console.log('info link clicked');
   event.preventDefault();
   // display the modal
   const uiElement = event.target;

@@ -80,11 +80,9 @@ function retrieveAppRunAnimals() {
     pastCatFavourites = [];
   }
   // add the new favourites to the stored favourites from previous runs
-  console.log('dogImagesFavourites:', dogImagesFavourites.length);
   for (let i=0; i<dogImagesFavourites.length; i++) {
     addDogImageToFavourites(dogImagesFavourites[i]);
   }
-  console.log('catImagesFavourites:', catImagesFavourites.length);
   for (let i=0; i<catImagesFavourites.length; i++) {
     addCatImageToFavourites(catImagesFavourites[i]);
   }
@@ -415,7 +413,11 @@ function loadEndingCardWithImages(parentElement, dogImagesToDisplay, catImagesTo
   // update the card title
   const totalDisplayed = dogsToDisplay + catsToDisplay;
   if (totalDisplayed === 0) {
+    if (title === 'Most Basic') {
+      document.getElementById(titleElementID).innerHTML = 'No ugly cats or dogs! Right answer.';
+    } else {
     document.getElementById(titleElementID).innerHTML = 'No ' + title + '! Oh, maybe next time.';
+    }
   } else {
     if (totalAvailable > 4) {
       document.getElementById(titleElementID).innerHTML = title;
@@ -428,7 +430,6 @@ function loadEndingCardWithImages(parentElement, dogImagesToDisplay, catImagesTo
 // create the HTML for an empty animal card
 function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited) {
   // construct the image template
-  // console.log(`${listType}-animal-info-url-${id}-${i}`);
 
   let favouriteClass;
   let favouriteIcon;
@@ -454,7 +455,6 @@ function emptyEndingCardHTML(listType, id, i, url, altText, comment, favourited)
       <i class="fav-icon ${favouriteIcon}"></i></a>
     </div>
   </div>`;
-  // console.log(imageTemplate);
   return imageTemplate;
 }
 
@@ -468,15 +468,9 @@ function handleFavouriteButtonClick(event) {
     id = clickedElement.id;
   }
   if (id) {
-    console.log(id);
     const animalType = getAnimalImageTypeFromID(id);
-    console.log('🚀 ~ file: ending-script.js:437 ~ handleFavouriteButtonClick ~ animalType:', animalType);
-
     const arrayIndex = parseInt( getAnimalImageIndexFromID(id));
-    console.log('🚀 ~ file: ending-script.js:440 ~ handleFavouriteButtonClick ~ arrayIndex:', arrayIndex);
-
     const listType = getStringBeforeDash(id);
-    console.log('🚀 ~ file: ending-script.js:443 ~ handleFavouriteButtonClick ~ listType:', listType);
 
     let imageURL;
     let isFavourite = false;
@@ -488,8 +482,19 @@ function handleFavouriteButtonClick(event) {
           isFavourite = dogImagesMostZen[arrayIndex].isFavourite;
           imageURL = dogImagesMostZen[arrayIndex].url;
           if (isFavourite) {
+            // add it to the favourites
             dogImagesFavourites.push(dogImagesMostZen[arrayIndex]);
+            addDogImageToFavourites(dogImagesMostZen[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<dogImagesFavourites.length; i++) {
+              if (dogImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                dogImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
+
           break;
         case 'ugly':
           dogImagesUgliest[arrayIndex].isFavourite = !dogImagesUgliest[arrayIndex].isFavourite;
@@ -497,6 +502,15 @@ function handleFavouriteButtonClick(event) {
           imageURL = dogImagesUgliest[arrayIndex].url;
           if (isFavourite) {
             dogImagesFavourites.push(dogImagesUgliest[arrayIndex]);
+            addDogImageToFavourites(dogImagesUgliest[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<dogImagesFavourites.length; i++) {
+              if (dogImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                dogImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
           break;
         case 'cute':
@@ -505,17 +519,24 @@ function handleFavouriteButtonClick(event) {
           imageURL = dogImagesCutest[arrayIndex].url;
           if (isFavourite) {
             dogImagesFavourites.push(dogImagesCutest[arrayIndex]);
+            addDogImageToFavourites(dogImagesCutest[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<dogImagesFavourites.length; i++) {
+              if (dogImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                dogImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
           break;
         case 'fav':
           // if it is already a favourite, then remove it
-          console.log('clicked favourite button');
           isFavourite = false;
           imageURL = dogImagesFavourites[arrayIndex].url;
           // remove from object from favourites at this array index
+          removeDogImageFromFavourites(dogImagesFavourites[arrayIndex]);
           dogImagesFavourites.splice(arrayIndex, 1);
-          // save favourites to local storage
-          saveAnimalsToLocalStorage('dog-images', '-favourites', dogImagesFavourites);
           reloadFavourites();
           break;
         default:
@@ -585,6 +606,15 @@ function handleFavouriteButtonClick(event) {
           imageURL = catImagesMostZen[arrayIndex].url;
           if (isFavourite) {
             catImagesFavourites.push(catImagesMostZen[arrayIndex]);
+            addCatImageToFavourites(catImagesMostZen[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<catImagesFavourites.length; i++) {
+              if (catImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                catImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
           break;
         case 'ugly':
@@ -593,6 +623,15 @@ function handleFavouriteButtonClick(event) {
           imageURL = catImagesUgliest[arrayIndex].url;
           if (isFavourite) {
             catImagesFavourites.push(catImagesUgliest[arrayIndex]);
+            addCatImageToFavourites(catImagesUgliest[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<catImagesFavourites.length; i++) {
+              if (catImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                catImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
           break;
         case 'cute':
@@ -601,6 +640,15 @@ function handleFavouriteButtonClick(event) {
           imageURL = catImagesCutest[arrayIndex].url;
           if (isFavourite) {
             catImagesFavourites.push(catImagesCutest[arrayIndex]);
+            addCatImageToFavourites(catImagesCutest[arrayIndex]);
+          } else {
+            // remove it from the favourites
+            for (i=0; i<catImagesFavourites.length; i++) {
+              if (catImagesFavourites[i].url.toLowerCase() === imageURL.toLowerCase()) {
+                catImagesFavourites.splice(i, 1);
+                break;
+              }
+            }
           }
           break;
         case 'fav':
@@ -608,9 +656,8 @@ function handleFavouriteButtonClick(event) {
           isFavourite = false;
           imageURL = catImagesFavourites[arrayIndex].url;
           // remove from object from favourites at this array index
+          removeCatImageFromFavourites(catImagesFavourites[arrayIndex]);
           catImagesFavourites.splice(arrayIndex, 1);
-          // save favourites to local storage
-          saveAnimalsToLocalStorage('cat-images', '-favourites', catImagesFavourites);
           break;
         default:
           return;
@@ -677,7 +724,6 @@ function handleFavouriteButtonClick(event) {
 
 // event handler to show the info modal
 function showInfoModal(event) {
-  console.log('info link clicked');
   event.preventDefault();
   // display the modal
   const uiElement = event.target;
@@ -744,10 +790,8 @@ function addDogImageToFavourites(dogImage) {
   if (favouriteDogs.find((dog) => dog.url.toLowerCase() === dogImage.url.toLowerCase())) {
     return;
   }
-  console.log('pre-push: ' + favouriteDogs.length);
   dogImage.isFavourite = true;
   favouriteDogs.push(dogImage);
-  console.log('post-push: ' + favouriteDogs.length);
 
   // save the favourites array to local storage
   saveAnimalsToLocalStorage('dog-images', '-favourites', favouriteDogs);
@@ -755,7 +799,7 @@ function addDogImageToFavourites(dogImage) {
 }
 
 function removeDogImageFromFavourites(dogImage) {
-  const favouriteDogs = getAnimalsFromLocalStorage('dog-images', '-favourites');
+  let favouriteDogs = getAnimalsFromLocalStorage('dog-images', '-favourites');
   // only remove this from the favourites array if the image is in the array - test by the url property
   if (!favouriteDogs.find((dog) => dog.url.toLowerCase() === dogImage.url.toLowerCase())) {
     return;
@@ -784,7 +828,7 @@ function addCatImageToFavourites(catImage) {
 
 function removeCatImageFromFavourites(catImage) {
   // only remove this from the favourites array if the image is in the array - test by the url property
-  const favouriteCats = getAnimalsFromLocalStorage('cat-images', '-favourites');
+  let favouriteCats = getAnimalsFromLocalStorage('cat-images', '-favourites');
   if (!favouriteCats.find((cat) => cat.url === catImage.url)) {
     return;
   }
